@@ -15,5 +15,6 @@ async def on_ready():
 
 bot.load_extension("cogs.loops")
 bot.load_extension("cogs.player")
+bot.load_extension("cogs.auctions")
 
 bot.run(key.TOKEN)
