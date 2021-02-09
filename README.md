@@ -8,23 +8,23 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 
 ## Features Done
 
-uuid
-price
-da
+* uuid
+* price
+* da
 ## TODO
 
-help
-requirements
-player
-status
-ah
-bz
-bits
-forge
-floor 1-7
-jacob
-events
-leaderboard
-afk
-track
-poll
+* help
+* requirements
+* player
+* status
+* ah
+* bz
+* bits
+* forge
+* floor 1-7
+* jacob
+* events
+* leaderboard
+* afk
+* track
+* poll
