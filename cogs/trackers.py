@@ -27,7 +27,7 @@ class Trackers(commands.Cog):
         embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
         if not status:
             embed.add_field(name="**Current Location**",value="Not connected to mc.hypixel.net.")
-        elif status = "DYNAMIC":
+        elif status == "dynamic":
             embed.add_field(name="**Current Location**",value="A Personal Skyblock Island.")
         else:
             embed.add_field(name="**Current Location**",value=status)
