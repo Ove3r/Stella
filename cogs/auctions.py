@@ -64,7 +64,7 @@ class Auctions(commands.Cog):
         if randomNPC == 4:
             embed.set_thumbnail(url="https://static.wikia.nocookie.net/hypixel-skyblock/images/f/fd/Auction_Agent_4.png/revision/latest/scale-to-width-down/500?cb=20200818185005")
 
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(aliases=["dah","da"])
     async def check_dark_auction(self, ctx):
@@ -76,7 +76,7 @@ class Auctions(commands.Cog):
         embed.add_field(name="Dark Auction",value=dark_auction,inline=True)
         embed.add_field(name="Darker Auction",value=darker_auction,inline=True)
 
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(aliases=["auctions","ah"])
     async def check_player_ah(self, ctx, *name):
@@ -90,7 +90,7 @@ class Auctions(commands.Cog):
             embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"Player `{name}` not found.", color=0xdc6565)
             embed.set_footer(text=f"Stella Bot by Over#6203 ")
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
             return
 
         message, totalmessage = parse_player_ah(uuid)
@@ -103,11 +103,11 @@ class Auctions(commands.Cog):
             embed.add_field(name="Totals", value=totalmessage,inline=False)
         else:
             embed.add_field(name="Error",value=f"There are no items up on `{name}`'s AH or sales to claim.",inline=False)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(aliases=["bits","bit"])
     async def bits_to_coins(self, ctx):
-        loading = await ctx.send(embed=discord.Embed(title="Bits Calculator", description="Loading", color=0xdc6565))
+        loading = await ctx.reply(embed=discord.Embed(title="Bits Calculator", description="Loading...", color=0xdc6565))
         message = coins_per_bit()
         embed=discord.Embed(title="Bits Calculator", description="Values are in gold per bit", color=0xdc6565)
         embed.add_field(name="\u200b", value=message,inline=False)
@@ -117,6 +117,18 @@ class Auctions(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203")
         await loading.edit(embed=embed)
 
+    @commands.command(name="forge")
+    async def forge_coins_per_hour(self, ctx):
+        loading = await ctx.reply(embed=discord.Embed(title="Forge Calculator", description="Loading...", color=0xdc6565))
+        forgeMessage, castingMessage = get_forge()
+        embed=discord.Embed(title="Forge Calculator", description="Values are in gold per hour", color=0xdc6565)
+        embed.add_field(name="Casting", value=castingMessage,inline=True)
+        embed.add_field(name="Refinement", value=forgeMessage,inline=True)
+        embed.add_field(name="\u200b", value="Equations can be found [Here](http://bit.ly/2LMbolc).",inline=False)
+        embed.set_thumbnail(url="https://static.wikia.nocookie.net/minecraft/images/c/c6/BlastFurnace.png/revision/latest?cb=20181219150603")
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        embed.set_footer(text="Stella Bot by Over#6203 \n◆ Indicates A Special Case - See Equations")
+        await loading.edit(embed=embed)
 
 
 def setup(bot):
