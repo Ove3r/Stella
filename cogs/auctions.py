@@ -1,5 +1,5 @@
 import discord
-from discord.ext import tasks, commands
+from discord.ext import commands
 import requests, json, statistics, random
 from helpers import key
 from helpers.ahparse import *
@@ -87,7 +87,7 @@ class Auctions(commands.Cog):
         try:
             uuid = getUUID(name)
         except PlayerNotFound:
-            embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"User `{name}` not found.", color=0xdc6565)
+            embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"Player `{name}` not found.", color=0xdc6565)
             embed.set_footer(text=f"Stella Bot by Over#6203 ")
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
             await ctx.send(embed=embed)

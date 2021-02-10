@@ -1,5 +1,5 @@
 import requests
-import helpers.key
+from helpers import key
 from helpers.errors import *
 
 def getName(uuid):
@@ -13,3 +13,13 @@ def getUUID(name):
         return uuid
     except:
         raise PlayerNotFound
+
+def get_player_status(uuid):
+    API_KEY = key.API_KEY
+    data = requests.get(f"https://api.hypixel.net/status?key={API_KEY}&uuid={uuid}").json()
+    if not data["session"]["online"]:
+        return False
+    elif data["session"]["gameType"] != "SKYBLOCK":
+        return "Other"
+    else:
+        return data["session"]["mode"]

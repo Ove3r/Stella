@@ -10,7 +10,11 @@ class Player(commands.Cog):
         self.bot = bot
 
     @commands.command(name="uuid")
-    async def fetch_uuid(self, ctx, name):
+    async def fetch_uuid(self, ctx, *name):
+        if (not name):
+            name = ctx.author.display_name
+        else:
+            name = name[0]
         try:
             uuid = getUUID(name)
             embed=discord.Embed(title=f"{name}", description=uuid, color=0xdc6565)
@@ -18,7 +22,7 @@ class Player(commands.Cog):
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
 
         except PlayerNotFound:
-            embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"User `{name}` not found.", color=0xdc6565)
+            embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"Player `{name}` not found.", color=0xdc6565)
             embed.set_footer(text=f"Stella Bot by Over#6203 ")
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed)
