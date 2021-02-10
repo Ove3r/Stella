@@ -12,12 +12,12 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * price
 * da
 * ah
+* status
 ## TODO
 
 * help
 * requirements
 * player
-* status
 * bz
 * bits
 * forge
