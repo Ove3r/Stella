@@ -25,7 +25,7 @@ class Player(commands.Cog):
             embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"Player `{name}` not found.", color=0xdc6565)
             embed.set_footer(text=f"Stella Bot by Over#6203 ")
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(Player(bot))
