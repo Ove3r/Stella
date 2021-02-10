@@ -78,6 +78,34 @@ class Auctions(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=["auctions","ah"])
+    async def check_player_ah(self, ctx, *name):
+        if (not name):
+            name = ctx.author.display_name
+        else:
+            name = name[0]
+        try:
+            uuid = getUUID(name)
+        except PlayerNotFound:
+            embed=discord.Embed(title="Error ◆ PlayerNotFound", description=f"User `{name}` not found.", color=0xdc6565)
+            embed.set_footer(text=f"Stella Bot by Over#6203 ")
+            embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+            return
+
+        message, totalmessage = parse_player_ah(uuid)
+        embed=discord.Embed(title=name, description="AH Data", color=0xdc6565)
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        embed.set_footer(text="Stella Bot by Over#6203")
+        embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
+        if message != "No Items":
+            embed.add_field(name="Items", value=message, inline=False)
+            embed.add_field(name="Totals", value=totalmessage,inline=False)
+        else:
+            embed.add_field(name="Error",value=f"There are no items up on `{name}`'s AH or sales to claim.",inline=False)
+        await ctx.send(embed=embed)
+
+
 
 def setup(bot):
     bot.add_cog(Auctions(bot))

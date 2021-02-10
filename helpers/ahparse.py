@@ -1,6 +1,8 @@
 import requests
 import json
-import helpers.key
+from helpers import key
+from helpers.utils import *
+import time
 
 def search_BIN(item):
     data = json.load(open("data/ah.json"))
@@ -207,3 +209,79 @@ def get_dark_auction():
         pass
 
     return dark_auction, darker_auction
+
+def parse_player_ah(uuid):
+    API_KEY = key.API_KEY
+    data = requests.get(f"https://api.hypixel.net/skyblock/auction?key={API_KEY}&player={uuid}").json()
+
+    total = 0
+    value = 0
+    message = ""
+    totalmessage = ""
+    #Determines BIN or not BIN
+    for entry in data["auctions"]:
+        try:
+            bin = entry["bin"]
+        except KeyError:
+            bin = False
+        #BIN AH
+        if bin == True:
+            #Bin and Sold
+            if (entry["claimed"] == False and entry["highest_bid_amount"] != 0):
+                message += entry["item_name"]
+                message += " ~ BIN Sold: "
+                message += "{:,}".format(entry["highest_bid_amount"])
+                total += int(entry["highest_bid_amount"])
+                message += "\n\n"
+            #Bin and not Sold
+            if (entry["claimed"] == False and entry["highest_bid_amount"] == 0):
+                message += entry["item_name"]
+                message += " ~ BIN Price: "
+                message += "{:,}".format(entry["starting_bid"])
+                value += int(entry["starting_bid"])
+                message += "\n\n"
+
+        #Not a BIN AH
+        if bin == False:
+            #Check Duration Expired
+            currentTime = int(round(time.time() *  1000))
+            if (entry["end"] <= currentTime):
+                ended = True
+            else:
+                ended = False
+
+            #Expired AH With Bids
+            if (entry["claimed"] == False and entry["highest_bid_amount"] != 0 and ended == True):
+                message += entry["item_name"]
+                message += " ~ Ended Bid: "
+                message += "{:,}".format(entry["highest_bid_amount"])
+                total += int(entry["highest_bid_amount"])
+                message += "\n\n"
+            #Not Expired AH With Bids
+            elif (entry["claimed"] == False and entry["highest_bid_amount"] != 0 and ended == False):
+                message += entry["item_name"]
+                message += " ~ Current Bid: "
+                message += "{:,}".format(entry["highest_bid_amount"])
+                total += int(entry["highest_bid_amount"])
+                message += "\n\n"
+            #Expired AH Without Bids
+            elif (entry["claimed"] == False and entry["highest_bid_amount"] == 0 and ended == True):
+                message += data["auctions"][x]["item_name"]
+                message += " ~ Expired "
+                message += "\n\n"
+            #Not Expired AH Without Bids
+            elif (entry["claimed"] == False and entry["highest_bid_amount"] != 0 and ended == False):
+                message += entry["item_name"]
+                message += " ~ Starting Bid: "
+                message += "{:,}".format(entry["starting_bid"])
+                total += int(entry["starting_bid"])
+                message += "\n\n"
+    if message == "":
+        message = "No Items"
+    if total > 0:
+        totalmessage = "Total Sales: " + "{:,}".format(total) +'\n'
+    if value > 0:
+        totalmessage += "Unsold: " + "{:,}".format(value) +'\n'
+    if total == 0 and value == 0:
+        totalmessage = "No Totals"
+    return message, totalmessage
