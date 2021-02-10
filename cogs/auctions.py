@@ -105,6 +105,18 @@ class Auctions(commands.Cog):
             embed.add_field(name="Error",value=f"There are no items up on `{name}`'s AH or sales to claim.",inline=False)
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=["bits","bit"])
+    async def bits_to_coins(self, ctx):
+        loading = await ctx.send(embed=discord.Embed(title="Bits Calculator", description="Loading", color=0xdc6565))
+        message = coins_per_bit()
+        embed=discord.Embed(title="Bits Calculator", description="Values are in gold per bit", color=0xdc6565)
+        embed.add_field(name="\u200b", value=message,inline=False)
+        embed.add_field(name="\u200b", value="Equations can be found [here](http://bit.ly/2KOKXun).",inline=False)
+        embed.set_thumbnail(url="https://static.wikia.nocookie.net/hypixel-skyblock/images/d/d9/Elizabeth.png/revision/latest?cb=20200915233823")
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        embed.set_footer(text="Stella Bot by Over#6203")
+        await loading.edit(embed=embed)
+
 
 
 def setup(bot):

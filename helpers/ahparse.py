@@ -1,8 +1,8 @@
-import requests
-import json
+import requests, json, time, operator
 from helpers import key
 from helpers.utils import *
-import time
+
+
 
 def search_BIN(item):
     data = json.load(open("data/ah.json"))
@@ -285,3 +285,151 @@ def parse_player_ah(uuid):
     if total == 0 and value == 0:
         totalmessage = "No Totals"
     return message, totalmessage
+
+def coins_per_bit():
+    #God potion
+    bits = {}
+    godPotionPrices = []
+    katFlowerPrices = []
+    magmaBucketPrices = []
+    plasmaPrices = []
+    greatCarrotPrices = []
+    ultimateCarrotPrices = []
+    greaterPrices = []
+    jumboPrices = []
+    hologramPrices = []
+    builderWandPrices = []
+    bitsTalismanPrices = []
+    compact = []
+    expertise = []
+    #Gets AH Data for the specific items
+    data = json.load(open("data/ah.json"))
+    for entry in data["auctions"]:
+        try:
+            test = entry["bin"]
+        except:
+            test = False
+        if test:
+            if entry["item_name"].lower() == "god potion":
+                godPotionPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "kat flower":
+                katFlowerPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "magma bucket":
+                magmaBucketPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "plasma bucket":
+                plasmaPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "great carrot candy":
+                greatCarrotPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "ultimate carrot candy":
+                ultimateCarrotPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "greater backpack":
+                greaterPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "jumbo backpack":
+                jumboPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "hologram":
+                hologramPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "builder's wand":
+                builderWandPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "bits talisman":
+                bitsTalismanPrices.append(entry["starting_bid"])
+            elif entry["item_lore"] == "§9Compact I\n§7Gain §a1% §7extra Mining exp\n§7with §a0.2% §7chance to drop an\n§7enchanted item.\n§8100 blocks to tier up!\n\n§7§7Apply Cost: §323 Exp Levels\n\n§e▲ §7Compact cannot be combined!\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                compact.append(entry["starting_bid"])
+            elif entry["item_lore"] == "§9Expertise I\n§7Gain §a2% §7extra Fishing exp\n§7and increases Sea Creatures\n§7spawn chance by §e1%§7.\n§850 kills to tier up!\n\n§7§7Apply Cost: §323 Exp Levels\n\n§e▲ §7Expertise cannot be combined!\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                expertise.append(entry["starting_bid"])
+
+    bzData = requests.get("https://api.hypixel.net/skyblock/bazaar").json()
+    #God potion
+    try:
+        godPotion = ((min(godPotionPrices))/2000)
+        bits["God Potion"] = round(godPotion,3)
+    except ValueError:
+        pass
+    #Kat Flower
+    try:
+        katFlower = ((min(katFlowerPrices))/500)
+        bits["Kat Flower"] = round(katFlower,3)
+    except ValueError:
+        pass
+    #Heat Core (Magma Bucket)
+    try:
+        buyLava = bzData["products"]["ENCHANTED_LAVA_BUCKET"]["quick_status"]["buyPrice"]
+        magmaBucketDifference = (min(magmaBucketPrices))-(buyLava*2)
+        magmaBucket = magmaBucketDifference/3000
+        bits["Heat Core (Magma Bucket)"] = round(magmaBucket,3)
+    except ValueError:
+        pass
+    #Heat Core (Plasma Bucket)
+    try:
+        plasmaBucket = ((min(plasmaPrices)) - (min(magmaBucketPrices)*2))/3000
+        bits["Heat Core (Plasma Bucket)"] = round(plasmaBucket,3)
+    except ValueError:
+        pass
+    #Hyper Catalyst Upgrade
+    try:
+        buyCata = bzData["products"]["CATALYST"]["quick_status"]["buyPrice"]
+        sellHyper = bzData["products"]["HYPER_CATALYST"]["quick_status"]["sellPrice"]
+        hyperCata = ((sellHyper*8) - (buyCata*8))/300
+        bits["Hyper Catalyst"] = round(hyperCata,3)
+    except ValueError:
+        pass
+    #Ultimate Carrot Candy
+    try:
+        greatCarrot = min(greatCarrotPrices)
+        buyGolden = bzData["products"]["ENCHANTED_GOLDEN_CARROT"]["quick_status"]["buyPrice"]
+        superb = (buyGolden*24) + (greatCarrot)
+        ultimateCarrot = ((min(ultimateCarrotPrices)*10)-(superb*8))/8000
+        bits["Ultimate Carrot Candy Upgrade"] = round(ultimateCarrot,3)
+    except ValueError:
+        pass
+    #Colossal Experience Bottle
+    try:
+        buyTitantic = bzData["products"]["TITANIC_EXP_BOTTLE"]["quick_status"]["buyPrice"]
+        sellColossal = bzData["products"]["COLOSSAL_EXP_BOTTLE"]["quick_status"]["sellPrice"]
+        colossalExp = ((sellColossal) - (buyTitantic))/1200
+        bits["Colossal Experience Bottle Upgrade"] = round(colossalExp,3)
+    except ValueError:
+        pass
+    #Jumbo Backpack Upgrade
+    try:
+        jumboUpgrade = ((min(jumboPrices))-(min(greaterPrices)))/4000
+        bits["Jumbo Backpack Upgrade"] = round(jumboUpgrade,3)
+    except ValueError:
+        pass
+    #Hologram
+    try:
+        hologram = (min(hologramPrices))/2000
+        bits["Hologram"] = round(hologram,3)
+    except ValueError:
+        pass
+    #Builder's Wand
+    try:
+        buildersWand = (min(builderWandPrices))/12000
+        bits["Builder's Wand"] = round(buildersWand,3)
+    except ValueError:
+        pass
+    #Bits Talisman
+    try:
+        bitsTalisman = (min(bitsTalismanPrices))/15000
+        bits["Bits Talisman"] = round(bitsTalisman,3)
+    except ValueError:
+        pass
+    #Compact
+    try:
+        compactI = (min(compact))/4000
+        bits["Compact I"] = round(compactI,3)
+    except ValueError:
+        pass
+    #Expertise
+    try:
+        expertiseI = (min(expertise))/4000
+        bits["Expertise I"] = round(expertiseI,3)
+    except ValueError:
+        pass
+
+    sortedDict = sorted(bits.items(), key=operator.itemgetter(1), reverse=True)
+    message = ""
+    rank = 1
+    for entry in sortedDict:
+        message += f"{rank}.`{entry[0]}` at `{entry[1]}`\n"
+        rank += 1
+    return message
