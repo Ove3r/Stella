@@ -17,5 +17,6 @@ bot.load_extension("cogs.loops")
 bot.load_extension("cogs.player")
 bot.load_extension("cogs.auctions")
 bot.load_extension("cogs.trackers")
+bot.load_extension("cogs.bz")
 
 bot.run(key.TOKEN)

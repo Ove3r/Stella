@@ -3,3 +3,6 @@ class Error(Exception):
 
 class PlayerNotFound(Error):
     pass
+
+class ItemNotFound(Error):
+    pass
