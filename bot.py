@@ -13,10 +13,17 @@ async def on_ready():
     print(f'Bot connected as {bot.user}.')
     await bot.change_presence(activity=discord.Game(name=" Stella Bot Rewrite"))
 
-bot.load_extension("cogs.loops")
-bot.load_extension("cogs.player")
-bot.load_extension("cogs.auctions")
-bot.load_extension("cogs.trackers")
-bot.load_extension("cogs.bz")
+modules = [
+    "loops",
+    "player",
+    "auctions",
+    "trackers",
+    "bz",
+    "events",
+]
+
+for module in modules:
+    bot.load_extension(f"cogs.{module}")
+
 
 bot.run(key.TOKEN)
