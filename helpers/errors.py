@@ -6,3 +6,6 @@ class PlayerNotFound(Error):
 
 class ItemNotFound(Error):
     pass
+
+class ProfileNotFound(Error):
+    pass
