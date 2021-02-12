@@ -1,2 +1,4 @@
 data/pie
+cogs/__pycache__
+helpers/__pycache__
 helpers/key.py
