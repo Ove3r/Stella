@@ -9,3 +9,6 @@ class ItemNotFound(Error):
 
 class ProfileNotFound(Error):
     pass
+
+class DisabledAPI(Error):
+    pass

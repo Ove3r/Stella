@@ -72,3 +72,9 @@ def skill_xp_to_level(xp, max=50):
     if level > max:
         level = max
     return level
+
+def highest_lvl(skill, highest):
+    if skill > highest:
+        return highest
+    else:
+        return skill
