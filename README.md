@@ -16,13 +16,13 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * bits
 * forge
 * bz
+* jacob
 ## TODO
 
 * help
 * requirements
 * player
 * floor 1-7
-* jacob
 * events
 * leaderboard
 * afk
