@@ -98,6 +98,24 @@ class Player:
             except KeyError:
                 self.xp_taming = 0
                 self.lvl_taming = 0
+            try:
+                self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
+                self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
+            except KeyError:
+                self.xp_zombie = 0
+                self.lvl_zombie = 0
+            try:
+                self.xp_spider = self.player_data["slayer_bosses"]["spider"]["xp"]
+                self.lvl_spider = list(self.player_data["slayer_bosses"]["spider"]["claimed_levels"])[-1].split("_")[-1]
+            except KeyError:
+                self.xp_spider = 0
+                self.lvl_spider = 0
+            try:
+                self.xp_wolf = self.player_data["slayer_bosses"]["wolf"]["xp"]
+                self.lvl_wolf = list(self.player_data["slayer_bosses"]["wolf"]["claimed_levels"])[-1].split("_")[-1]
+            except KeyError:
+                self.xp_wolf = 0
+                self.lvl_spider = 0
             self.skill_xp_list = [self.xp_farming, self.xp_mining, self.xp_combat, self.xp_foraging, self.xp_fishing, self.xp_enchanting, self.xp_alchemy, self.xp_taming]
             self.total_xp = sum(self.skill_xp_list)
 
@@ -135,7 +153,7 @@ class Player:
                 self.lvl_taming = highest_lvl(data["skyblock_domesticator"],50)
             except KeyError:
                 self.lvl_taming = 0
-                
+
         self.skill_lvl_list = [self.lvl_farming, self.lvl_mining, self.lvl_combat, self.lvl_foraging, self.lvl_fishing, self.lvl_enchanting, self.lvl_alchemy, self.lvl_taming]
         self.skill_average = sum(self.skill_lvl_list)/len(self.skill_lvl_list)
 
@@ -158,18 +176,38 @@ class Player:
             raise DisabledAPI
 
     def get_skills_message(self):
-        self.skills_message = f"""
-        **Farming:** {self.lvl_farming}
-        **Mining:** {self.lvl_mining}
-        **Combat: ** {self.lvl_combat}
-        **Foraging: ** {self.lvl_foraging}
-        **Fishing: ** {self.lvl_fishing}
-        **Enchanting: ** {self.lvl_enchanting}
-        **Alchemy: ** {self.lvl_alchemy}
-        **Taming: ** {self.lvl_taming}
-        """
+        if self.api_enabled:
+            self.skills_message = (
+            f"**Farming:** {self.lvl_farming} ⮕ ({'{:,}'.format(self.xp_farming)})\n"
+            f"**Mining:** {self.lvl_mining} ⮕ ({'{:,}'.format(self.xp_mining)})\n"
+            f"**Combat: ** {self.lvl_combat} ⮕ ({'{:,}'.format(self.xp_combat)})\n"
+            f"**Foraging: ** {self.lvl_foraging} ⮕ ({'{:,}'.format(self.xp_foraging)})\n"
+            f"**Fishing: ** {self.lvl_fishing} ⮕ ({'{:,}'.format(self.xp_fishing)})\n"
+            f"**Enchanting: ** {self.lvl_enchanting} ⮕ ({'{:,}'.format(self.xp_enchanting)})\n"
+            f"**Alchemy: ** {self.lvl_alchemy} ⮕ ({'{:,}'.format(self.xp_alchemy)})\n"
+            f"**Taming: ** {self.lvl_taming} ⮕ ({'{:,}'.format(self.xp_taming)})\n"
+            )
+        else:
+            self.skills_message = (
+            f"**Farming:** {self.lvl_farming}\n"
+            f"**Mining:** {self.lvl_mining}\n"
+            f"**Combat: ** {self.lvl_combat}\n"
+            f"**Foraging: ** {self.lvl_foraging}\n"
+            f"**Fishing: ** {self.lvl_fishing}\n"
+            f"**Enchanting: ** {self.lvl_enchanting}\n"
+            f"**Alchemy: ** {self.lvl_alchemy}\n"
+            f"**Taming: ** {self.lvl_taming}\n"
+            )
+
         return
 
+    def get_slayer_dungeon_message(self):
+        self.slayer_message = (
+        f"**Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
+        f"**Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
+        f"**Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
+        )
+        return
 
 #try:
 #    user = Player("Over_")

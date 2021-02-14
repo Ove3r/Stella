@@ -57,10 +57,10 @@ class Player_Commands(commands.Cog):
             player_tab.set_footer(text="Stella Bot by Over#6203 ◆ Features May Not Be Available (Certain APIs are Disabled)")
         player_tab.add_field(name=f"Skill Average: {user.skill_average}",value="\u200b",inline=False)
         player_tab.add_field(name="Skills", value=user.skills_message, inline=True)
-        player_tab.add_field(name="\u200b",value="\u200b",inline=True)
         if user.api_enabled:
-            #Add Slayers/Dungeons Message
-            pass
+            user.get_slayer_dungeon_message()
+            player_tab.add_field(name="Slayers and Dungeons",value=user.slayer_message)
+
 
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
@@ -86,12 +86,13 @@ class Player_Commands(commands.Cog):
                 await output.edit(embed=pie_chart_embed)
 
             try:
-                reaction, member = await self.bot.wait_for("reaction_add", timeout=60.0, check=check)
+                reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
                 await output.remove_reaction(reaction, member)
             except Exception as exception: #For Debugging ~~ Remove Later
                 print(exception)
                 break
         await output.clear_reactions()
+        await output.add_reaction("🛑")
 
 
 def setup(bot):
