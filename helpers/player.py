@@ -12,6 +12,7 @@ class Player:
         self.uuid = getUUID(name)
         self.name = getName(self.uuid)
         self.profile_list = []
+        self.guild = getGuild(self.uuid)
         ##If a profile argument is given.
         data = requests.get(f"https://api.hypixel.net/skyblock/profiles?key={self.API_KEY}&uuid={self.uuid}").json()
         for entry in data["profiles"]:
@@ -66,19 +67,19 @@ class Player:
                 self.lvl_mining = 0
             try:
                 self.xp_combat = round(self.player_data["experience_skill_combat"])
-                self.lvl_combat = skill_xp_to_level(self.xp_combat, 50)
+                self.lvl_combat = skill_xp_to_level(self.xp_combat)
             except KeyError:
                 self.xp_combat = 0
                 self.lvl_combat = 0
             try:
                 self.xp_foraging = round(self.player_data["experience_skill_foraging"])
-                self.lvl_foraging = skill_xp_to_level(self.xp_foraging, 50)
+                self.lvl_foraging = skill_xp_to_level(self.xp_foraging)
             except KeyError:
                 self.xp_foraging = 0
                 self.lvl_foraging = 0
             try:
                 self.xp_fishing = round(self.player_data["experience_skill_fishing"])
-                self.lvl_fishing = skill_xp_to_level(self.xp_fishing, 50)
+                self.lvl_fishing = skill_xp_to_level(self.xp_fishing)
             except KeyError:
                 self.xp_fishing = 0
             try:
@@ -88,13 +89,13 @@ class Player:
                 self.xp_enchanting = 0
             try:
                 self.xp_alchemy = round(self.player_data["experience_skill_alchemy"])
-                self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy, 50)
+                self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)
             except KeyError:
                 self.xp_alchemy = 0
                 self.lvl_alchemy = 0
             try:
                 self.xp_taming = round(self.player_data["experience_skill_taming"])
-                self.lvl_taming = skill_xp_to_level(self.xp_taming, 50)
+                self.lvl_taming = skill_xp_to_level(self.xp_taming)
             except KeyError:
                 self.xp_taming = 0
                 self.lvl_taming = 0
@@ -116,6 +117,43 @@ class Player:
             except KeyError:
                 self.xp_wolf = 0
                 self.lvl_spider = 0
+            try:
+                self.xp_cata = round(self.player_data["dungeons"]["dungeon_types"]["catacombs"]["experience"])
+                self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
+            except Exception as e:
+                self.xp_cata = 0
+                self.lvl_cata = 0
+            try:
+                self.xp_healer = round(self.player_data["dungeons"]["player_classes"]["healer"]["experience"])
+                self.lvl_healer = skill_xp_to_level(self.xp_healer,xp_table="cata")
+            except:
+                self.xp_healer = 0
+                self.lvl_healer = 0
+            try:
+                self.xp_mage = round(self.player_data["dungeons"]["player_classes"]["mage"]["experience"])
+                self.lvl_mage = skill_xp_to_level(self.xp_mage,xp_table="cata")
+            except:
+                self.xp_mage = 0
+                self.lvl_mage = 0
+            try:
+                self.xp_berserk = round(self.player_data["dungeons"]["player_classes"]["berserk"]["experience"])
+                self.lvl_berserk = skill_xp_to_level(self.xp_berserk,xp_table="cata")
+            except:
+                self.xp_berserk = 0
+                self.lvl_berserk = 0
+            try:
+                self.xp_archer = round(self.player_data["dungeons"]["player_classes"]["archer"]["experience"])
+                self.lvl_archer = skill_xp_to_level(self.xp_archer,xp_table="cata")
+            except:
+                self.xp_archer = 0
+                self.lvl_archer = 0
+            try:
+                self.xp_tank = round(self.player_data["dungeons"]["player_classes"]["tank"]["experience"])
+                self.lvl_tank = skill_xp_to_level(self.xp_tank,xp_table="cata")
+            except:
+                self.xp_tank = 0
+                self.lvl_tank = 0
+
             self.skill_xp_list = [self.xp_farming, self.xp_mining, self.xp_combat, self.xp_foraging, self.xp_fishing, self.xp_enchanting, self.xp_alchemy, self.xp_taming]
             self.total_xp = sum(self.skill_xp_list)
 
@@ -178,34 +216,43 @@ class Player:
     def get_skills_message(self):
         if self.api_enabled:
             self.skills_message = (
-            f"**Farming:** {self.lvl_farming} ⮕ ({'{:,}'.format(self.xp_farming)})\n"
-            f"**Mining:** {self.lvl_mining} ⮕ ({'{:,}'.format(self.xp_mining)})\n"
-            f"**Combat: ** {self.lvl_combat} ⮕ ({'{:,}'.format(self.xp_combat)})\n"
-            f"**Foraging: ** {self.lvl_foraging} ⮕ ({'{:,}'.format(self.xp_foraging)})\n"
-            f"**Fishing: ** {self.lvl_fishing} ⮕ ({'{:,}'.format(self.xp_fishing)})\n"
-            f"**Enchanting: ** {self.lvl_enchanting} ⮕ ({'{:,}'.format(self.xp_enchanting)})\n"
-            f"**Alchemy: ** {self.lvl_alchemy} ⮕ ({'{:,}'.format(self.xp_alchemy)})\n"
-            f"**Taming: ** {self.lvl_taming} ⮕ ({'{:,}'.format(self.xp_taming)})\n"
+            f"<:golden_hoe:801205315806167050> **Farming:** {self.lvl_farming} ⮕ ({'{:,}'.format(self.xp_farming)})\n"
+            f"<:stone_pickaxe:810604855726571545> **Mining:** {self.lvl_mining} ⮕ ({'{:,}'.format(self.xp_mining)})\n"
+            f"<:stone_sword:810605120752058408> **Combat: ** {self.lvl_combat} ⮕ ({'{:,}'.format(self.xp_combat)})\n"
+            f"<:jungle_sapling:810605504934051892> **Foraging: ** {self.lvl_foraging} ⮕ ({'{:,}'.format(self.xp_foraging)})\n"
+            f"<:fishing:801090235542929448> **Fishing: ** {self.lvl_fishing} ⮕ ({'{:,}'.format(self.xp_fishing)})\n"
+            f"<:enchanting_table:810605765982683166> **Enchanting: ** {self.lvl_enchanting} ⮕ ({'{:,}'.format(self.xp_enchanting)})\n"
+            f"<:brewing_stand:810605985336000512> **Alchemy: ** {self.lvl_alchemy} ⮕ ({'{:,}'.format(self.xp_alchemy)})\n"
+            f"<:spawn_egg:810606172997812258> **Taming: ** {self.lvl_taming} ⮕ ({'{:,}'.format(self.xp_taming)})\n"
             )
         else:
             self.skills_message = (
-            f"**Farming:** {self.lvl_farming}\n"
-            f"**Mining:** {self.lvl_mining}\n"
-            f"**Combat: ** {self.lvl_combat}\n"
-            f"**Foraging: ** {self.lvl_foraging}\n"
-            f"**Fishing: ** {self.lvl_fishing}\n"
-            f"**Enchanting: ** {self.lvl_enchanting}\n"
-            f"**Alchemy: ** {self.lvl_alchemy}\n"
-            f"**Taming: ** {self.lvl_taming}\n"
+            f"<:golden_hoe:801205315806167050> **Farming:** {self.lvl_farming}\n"
+            f"<:stone_pickaxe:810604855726571545> **Mining:** {self.lvl_mining}\n"
+            f"<:stone_sword:810605120752058408> **Combat: ** {self.lvl_combat}\n"
+            f"<:jungle_sapling:810605504934051892> **Foraging: ** {self.lvl_foraging}\n"
+            f"<:fishing:801090235542929448> **Fishing: ** {self.lvl_fishing}\n"
+            f"<:enchanting_table:810605765982683166> **Enchanting: ** {self.lvl_enchanting}\n"
+            f"<:brewing_stand:810605985336000512> **Alchemy: ** {self.lvl_alchemy}\n"
+            f"<:spawn_egg:810606172997812258> **Taming: ** {self.lvl_taming}\n"
             )
 
         return
 
     def get_slayer_dungeon_message(self):
         self.slayer_message = (
-        f"**Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
-        f"**Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
-        f"**Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
+        f"<:revenant:810606609095983114> **Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
+        f"<:tarantula:810606741023621151>  **Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
+        f"<:sven:810606857378201630> **Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
+        )
+
+        self.dungeon_message = (
+        f"<:wither_skull:810607234568552459> **Catacombs:** {self.lvl_cata} ⮕ ({'{:,}'.format(self.xp_cata)})\n"
+        f"<:splash_heal:810607537488396308>  **Healer:** {self.lvl_healer} ⮕ ({'{:,}'.format(self.xp_healer)})\n"
+        f"<:blaze_rod:810607718527926272>  **Mage:** {self.lvl_mage} ⮕ ({'{:,}'.format(self.xp_mage)})\n"
+        f"<:iron_sword:810607869656432690>  **Berserker:** {self.lvl_berserk} ⮕ ({'{:,}'.format(self.xp_berserk)})\n"
+        f"<:bow:810607983507406939> **Archer:** {self.lvl_archer} ⮕ ({'{:,}'.format(self.xp_archer)})\n"
+        f"<:leather_chestplate:810608291083190352> **Tank:** {self.lvl_tank} ⮕ ({'{:,}'.format(self.xp_tank)})\n"
         )
         return
 

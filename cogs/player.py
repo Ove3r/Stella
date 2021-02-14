@@ -55,13 +55,13 @@ class Player_Commands(commands.Cog):
             player_tab.set_footer(text="Stella Bot by Over#6203")
         else:
             player_tab.set_footer(text="Stella Bot by Over#6203 ◆ Features May Not Be Available (Certain APIs are Disabled)")
+        if user.guild:
+            player_tab.add_field(name=f"Guild: {user.guild}",value="\u200b",inline=False)
         player_tab.add_field(name=f"Skill Average: {user.skill_average}",value="\u200b",inline=False)
         player_tab.add_field(name="Skills", value=user.skills_message, inline=True)
         if user.api_enabled:
             user.get_slayer_dungeon_message()
-            player_tab.add_field(name="Slayers and Dungeons",value=user.slayer_message)
-
-
+            player_tab.add_field(name="Slayers and Dungeons",value=user.slayer_message +"\n\n" +user.dungeon_message)
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
         if user.api_enabled: #Tabs only available to users with APIs enabled

@@ -3,7 +3,8 @@ from helpers import key
 from helpers.utils import *
 
 def search_BIN(item):
-    data = json.load(open("data/ah.json"))
+    with open("data/ah.json") as database:
+        data = json.load(database)
     sellers = []
     prices = []
     for entry in data["auctions"]:
@@ -43,7 +44,8 @@ def get_dark_auction():
     vicious3 = []
     hegemony_artifact = []
     plasma_nucleus = []
-    data = json.load(open("data/ah.json"))
+    with open("data/ah.json") as database:
+        data = json.load(database)
     for entry in data["auctions"]:
         try:
             test = entry["bin"]
@@ -301,7 +303,8 @@ def coins_per_bit():
     compact = []
     expertise = []
     #Gets AH Data for the specific items
-    data = json.load(open("data/ah.json"))
+    with open("data/ah.json") as database:
+        data = json.load(database)
     for entry in data["auctions"]:
         try:
             test = entry["bin"]
@@ -472,7 +475,8 @@ def get_forge():
     titaniumTankPrices = []
     beaconVPrices = []
     relicPrices = []
-    data = json.load(open("data/ah.json"))
+    with open("data/ah.json") as database:
+        data = json.load(database)
     for entry in data["auctions"]:
         try:
             test = entry["bin"]
