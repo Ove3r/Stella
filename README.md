@@ -17,14 +17,16 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * forge
 * bz
 * jacob
+* help
 ## TODO
 
-* help
 * requirements
-* player
 * floor 1-7
 * events
 * leaderboard
 * afk
 * track
 * poll
+
+## Partially Done
+* player
