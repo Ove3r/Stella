@@ -21,7 +21,7 @@ def getGuild(uuid):
         guild_name = requests.get(f"https://api.hypixel.net/guild?key={API_KEY}&id={guild_id}").json()["guild"]["name"]
         return guild_name
     return guild_id
-    
+
 def get_player_status(uuid):
     API_KEY = key.API_KEY
     data = requests.get(f"https://api.hypixel.net/status?key={API_KEY}&uuid={uuid}").json()
@@ -47,6 +47,14 @@ def get_calendar_events():
     spooky = requests.get("https://hypixel-api.inventivetalent.org/api/skyblock/spookyFestival/estimate").json()
     spooky = spooky["estimate"]
     events["<:green_candy:798247092657193020> Spooky Festival"] = spooky
+
+    darkAuction = requests.get("https://hypixel-api.inventivetalent.org/api/skyblock/darkauction/estimate").json()
+    darkAuction = darkAuction["estimate"]
+    events["<:sirius:798248398717059142> Dark Auction"] = darkAuction
+
+    interest = requests.get("https://hypixel-api.inventivetalent.org/api/skyblock/bank/interest/estimate").json()
+    interest = interest["estimate"]
+    events["<:Enchanted_Gold_Block:798249009868570704> Bank Interest"] = interest
 
     events = sorted(events.items(),key=operator.itemgetter(1),reverse=False)
     return events

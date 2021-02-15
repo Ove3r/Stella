@@ -9,7 +9,7 @@ class Bazaar(commands.Cog):
 
     @commands.command(name="bz",
         brief="Returns an item summary.",
-        hellp=(
+        help=(
         "**stella bz [item]**\n"
         "Returns a summary for for a given bazaar item."
         )

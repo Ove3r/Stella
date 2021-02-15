@@ -34,12 +34,13 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Command Prefixes",value="`stella` `sb` `/sb`",inline=False)
         help_embed.add_field(name="Commands List:",value="```"+"\n".join(['{:>2}. {:<16}{}'.format(str(i+1),x.name,x.brief) for i,x in enumerate(command_list)])+"```",inline=False)
         help_embed.add_field(name="Details",value="Type `stella help <command name>` for more details about each command.",inline=False)
+        await ctx.reply("A list of all commands has been sent to you!")
     elif args in command_names_list:
         help_embed.add_field(name="\u200b",value=bot.get_command(args).help)
     else:
         help_embed.add_field(name="Unknown Command",value="For a list of commands type `stella help`")
     await ctx.author.send(embed=help_embed)
-    await ctx.reply("A list of all commands has been sent to you!")
+
 
 
 

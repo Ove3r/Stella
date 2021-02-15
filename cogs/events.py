@@ -7,7 +7,7 @@ class Events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="events",
+    @commands.command(name="events", aliases=["event"],
         brief="Returns approximate timers for events",
         help=(
         "**stella events**\n"
@@ -22,10 +22,9 @@ class Events(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203 ")
         embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
 
-        for calendar in calendar_events:
-            timeDifference = item[1] - currentTime
-            difference = ms_to_standard(timeDifference)
-            embed.add_field(name=item[0],value=difference,inline=False)
+        for event in calendar_events:
+            difference = ms_to_standard(event[1] - currentTime)
+            embed.add_field(name=event[0],value=difference,inline=False)
         await ctx.reply(embed=embed)
 
 
