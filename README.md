@@ -18,11 +18,11 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * bz
 * jacob
 * help
+* events
 ## TODO
 
 * requirements
 * floor 1-7
-* events
 * leaderboard
 * afk
 * track
