@@ -7,7 +7,13 @@ class Bazaar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="bz")
+    @commands.command(name="bz",
+        brief="Returns an item summary.",
+        hellp=(
+        "**stella bz [item]**\n"
+        "Returns a summary for for a given bazaar item."
+        )
+    )
     async def get_bz_item(self, ctx, *, item):
         try:
             name = productName(item)

@@ -10,7 +10,14 @@ class Auctions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="price")
+    @commands.command(name="price",
+        brief="Returns BIN statistics for a given item",
+         help = (
+         "**stella price [item]**\n"
+         "Returns the following BIN Statistics for the given item: \n ```BIN Volume, Median, Mean, Standard Deviation, Cheapesst Sellers```"
+         "Notes: \n • This command requires exact spelling for items."
+         )
+    )
     async def check_price(self, ctx, *item):
         item = " ".join(item)
         sellers, prices = search_BIN(item)
@@ -66,7 +73,13 @@ class Auctions(commands.Cog):
 
         await ctx.reply(embed=embed)
 
-    @commands.command(aliases=["dah","da"])
+    @commands.command(name="da",
+        brief="Returns Dark Auction Prices",
+        help=(
+        "**stella da**\n"
+        "Returns the BIN Minimum Prices for all items available on the Dark Auction along with items avilable from Darker Auctions"
+        )
+    )
     async def check_dark_auction(self, ctx):
         dark_auction, darker_auction = get_dark_auction()
         embed=discord.Embed(title="Dark Auctions", description="Dark Auction/Darker Auction Price Tracker", color=0xdc6565)
@@ -78,8 +91,15 @@ class Auctions(commands.Cog):
 
         await ctx.reply(embed=embed)
 
-    @commands.command(aliases=["auctions","ah"])
-    async def check_player_ah(self, ctx, *name):
+    @commands.command(name="ah",aliases=["auctions"],
+        brief="Returns player AH",
+        help=(
+        "**stella ah [player]**\n"
+        "Returns all items currently listed for a given player on the auction house.\n\n"
+        "Notes: \n • If a player argument is not given, the user's discord display name will be used instead."
+        )
+    )
+    async def auctions(self, ctx, *name):
         if (not name):
             name = ctx.author.display_name
         else:
@@ -105,7 +125,13 @@ class Auctions(commands.Cog):
             embed.add_field(name="Error",value=f"There are no items up on `{name}`'s AH or sales to claim.",inline=False)
         await ctx.reply(embed=embed)
 
-    @commands.command(aliases=["bits","bit"])
+    @commands.command(name="bits",aliases=["bit"],
+        brief="Returns gold values for bit items",
+        help=(
+        "**stella bits**\n"
+        "Returns gold values for bits purchasable items."
+        )
+    )
     async def bits_to_coins(self, ctx):
         loading = await ctx.reply(embed=discord.Embed(title="Bits Calculator", description="Loading...", color=0xdc6565))
         message = coins_per_bit()
@@ -117,7 +143,17 @@ class Auctions(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203")
         await loading.edit(embed=embed)
 
-    @commands.command(name="forge")
+    @commands.command(name="forge",
+        brief="Returns g/h values of all foragable items",
+        help=(
+        "**stella forge**\n"
+        "Returns gold per hour values of all foragable items.\n"
+        "Notes: \n "
+        "• Values reflected by the calculator may not guarantee profits.\n"
+        "• The calculator does not account for the Quick Forge Specialization in the HOTM Skill Tree.\n"
+        "• The Quick Forge Specialization does affect the profit or loss of the crafts, only the gold per hour values."
+        )
+    )
     async def forge_coins_per_hour(self, ctx):
         loading = await ctx.reply(embed=discord.Embed(title="Forge Calculator", description="Loading...", color=0xdc6565))
         forgeMessage, castingMessage = get_forge()

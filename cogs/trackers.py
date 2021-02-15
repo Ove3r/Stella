@@ -6,7 +6,15 @@ class Trackers(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["status","location"])
+    @commands.command(name="status",aliases=["location"],
+        brief="Returns the location of a player",
+        help=(
+        "**stella status [ign]**\n"
+        "Returns the current skyblock location of a player.\n"
+        "Notes: \n "
+        "• If a player argument is not given, the user's discord display name will be used instead."
+        )
+    )
     async def check_player_location(self, ctx, *name):
         if (not name):
             name = ctx.author.display_name

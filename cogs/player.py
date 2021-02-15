@@ -10,7 +10,15 @@ class Player_Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="uuid")
+    @commands.command(name="uuid",
+        brief="Returns a player's uuid",
+        help=(
+        "**stella uuid [ign]**\n"
+        "Returns a player's Minecraft UUID."
+        "Notes: \n "
+        "• If a player argument is not given, the user's discord display name will be used instead."
+        )
+    )
     async def fetch_uuid(self, ctx, *name):
         if (not name):
             name = ctx.author.display_name
@@ -28,7 +36,16 @@ class Player_Commands(commands.Cog):
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         await ctx.reply(embed=embed)
 
-    @commands.command(name="player")
+    @commands.command(name="player",
+        brief="Returns a player summary",
+        help=(
+        "**stella player [ign]**\n"
+        "Returns a summary of a player's SkyBlock statistics.\n"
+        "Notes: \n "
+        "• If a player argument is not given, the user's discord display name will be used instead."
+        "• More stats and tabs are available to players who have APIs enabled."
+        )
+    )
     async def get_player(self, ctx, name, *profile):
         try:
             if profile:
@@ -58,10 +75,10 @@ class Player_Commands(commands.Cog):
         if user.guild:
             player_tab.add_field(name=f"Guild: {user.guild}",value="\u200b",inline=False)
         player_tab.add_field(name=f"Skill Average: {user.skill_average}",value="\u200b",inline=False)
-        player_tab.add_field(name="Skills", value=user.skills_message, inline=True)
+        player_tab.add_field(name="Skills", value=user.skills_message, inline=False)
         if user.api_enabled:
             user.get_slayer_dungeon_message()
-            player_tab.add_field(name="Slayers and Dungeons",value=user.slayer_message +"\n\n" +user.dungeon_message)
+            player_tab.add_field(name="Slayers",value=user.slayer_message +"\n**Dungeons**\n"+ user.dungeon_message,inline=False)
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
         if user.api_enabled: #Tabs only available to users with APIs enabled

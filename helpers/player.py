@@ -216,53 +216,42 @@ class Player:
     def get_skills_message(self):
         if self.api_enabled:
             self.skills_message = (
-            f"<:golden_hoe:801205315806167050> **Farming:** {self.lvl_farming} ⮕ ({'{:,}'.format(self.xp_farming)})\n"
-            f"<:stone_pickaxe:810604855726571545> **Mining:** {self.lvl_mining} ⮕ ({'{:,}'.format(self.xp_mining)})\n"
-            f"<:stone_sword:810605120752058408> **Combat: ** {self.lvl_combat} ⮕ ({'{:,}'.format(self.xp_combat)})\n"
-            f"<:jungle_sapling:810605504934051892> **Foraging: ** {self.lvl_foraging} ⮕ ({'{:,}'.format(self.xp_foraging)})\n"
-            f"<:fishing:801090235542929448> **Fishing: ** {self.lvl_fishing} ⮕ ({'{:,}'.format(self.xp_fishing)})\n"
-            f"<:enchanting_table:810605765982683166> **Enchanting: ** {self.lvl_enchanting} ⮕ ({'{:,}'.format(self.xp_enchanting)})\n"
-            f"<:brewing_stand:810605985336000512> **Alchemy: ** {self.lvl_alchemy} ⮕ ({'{:,}'.format(self.xp_alchemy)})\n"
-            f"<:spawn_egg:810606172997812258> **Taming: ** {self.lvl_taming} ⮕ ({'{:,}'.format(self.xp_taming)})\n"
+            f"<:golden_hoe:801205315806167050>**Farming:** {self.lvl_farming} ⮕ ({'{:,}'.format(self.xp_farming)})\n"
+            f"<:stone_pickaxe:810604855726571545>**Mining:** {self.lvl_mining} ⮕ ({'{:,}'.format(self.xp_mining)})\n"
+            f"<:stone_sword:810605120752058408>**Combat: ** {self.lvl_combat} ⮕ ({'{:,}'.format(self.xp_combat)})\n"
+            f"<:jungle_sapling:810605504934051892>**Foraging: ** {self.lvl_foraging} ⮕ ({'{:,}'.format(self.xp_foraging)})\n"
+            f"<:fishing:801090235542929448>**Fishing: ** {self.lvl_fishing} ⮕ ({'{:,}'.format(self.xp_fishing)})\n"
+            f"<:enchanting_table:810605765982683166>**Enchanting: ** {self.lvl_enchanting} ⮕ ({'{:,}'.format(self.xp_enchanting)})\n"
+            f"<:brewing_stand:810605985336000512>**Alchemy: ** {self.lvl_alchemy} ⮕ ({'{:,}'.format(self.xp_alchemy)})\n"
+            f"<:spawn_egg:810606172997812258>**Taming: ** {self.lvl_taming} ⮕ ({'{:,}'.format(self.xp_taming)})\n"
             )
         else:
             self.skills_message = (
-            f"<:golden_hoe:801205315806167050> **Farming:** {self.lvl_farming}\n"
-            f"<:stone_pickaxe:810604855726571545> **Mining:** {self.lvl_mining}\n"
-            f"<:stone_sword:810605120752058408> **Combat: ** {self.lvl_combat}\n"
-            f"<:jungle_sapling:810605504934051892> **Foraging: ** {self.lvl_foraging}\n"
-            f"<:fishing:801090235542929448> **Fishing: ** {self.lvl_fishing}\n"
-            f"<:enchanting_table:810605765982683166> **Enchanting: ** {self.lvl_enchanting}\n"
-            f"<:brewing_stand:810605985336000512> **Alchemy: ** {self.lvl_alchemy}\n"
-            f"<:spawn_egg:810606172997812258> **Taming: ** {self.lvl_taming}\n"
+            f"<:golden_hoe:801205315806167050>**Farming:** {self.lvl_farming}\n"
+            f"<:stone_pickaxe:810604855726571545>**Mining:** {self.lvl_mining}\n"
+            f"<:stone_sword:810605120752058408>**Combat: ** {self.lvl_combat}\n"
+            f"<:jungle_sapling:810605504934051892>**Foraging: ** {self.lvl_foraging}\n"
+            f"<:fishing:801090235542929448>**Fishing: ** {self.lvl_fishing}\n"
+            f"<:enchanting_table:810605765982683166>**Enchanting: ** {self.lvl_enchanting}\n"
+            f"<:brewing_stand:810605985336000512>**Alchemy: ** {self.lvl_alchemy}\n"
+            f"<:spawn_egg:810606172997812258>**Taming: ** {self.lvl_taming}\n"
             )
 
         return
 
     def get_slayer_dungeon_message(self):
         self.slayer_message = (
-        f"<:revenant:810606609095983114> **Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
-        f"<:tarantula:810606741023621151>  **Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
-        f"<:sven:810606857378201630> **Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
+        f"<:revenant:810606609095983114>**Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
+        f"<:tarantula:810606741023621151>**Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
+        f"<:sven:810606857378201630>**Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
         )
 
         self.dungeon_message = (
-        f"<:wither_skull:810607234568552459> **Catacombs:** {self.lvl_cata} ⮕ ({'{:,}'.format(self.xp_cata)})\n"
-        f"<:splash_heal:810607537488396308>  **Healer:** {self.lvl_healer} ⮕ ({'{:,}'.format(self.xp_healer)})\n"
-        f"<:blaze_rod:810607718527926272>  **Mage:** {self.lvl_mage} ⮕ ({'{:,}'.format(self.xp_mage)})\n"
-        f"<:iron_sword:810607869656432690>  **Berserker:** {self.lvl_berserk} ⮕ ({'{:,}'.format(self.xp_berserk)})\n"
-        f"<:bow:810607983507406939> **Archer:** {self.lvl_archer} ⮕ ({'{:,}'.format(self.xp_archer)})\n"
-        f"<:leather_chestplate:810608291083190352> **Tank:** {self.lvl_tank} ⮕ ({'{:,}'.format(self.xp_tank)})\n"
+        f"<:wither_skull:810607234568552459>**Catacombs:** {self.lvl_cata} ⮕ ({'{:,}'.format(self.xp_cata)})\n"
+        f"<:splash_heal:810607537488396308>**Healer:** {self.lvl_healer} ⮕ ({'{:,}'.format(self.xp_healer)})\n"
+        f"<:blaze_rod:810607718527926272>**Mage:** {self.lvl_mage} ⮕ ({'{:,}'.format(self.xp_mage)})\n"
+        f"<:iron_sword:810607869656432690>**Berserker:** {self.lvl_berserk} ⮕ ({'{:,}'.format(self.xp_berserk)})\n"
+        f"<:bow:810607983507406939>**Archer:** {self.lvl_archer} ⮕ ({'{:,}'.format(self.xp_archer)})\n"
+        f"<:leather_chestplate:810608291083190352>**Tank:** {self.lvl_tank} ⮕ ({'{:,}'.format(self.xp_tank)})\n"
         )
         return
-
-#try:
-#    user = Player("Over_")
-#except ProfileNotFound:
-#    print("ProfileNotFound Error")
-#except PlayerNotFound:
-#    print("PlayerNotFound Error")
-
-#user.get_player_summary()
-#path = user.get_player_xp_pie()
-#print(path)

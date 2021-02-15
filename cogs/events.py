@@ -7,7 +7,13 @@ class Events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="events")
+    @commands.command(name="events",
+        brief="Returns approximate timers for events",
+        help=(
+        "**stella events**\n"
+        "Returns approximate timers for events."
+        )
+    )
     async def get_all_events(self, ctx):
         calendar_events = get_calendar_events()
         currentTime = time.time()*1000
@@ -23,7 +29,13 @@ class Events(commands.Cog):
         await ctx.reply(embed=embed)
 
 
-    @commands.command(name="jacob")
+    @commands.command(name="jacob",
+        brief="Returns next 3 Jacob Events",
+        help=(
+        "**stella jacob**\n"
+        "Returns approximate timers for the next 3 jacob events along with the crops for those events."
+        )
+    )
     async def get_jacob_events(self, ctx):
         data = requests.get("https://sky.matcool.tk/api/upcomingEvents").json()
         currentTime = time.time()*1000
