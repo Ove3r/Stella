@@ -557,8 +557,8 @@ def get_forge():
     bzData = requests.get("https://api.hypixel.net/skyblock/bazaar").json()
     #Refined Diamond
     try:
-        diamondBlockBuy = round(bzData["products"]["ENCHANTED_DIAMOND_BLOCK"]["quick_status"]["buyPrice"],3)
-        refinedDiamondSell = round(bzData["products"]["REFINED_DIAMOND"]["quick_status"]["sellPrice"],3)
+        diamondBlockBuy = round(bzData["products"]["ENCHANTED_DIAMOND_BLOCK"]["buy_summary"][0]["pricePerUnit"],3)
+        refinedDiamondSell = round(bzData["products"]["REFINED_DIAMOND"]["sell_summary"][0]["pricePerUnit"],3)
         refinedDiamond = refinedDiamondSell - (2*diamondBlockBuy)
         refinedDiamond = costConvert(refinedDiamond,8)
         forge["Refined Diamond"] = refinedDiamond
@@ -566,8 +566,8 @@ def get_forge():
         pass
     #Refined Mithril
     try:
-        mithrilBuy = round(bzData["products"]["MITHRIL_ORE"]["quick_status"]["buyPrice"],3)
-        refinedMithSell = round(bzData["products"]["REFINED_MITHRIL"]["quick_status"]["sellPrice"],3)
+        mithrilBuy = round(bzData["products"]["MITHRIL_ORE"]["buy_summary"][0]["pricePerUnit"],3)
+        refinedMithSell = round(bzData["products"]["REFINED_MITHRIL"]["sell_summary"][0]["pricePerUnit"],3)
         refinedMithril = refinedMithSell - (25600*mithrilBuy)
         refinedMithril = costConvert(refinedMithril,6)
         forge["Refined Mithril"] = refinedMithril
@@ -575,8 +575,8 @@ def get_forge():
         pass
     #Refined Titanium
     try:
-        titaniumBuy = round(bzData["products"]["TITANIUM_ORE"]["quick_status"]["buyPrice"],3)
-        refinedTitaniumSell = round(bzData["products"]["REFINED_TITANIUM"]["quick_status"]["sellPrice"],3)
+        titaniumBuy = round(bzData["products"]["TITANIUM_ORE"]["buy_summary"][0]["pricePerUnit"],3)
+        refinedTitaniumSell = round(bzData["products"]["REFINED_TITANIUM"]["sell_summary"][0]["pricePerUnit"],3)
         refinedTitanium = refinedTitaniumSell - (2560*titaniumBuy)
         refinedTitanium = costConvert(refinedTitanium,12)
         forge["Refined Titanium"] = refinedTitanium
@@ -584,7 +584,7 @@ def get_forge():
         pass
     #Fuel Tank
     try:
-        coalBlock = round(bzData["products"]["ENCHANTED_COAL_BLOCK"]["quick_status"]["buyPrice"],3)
+        coalBlock = round(bzData["products"]["ENCHANTED_COAL_BLOCK"]["buy_summary"][0]["pricePerUnit"],3)
         tankPrices = min(tankPrices)
         fuelTank = tankPrices - (2*coalBlock)
         fuelTank = costConvert(fuelTank,10)
@@ -602,8 +602,8 @@ def get_forge():
         pass
     #Golden Plate
     try:
-        goldBlock = round(bzData["products"]["ENCHANTED_GOLD_BLOCK"]["quick_status"]["buyPrice"],3)
-        refinedDiamondBuy = round(bzData["products"]["REFINED_DIAMOND"]["quick_status"]["buyPrice"],3)
+        goldBlock = round(bzData["products"]["ENCHANTED_GOLD_BLOCK"]["buy_summary"][0]["pricePerUnit"],3)
+        refinedDiamondBuy = round(bzData["products"]["REFINED_DIAMOND"]["buy_summary"][0]["pricePerUnit"],3)
         platePrices = min(platePrices)
         goldenPlate =  platePrices -((2*goldBlock) + (5*glacitePrices) + (refinedDiamondBuy))
         goldenPlate = costConvert(goldenPlate,6)
@@ -612,8 +612,8 @@ def get_forge():
         pass
     #Drill Engine
     try:
-        ironBlock = round(bzData["products"]["ENCHANTED_IRON_BLOCK"]["quick_status"]["buyPrice"],3)
-        redstoneBlock = round(bzData["products"]["ENCHANTED_REDSTONE_BLOCK"]["quick_status"]["buyPrice"],3)
+        ironBlock = round(bzData["products"]["ENCHANTED_IRON_BLOCK"]["buy_summary"][0]["pricePerUnit"],3)
+        redstoneBlock = round(bzData["products"]["ENCHANTED_REDSTONE_BLOCK"]["buy_summary"][0]["pricePerUnit"],3)
         treasurePrices = min(treasurePrices)
         enginePrices = min(enginePrices)
         drillEngine = enginePrices - ((ironBlock) + (3*redstoneBlock) + (platePrices) + (10*treasurePrices) + (refinedDiamondBuy))
@@ -623,8 +623,8 @@ def get_forge():
         pass
     #Mithril Plate
     try:
-        refinedMithrilBuy = round(bzData["products"]["REFINED_MITHRIL"]["quick_status"]["buyPrice"],3)
-        refinedTitaniumBuy = round(bzData["products"]["REFINED_TITANIUM"]["quick_status"]["buyPrice"],3)
+        refinedMithrilBuy = round(bzData["products"]["REFINED_MITHRIL"]["buy_summary"][0]["pricePerUnit"],3)
+        refinedTitaniumBuy = round(bzData["products"]["REFINED_TITANIUM"]["buy_summary"][0]["pricePerUnit"],3)
         mithrilPlatePrices = min(mithrilPlatePrices)
         mithrilPlate = (mithrilPlatePrices) - ((5*refinedMithrilBuy) + (platePrices) + (ironBlock) + (refinedTitaniumBuy))
         mithrilPlate = costConvert(mithrilPlate,18)
@@ -636,7 +636,7 @@ def get_forge():
     #Mithril Pickaxe
     try:
         enchantedMithril = mithrilBuy*160
-        enchantedGoldBar = round(bzData["products"]["ENCHANTED_GOLD"]["quick_status"]["buyPrice"],3)
+        enchantedGoldBar = round(bzData["products"]["ENCHANTED_GOLD"]["buy_summary"][0]["pricePerUnit"],3)
         mithrilPickPrices = min(mithrilPickPrices)
         mithrilPick = (mithrilPickPrices) - ((30*enchantedMithril) + (handlePrices) + (10*enchantedGoldBar))
         mithrilPick = costConvert(mithrilPick,0.75)
@@ -670,7 +670,7 @@ def get_forge():
         pass
     #Power Crystal
     try:
-        starfallBuy = round(bzData["products"]["STARFALL"]["quick_status"]["buyPrice"],3)
+        starfallBuy = round(bzData["products"]["STARFALL"]["buy_summary"][0]["pricePerUnit"],3)
         powerPrices = min(powerPrices)
         powerCrystal = (powerPrices) - (256*starfallBuy)
         powerCrystal = costConvert(powerCrystal,2)
@@ -736,7 +736,7 @@ def get_forge():
     #Rock Gemstone
     try:
         rockPrices = min(rockPrices)
-        enchantedCobbleBuy = round(bzData["products"]["ENCHANTED_COBBLESTONE"]["quick_status"]["buyPrice"],3)
+        enchantedCobbleBuy = round(bzData["products"]["ENCHANTED_COBBLESTONE"]["buy_summary"][0]["pricePerUnit"],3)
         rockGemstone = rockPrices - ((64*treasurePrices) + (128*enchantedCobbleBuy))
         rockGemstone = costConvert(rockGemstone,22)
         casting["Rock Gemstone"] = rockGemstone
