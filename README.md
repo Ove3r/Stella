@@ -19,12 +19,12 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * jacob
 * help
 * events
+* afk
 ## TODO
 
 * requirements
 * floor 1-7
 * leaderboard
-* afk
 * track
 * poll
 
