@@ -134,9 +134,10 @@ class Auctions(commands.Cog):
     )
     async def bits_to_coins(self, ctx):
         loading = await ctx.reply(embed=discord.Embed(title="Bits Calculator", description="Loading...", color=0xdc6565))
-        message = coins_per_bit()
+        crafted_message, raw_item = coins_per_bit()
         embed=discord.Embed(title="Bits Calculator", description="Values are in gold per bit", color=0xdc6565)
-        embed.add_field(name="\u200b", value=message,inline=False)
+        embed.add_field(name="Raw Items", value=raw_item,inline=True)
+        embed.add_field(name="Craftables", value=crafted_message,inline=True)
         embed.add_field(name="\u200b", value="Equations can be found [here](http://bit.ly/2KOKXun).",inline=False)
         embed.set_thumbnail(url="https://static.wikia.nocookie.net/hypixel-skyblock/images/d/d9/Elizabeth.png/revision/latest?cb=20200915233823")
         embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)

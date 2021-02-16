@@ -288,7 +288,8 @@ def parse_player_ah(uuid):
 
 def coins_per_bit():
     #God potion
-    bits = {}
+    raw = {}
+    crafted = {}
     godPotionPrices = []
     katFlowerPrices = []
     magmaBucketPrices = []
@@ -302,6 +303,15 @@ def coins_per_bit():
     bitsTalismanPrices = []
     compact = []
     expertise = []
+    heatCorePrices = []
+    hyperCataItem = []
+    ultimateCarrotItem = []
+    colossalPrices = []
+    jumboItemPrices = []
+    cultivating = []
+    blockZapper = []
+    kismetFlowerPrices = []
+    autoPetPrices = []
     #Gets AH Data for the specific items
     with open("data/ah.json") as database:
         data = json.load(database)
@@ -337,103 +347,180 @@ def coins_per_bit():
                 compact.append(entry["starting_bid"])
             elif entry["item_lore"] == "§9Expertise I\n§7Gain §a2% §7extra Fishing exp\n§7and increases Sea Creatures\n§7spawn chance by §e1%§7.\n§850 kills to tier up!\n\n§7§7Apply Cost: §323 Exp Levels\n\n§e▲ §7Expertise cannot be combined!\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
                 expertise.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "heat core":
+                heatCorePrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "hyper catalyst upgrade":
+                hyperCataItem.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "ultimate carrot candy upgrade":
+                ultimateCarrotItem.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "colossal experience bottle upgrade":
+                colossalPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "jumbo backpack upgrade":
+                jumboItemPrices.append(entry["starting_bid"])
+            elif entry["item_lore"] == "§9Cultivating I\n§7Gain §a1% §7extra Farming exp\n§7and §6+1☘ Farming Fortune§7.\n§81k crops to tier up!\n\n§e▲ §7Cultivating cannot be combined!\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                cultivating.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "block zapper":
+                blockZapper.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "kismet flower":
+                kismetFlowerPrices.append(entry["starting_bid"])
+            elif entry["item_name"].lower() == "autopet rules 2-pack":
+                autoPetPrices.append(entry["starting_bid"])
 
     bzData = requests.get("https://api.hypixel.net/skyblock/bazaar").json()
     #God potion
     try:
         godPotion = ((min(godPotionPrices))/2000)
-        bits["God Potion"] = round(godPotion,3)
+        raw["God Potion"] = round(godPotion,3)
     except ValueError:
         pass
     #Kat Flower
     try:
         katFlower = ((min(katFlowerPrices))/500)
-        bits["Kat Flower"] = round(katFlower,3)
+        raw["Kat Flower"] = round(katFlower,3)
+    except ValueError:
+        pass
+    #Heat Core (Raw Item)
+    try:
+        heatCore = min(heatCorePrices)/3000
+        raw["Heat Core"] = round(heatCore,3)
     except ValueError:
         pass
     #Heat Core (Magma Bucket)
     try:
-        buyLava = bzData["products"]["ENCHANTED_LAVA_BUCKET"]["quick_status"]["buyPrice"]
+        buyLava = bzData["products"]["ENCHANTED_LAVA_BUCKET"]["buy_summary"][0]["pricePerUnit"]
         magmaBucketDifference = (min(magmaBucketPrices))-(buyLava*2)
         magmaBucket = magmaBucketDifference/3000
-        bits["Heat Core (Magma Bucket)"] = round(magmaBucket,3)
+        crafted["Heat Core (Magma Bucket)"] = round(magmaBucket,3)
     except ValueError:
         pass
     #Heat Core (Plasma Bucket)
     try:
         plasmaBucket = ((min(plasmaPrices)) - (min(magmaBucketPrices)*2))/3000
-        bits["Heat Core (Plasma Bucket)"] = round(plasmaBucket,3)
+        crafted["Heat Core (Plasma Bucket)"] = round(plasmaBucket,3)
+    except ValueError:
+        pass
+    #Hyper Catalyst (Raw Item)
+    try:
+        hyperCataUpgrade = min(hyperCataItem)/300
+        raw["Hyper Catalyst Upgrade"] = round(hyperCataUpgrade,3)
     except ValueError:
         pass
     #Hyper Catalyst Upgrade
     try:
-        buyCata = bzData["products"]["CATALYST"]["quick_status"]["buyPrice"]
-        sellHyper = bzData["products"]["HYPER_CATALYST"]["quick_status"]["sellPrice"]
+        buyCata = bzData["products"]["CATALYST"]["buy_summary"][0]["pricePerUnit"]
+        sellHyper = bzData["products"]["HYPER_CATALYST"]["sell_summary"][0]["pricePerUnit"]
         hyperCata = ((sellHyper*8) - (buyCata*8))/300
-        bits["Hyper Catalyst"] = round(hyperCata,3)
+        crafted["Hyper Catalysts"] = round(hyperCata,3)
+    except ValueError:
+        pass
+    #Ultimate Carrot Candy (Raw Item)
+    try:
+        carrotCandyItem = min(ultimateCarrotItem)/8000
+        raw["Ultimate Carrot Candy Upgrade"] = round(carrotCandyItem,3)
     except ValueError:
         pass
     #Ultimate Carrot Candy
     try:
         greatCarrot = min(greatCarrotPrices)
-        buyGolden = bzData["products"]["ENCHANTED_GOLDEN_CARROT"]["quick_status"]["buyPrice"]
+        buyGolden = bzData["products"]["ENCHANTED_GOLDEN_CARROT"]["buy_summary"][0]["pricePerUnit"]
         superb = (buyGolden*24) + (greatCarrot)
         ultimateCarrot = ((min(ultimateCarrotPrices)*10)-(superb*8))/8000
-        bits["Ultimate Carrot Candy Upgrade"] = round(ultimateCarrot,3)
+        crafted["Ultimate Carrot Candy"] = round(ultimateCarrot,3)
+    except ValueError:
+        pass
+    #Colossal Item
+    try:
+        colossalItem = min(colossalPrices)/1200
+        raw["Colossal Bottle Upgrade"] = round(colossalItem,3)
     except ValueError:
         pass
     #Colossal Experience Bottle
     try:
-        buyTitantic = bzData["products"]["TITANIC_EXP_BOTTLE"]["quick_status"]["buyPrice"]
-        sellColossal = bzData["products"]["COLOSSAL_EXP_BOTTLE"]["quick_status"]["sellPrice"]
+        buyTitantic = bzData["products"]["TITANIC_EXP_BOTTLE"]["buy_summary"][0]["pricePerUnit"]
+        sellColossal = bzData["products"]["COLOSSAL_EXP_BOTTLE"]["sell_summary"][0]["pricePerUnit"]
         colossalExp = ((sellColossal) - (buyTitantic))/1200
-        bits["Colossal Experience Bottle Upgrade"] = round(colossalExp,3)
+        crafted["Colossal Experience Bottles"] = round(colossalExp,3)
+    except ValueError:
+        pass
+    #Jumbo Backpack Item
+    try:
+        jumboItem = min(jumboItemPrices)/4000
+        raw["Jumbo Backpack Upgrade"] = round(jumboItem,3)
     except ValueError:
         pass
     #Jumbo Backpack Upgrade
     try:
         jumboUpgrade = ((min(jumboPrices))-(min(greaterPrices)))/4000
-        bits["Jumbo Backpack Upgrade"] = round(jumboUpgrade,3)
+        crafted["Jumbo Backpacks"] = round(jumboUpgrade,3)
     except ValueError:
         pass
     #Hologram
     try:
         hologram = (min(hologramPrices))/2000
-        bits["Hologram"] = round(hologram,3)
+        raw["Hologram"] = round(hologram,3)
     except ValueError:
         pass
     #Builder's Wand
     try:
         buildersWand = (min(builderWandPrices))/12000
-        bits["Builder's Wand"] = round(buildersWand,3)
+        raw["Builder's Wand"] = round(buildersWand,3)
     except ValueError:
         pass
     #Bits Talisman
     try:
         bitsTalisman = (min(bitsTalismanPrices))/15000
-        bits["Bits Talisman"] = round(bitsTalisman,3)
+        raw["Bits Talisman"] = round(bitsTalisman,3)
     except ValueError:
         pass
     #Compact
     try:
         compactI = (min(compact))/4000
-        bits["Compact I"] = round(compactI,3)
+        raw["Compact I"] = round(compactI,3)
     except ValueError:
         pass
     #Expertise
     try:
         expertiseI = (min(expertise))/4000
-        bits["Expertise I"] = round(expertiseI,3)
+        raw["Expertise I"] = round(expertiseI,3)
     except ValueError:
         pass
-
-    sortedDict = sorted(bits.items(), key=operator.itemgetter(1), reverse=True)
-    message = ""
+    #Cultivating
+    try:
+        cultivatingI = min(cultivating)/4000
+        raw["Cultivating I"] = round(cultivatingI,3)
+    except ValueError:
+        pass
+    #Block Zapper
+    try:
+        zapper = min(blockZapper)/5000
+        raw["Block Zapper"] = round(zapper,3)
+    except ValueError:
+        pass
+    #Kismet flower
+    try:
+        kismet = min(kismetFlowerPrices)/1350
+        raw["Kismet Flower"] = round(kismet,3)
+    except ValueError:
+        pass
+    #Auto Pet
+    try:
+        autoPet = min(autoPetPrices)/21000
+        raw["Autopet Rules"] = round(autoPet,3)
+    except ValueError:
+        pass
+    sorted_crafted = sorted(crafted.items(), key=operator.itemgetter(1), reverse=True)
+    sorted_raw = sorted(raw.items(), key=operator.itemgetter(1), reverse=True)
+    crafted_message = ""
+    raw_message = ""
     rank = 1
-    for entry in sortedDict:
-        message += f"{rank}.`{entry[0]}` at `{entry[1]}`\n"
+    for entry in sorted_crafted:
+        crafted_message += f"{rank}.`{entry[0]}` at `{entry[1]}`\n"
         rank += 1
-    return message
+    rank = 1
+    for entry in sorted_raw:
+        raw_message += f"{rank}.`{entry[0]}` at `{entry[1]}`\n"
+        rank += 1
+    return crafted_message, raw_message
 
 def get_forge():
     def costConvert(cost,time):

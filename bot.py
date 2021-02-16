@@ -5,7 +5,7 @@ def get_prefix(bot,message):
     prefixes = ['rw ','test ']
     return commands.when_mentioned_or(*prefixes)(bot, message)
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.members = True
 bot = commands.Bot(command_prefix=get_prefix, intents=intents)
 bot.remove_command('help')
