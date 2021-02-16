@@ -81,6 +81,7 @@ class Player_Commands(commands.Cog):
             player_tab.add_field(name="Slayers",value=user.slayer_message +"\n**Dungeons**\n"+ user.dungeon_message,inline=False)
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
+        await output.add_reaction("<:golden_hoe:801205315806167050>")
         if user.api_enabled: #Tabs only available to users with APIs enabled
             await output.add_reaction("<:pie_chart:809912045410451456>")
 
@@ -88,19 +89,35 @@ class Player_Commands(commands.Cog):
         while True:
             if str(reaction) == "<:player:801091911166984232>":
                 await output.edit(embed=player_tab)
+            elif str(reaction) == "<:golden_hoe:801205315806167050>": #Farmig/Jacob Contest Tab
+                try:
+                    jacob_tab
+                except:
+                    user.get_jacob_summary()
+                    jacob_tab=discord.Embed(title=user.name, description="Farming Tab", color=0xdc6565)
+                    jacob_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+                    jacob_tab.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
+                    jacob_tab.set_footer(text="Stella Bot by Over#6203")
+                    try:
+                        jacob_tab.add_field(name="Perks",value=user.jacob_perks)
+                        jacob_tab.add_field(name="Most Recent Claimed Contests",value=user.jacob_summary)
+                    except:
+                        pass
+
+                await output.edit(embed=jacob_tab)
             elif str(reaction) == "<:pie_chart:809912045410451456>" and user.api_enabled: #Pie Chart Tab
                 try:
                     pie_chart_embed
                 except:
                     path = user.get_player_xp_pie()
                     channel = self.bot.get_channel(798985613793689621)
-                    special = await channel.send(file=discord.File(path, filename = "pie.png"))
-                    pie_chart_url = special.attachments[0].url
-                    pie_chart_embed=discord.Embed(title=user.name, description="Pie Chart", color=0xdc6565)
-                    pie_chart_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-                    pie_chart_embed.set_image(url=pie_chart_url)
+                    image_workaround = await channel.send(file=discord.File(path, filename = "pie.png"))
+                    pie_chart_url = image_workaround.attachments[0].url
+                    pie_chart_tab=discord.Embed(title=user.name, description="Pie Chart", color=0xdc6565)
+                    pie_chart_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+                    pie_chart_tab.set_image(url=pie_chart_url)
 
-                await output.edit(embed=pie_chart_embed)
+                await output.edit(embed=pie_chart_tab)
 
             try:
                 reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
@@ -110,6 +127,22 @@ class Player_Commands(commands.Cog):
                 break
         await output.clear_reactions()
         await output.add_reaction("🛑")
+
+    @commands.command(name="test")
+    async def test(self, ctx, name, *profile):
+        try:
+            if profile:
+                user = Player(name,profile=profile[0])
+            else:
+                user = Player(name)
+        except ProfileNotFound:
+            await ctx.reply("ProfileNotFound Error")
+            return
+        except PlayerNotFound:
+            await ctx.reply("PlayerNotFound Error")
+            return
+
+        await ctx.reply(embed=jacob_tab)
 
 
 def setup(bot):

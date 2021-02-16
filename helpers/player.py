@@ -255,3 +255,43 @@ class Player:
         f"<:leather_chestplate:810608291083190352>**Tank:** {self.lvl_tank} ⮕ ({'{:,}'.format(self.xp_tank)})\n"
         )
         return
+
+    def get_jacob_summary(self):
+        recent_contests = ""
+        recorded = 0
+        for contest in reversed(self.player_data["jacob2"]["contests"]):
+            if recorded >= 3:
+                break
+            else:
+                try:
+                    if self.player_data["jacob2"]["contests"][contest]["claimed_rewards"]:
+                        recent_contests += (
+                        f"**{contest}**\n"
+                        f"Collected: {self.player_data['jacob2']['contests'][contest]['collected']}\n"
+                        f"Contest Position: {self.player_data['jacob2']['contests'][contest]['claimed_position'] + 1}\n"
+                        f"Contest Participants: {self.player_data['jacob2']['contests'][contest]['claimed_participants']}\n"
+                        "\n"
+                        )
+                    recorded += 1
+                except:
+                    pass
+        self.jacob_summary = recent_contests
+
+        perks = ""
+        perks += "**Medal Inventory**\n"
+        medals = ["Bronze","Silver","Gold"]
+        for tier in medals:
+            try:
+                perks += f"{tier}: {self.player_data['jacob2']['medals_inv'][tier.lower()]}\n"
+            except:
+                pass
+        try:
+            perks += f"\n\n**Anita Perk Bonus: ** {self.player_data['jacob2']['perks']['double_drops'] * 2}%\n"
+        except:
+            perks += "**Anita Perk Bonus: ** 0%\n"
+        try:
+            perks += f"**Contests Participated: ** {len(self.player_data['jacob2']['contests'])}\n"
+        except:
+            perks += "**Contests Participated: ** 0\n"
+        self.jacob_perks = perks
+        return
