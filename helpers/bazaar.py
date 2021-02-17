@@ -4,7 +4,7 @@ from helpers.errors import *
 def productName(name):
     name = name.lower()
     ###Items are separated into Categories
-
+    #This will be eventually changed into a constant map. I know it's bad. Go look at the bad code elsewhere please.
     #Farming
 
     #Wheat
@@ -677,6 +677,11 @@ def productName(name):
         return "REFINED_TITANIUM"
     if (name=="starfall"):
         return "STARFALL"
+    if (name=="etitanium") or (name=="enchanted titanium"):
+        return "ENCHANTED_TITANIUM"
+    if (name=="emithril") or (name=="enchanted mithril"):
+        return "ENCHANTED_MITHRIL"
+
     else:
         raise ItemNotFound
 
