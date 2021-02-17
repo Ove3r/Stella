@@ -9,6 +9,7 @@ class Loops(commands.Cog):
         self.bot = bot
         #self.ahLoop.start()
         self.afkLoop.start()
+        self.ah_track_loop.start()
 
     @tasks.loop(seconds=300)
     async def ahLoop(self):
@@ -58,6 +59,36 @@ class Loops(commands.Cog):
     async def before_afk(self):
         await self.bot.wait_until_ready()
         return
+
+    @tasks.loop(seconds=120)
+    async def ah_track_loop(self):
+        print("Started AH Tracking Loop")
+        with open("data/ah_track.json") as ah_track:
+            data = json.load(ah_track)
+            update = data
+            remove_auctions = []
+            for entry in data["tracking"]:
+                try:
+                    data = requests.get(f"https://api.hypixel.net/skyblock/auction?key={key.API_KEY}&uuid={entry['uuid']}").json()["auctions"][0]
+                    if (not data["claimed"]) and (data["highest_bid_amount"] != 0):
+                        remove_auctions.append(entry)
+                        user = self.bot.get_user(entry["discord_user"])
+                        await user.send(f"`{getName(entry['auctioneer'])}`'s item: {entry['item_name']} sold to `{getName(data['bids'][0]['bidder'])}` for {data['bids'][0]['amount']}")
+                        print(f"Debugging: {user} received an AH notification.")
+                except:
+                    remove_auctions.append(entry)
+
+            for removal in remove_auctions:
+                update["tracking"].remove(removal)
+        with open("data/ah_track.json","w") as ah_track:
+            ah_track.write(json.dumps(update))
+        print("Finished AH Tracking Loop")
         
+    @ah_track_loop.before_loop
+    async def before_track(self):
+        await self.bot.wait_until_ready()
+        return
+
+
 def setup(bot):
     bot.add_cog(Loops(bot))

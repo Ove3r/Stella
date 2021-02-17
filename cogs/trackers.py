@@ -2,6 +2,7 @@ import discord
 import json
 from discord.ext import commands
 from helpers.utils import *
+from helpers.key import *
 
 class Trackers(commands.Cog):
     def __init__(self, bot):
@@ -81,6 +82,61 @@ class Trackers(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203 ◆ AFK Tracker refreshes every minute")
         embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
         await ctx.reply(embed=embed)
+
+    @commands.command(name="ahtrack",
+        brief="Tracks your BINs",
+        help=(
+        "**stella ahtrack [ign]\n"
+        "Starts tracking all BIN auctions for a given player.\n"
+        "If an item that is tracked is sold, you will be notified of such.\n"
+        "Notes: \n "
+        "• The tracker does a check once 2 minutes.\n"
+        "• If a player argument is not given, the user's discord display name will be used instead."
+        )
+    )
+    async def ah_tracking(self,ctx, *name):
+        if (not name):
+            name = ctx.author.display_name
+        else:
+            name = name[0]
+        try:
+            uuid = getUUID(name)
+        except PlayerNotFound:
+            await ctx.reply("PlayerNotFound Error")
+            return
+
+        data = requests.get(f"https://api.hypixel.net/skyblock/auction?key={key.API_KEY}&player={uuid}").json()
+        addition = []
+        items = []
+        for entry in data["auctions"]:
+            if ('bin' in entry) and (not entry["claimed"]) and (entry["highest_bid_amount"] == 0):
+                player_record = {
+                    "discord_user": ctx.author.id,
+                }
+                player_record.update(entry)
+                items.append(entry["item_name"])
+                addition.append(player_record)
+        if len(addition) == 0:
+            await ctx.reply("No BIN Auctions available for tracking.")
+            return
+        with open("data/ah_track.json") as tracking:
+            database = json.load(tracking)
+        with open("data/ah_track.json","w") as tracking:
+            database["tracking"] += addition
+            tracking.write(json.dumps(database))
+        embed=discord.Embed(title="BIN Tracker", description="Started Tracking These Items", color=0xdc6565)
+        embed.set_footer(text="Stella Bot by Over#6203")
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        message = ""
+        for item in items:
+            message += item + "\n"
+        embed.add_field(name="Items",value=message)
+        await ctx.reply(embed=embed)
+
+
+
+
+
 
 def setup(bot):
     bot.add_cog(Trackers(bot))
