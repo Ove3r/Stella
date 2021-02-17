@@ -12,3 +12,6 @@ class ProfileNotFound(Error):
 
 class DisabledAPI(Error):
     pass
+
+class GuildNotFound(Error):
+    pass

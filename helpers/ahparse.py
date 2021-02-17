@@ -361,7 +361,7 @@ def coins_per_bit():
                 cultivating.append(entry["starting_bid"])
             elif entry["item_name"].lower() == "block zapper":
                 blockZapper.append(entry["starting_bid"])
-            elif entry["item_name"].lower() == "kismet flower":
+            elif entry["item_name"].lower() == "kismet feather":
                 kismetFlowerPrices.append(entry["starting_bid"])
             elif entry["item_name"].lower() == "autopet rules 2-pack":
                 autoPetPrices.append(entry["starting_bid"])
@@ -499,7 +499,7 @@ def coins_per_bit():
     #Kismet flower
     try:
         kismet = min(kismetFlowerPrices)/1350
-        raw["Kismet Flower"] = round(kismet,3)
+        raw["Kismet Feather"] = round(kismet,3)
     except ValueError:
         pass
     #Auto Pet

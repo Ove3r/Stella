@@ -89,7 +89,7 @@ class Player_Commands(commands.Cog):
         while True:
             if str(reaction) == "<:player:801091911166984232>":
                 await output.edit(embed=player_tab)
-            elif str(reaction) == "<:golden_hoe:801205315806167050>": #Farmig/Jacob Contest Tab
+            elif str(reaction) == "<:golden_hoe:801205315806167050>": #Farming/Jacob Contest Tab
                 try:
                     jacob_tab
                 except:
@@ -127,22 +127,6 @@ class Player_Commands(commands.Cog):
                 break
         await output.clear_reactions()
         await output.add_reaction("🛑")
-
-    @commands.command(name="test")
-    async def test(self, ctx, name, *profile):
-        try:
-            if profile:
-                user = Player(name,profile=profile[0])
-            else:
-                user = Player(name)
-        except ProfileNotFound:
-            await ctx.reply("ProfileNotFound Error")
-            return
-        except PlayerNotFound:
-            await ctx.reply("PlayerNotFound Error")
-            return
-
-        await ctx.reply(embed=jacob_tab)
 
 
 def setup(bot):

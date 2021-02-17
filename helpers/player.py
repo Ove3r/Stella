@@ -4,6 +4,7 @@ from helpers.errors import *
 from helpers.utils import *
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 
 #Player Attributes: name, uuid, fruit, profile_id, player_data
 class Player:
@@ -276,9 +277,10 @@ class Player:
                 except:
                     pass
         self.jacob_summary = recent_contests
-
-        perks = ""
-        perks += "**Medal Inventory**\n"
+        if self.jacob_summary == "":
+            self.jacob_summary = "No Contests"
+    
+        perks = "**Medal Inventory**\n"
         medals = ["Bronze","Silver","Gold"]
         for tier in medals:
             try:
@@ -295,3 +297,91 @@ class Player:
             perks += "**Contests Participated: ** 0\n"
         self.jacob_perks = perks
         return
+
+class Guild:
+    def __init__(self,guild):
+        self.API_KEY = key.API_KEY
+        try:
+            self.guild_members, self.guild_name, self.guild_master = get_guild_members(guild)
+        except GuildNotFound:
+            raise GuildNotFound
+        self.average_farming = 0
+        self.average_mining = 0
+        self.average_combat = 0
+        self.average_foraging = 0
+        self.average_fishing = 0
+        self.average_enchanting = 0
+        self.average_alchemy = 0
+        self.average_taming = 0
+
+    def get_guild_skill_summary(self):
+        for member in self.guild_members:
+            self.get_member_achievement_average(member)
+            if len(self.guild_members) > 70:
+                time.sleep(0.15)
+        self.average_farming = round(self.average_farming/len(self.guild_members),3)
+        self.average_mining = round(self.average_mining/len(self.guild_members),3)
+        self.average_combat = round(self.average_combat/len(self.guild_members),3)
+        self.average_foraging = round(self.average_foraging/len(self.guild_members),3)
+        self.average_fishing = round(self.average_fishing/len(self.guild_members),3)
+        self.average_enchanting = round(self.average_enchanting/len(self.guild_members),3)
+        self.average_alchemy = round(self.average_alchemy/len(self.guild_members),3)
+        self.average_taming = round(self.average_taming/len(self.guild_members),3)
+        self.average_list = [self.average_farming,self.average_mining,self.average_combat,self.average_foraging,self.average_fishing,self.average_enchanting,self.average_alchemy,self.average_taming]
+        self.average = round(sum(self.average_list)/len(self.average_list),3)
+
+    def get_member_achievement_average(self,uuid):
+        while True: #Accounts for Key Throttle
+            try:
+                data = requests.get(f"https://api.hypixel.net/player?key={self.API_KEY}&uuid={uuid}").json()["player"]["achievements"]
+            except:
+                time.sleep(1)
+                continue
+            break
+        try:
+            self.average_farming += highest_lvl(data["skyblock_harvester"],60)
+        except KeyError:
+            self.average_farming += 0
+        try:
+            self.average_mining += highest_lvl(data["skyblock_excavator"],60)
+        except KeyError:
+            self.average_mining += 0
+        try:
+            self.average_combat += highest_lvl(data["skyblock_combat"],50)
+        except KeyError:
+            self.average_combat += 0
+        try:
+            self.average_foraging += highest_lvl(data["skyblock_gatherer"],50)
+        except KeyError:
+            self.average_foraging += 0
+        try:
+            self.average_fishing += highest_lvl(data["skyblock_angler"],50)
+        except KeyError:
+            self.average_fishing += 0
+        try:
+            self.average_enchanting += highest_lvl(data["skyblock_augmentation"],60)
+        except KeyError:
+            self.average_enchanting += 0
+        try:
+            self.average_alchemy += highest_lvl(data["skyblock_concoctor"],50)
+        except KeyError:
+            self.average_alchemy += 0
+        try:
+            self.average_taming += highest_lvl(data["skyblock_domesticator"],50)
+        except KeyError:
+            self.average_taming += 0
+
+    def get_guild_summary_message(self):
+        self.get_guild_skill_summary()
+        average = f"**Average: ** {self.average}"
+        skills = (
+        f"**Farming: ** {self.average_farming}\n"
+        f"**Mining: ** {self.average_mining}\n"
+        f"**Combat: ** {self.average_combat}\n"
+        f"**Foraging: ** {self.average_foraging}\n"
+        f"**Fishing: ** {self.average_fishing}\n"
+        f"**Enchanting: ** {self.average_enchanting}\n"
+        f"**Alchemy: ** {self.average_alchemy}\n"
+        f"**Taming: ** {self.average_taming}\n"
+        )
+        return average, skills

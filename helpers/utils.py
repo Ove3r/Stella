@@ -98,3 +98,15 @@ def highest_lvl(skill, highest):
         return highest
     else:
         return skill
+
+def get_guild_members(guild):
+    data = requests.get(f"https://api.hypixel.net/guild?name={guild}&key={key.API_KEY}").json()
+    if not data["guild"]:
+        raise GuildNotFound
+    member_list = []
+    for members in data["guild"]["members"]:
+        member_list.append(members["uuid"])
+        if members["rank"] == "Guild Master":
+            guild_master = members["uuid"]
+    guild_name = data["guild"]["name"]
+    return member_list, guild_name, guild_master

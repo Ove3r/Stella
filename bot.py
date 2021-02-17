@@ -43,10 +43,6 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Unknown Command",value="For a list of commands type `stella help`")
     await ctx.author.send(embed=help_embed)
 
-
-
-
-
 modules = [
     "loops",
     "player",
@@ -54,10 +50,10 @@ modules = [
     "trackers",
     "bz",
     "events",
+    "guilds"
 ]
 
 for module in modules:
     bot.load_extension(f"cogs.{module}")
-
 
 bot.run(key.TOKEN)
