@@ -43,6 +43,8 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Unknown Command",value="For a list of commands type `stella help`")
     await ctx.author.send(embed=help_embed)
 
+##Error handeling: Command CD, Invalid Argument, MissingRole
+
 modules = [
     "loops",
     "player",
@@ -50,7 +52,8 @@ modules = [
     "trackers",
     "bz",
     "events",
-    "guilds"
+    "guilds",
+    "skyborn"
 ]
 
 for module in modules:
