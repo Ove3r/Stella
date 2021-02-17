@@ -7,7 +7,6 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 # For the Rewrite
 
 ## Features Done
-
 * uuid
 * price
 * da
@@ -20,13 +19,16 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * help
 * events
 * afk
+* guild
+* 
 ## TODO
-
 * requirements
 * floor 1-7
-* leaderboard
 * track
 * poll
 
 ## Partially Done
 * player
+
+## On Hold
+* leaderboard
