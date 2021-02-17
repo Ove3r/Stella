@@ -20,12 +20,12 @@ Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 * events
 * afk
 * guild
+* requirements
+* poll
 * 
 ## TODO
-* requirements
 * floor 1-7
 * track
-* poll
 
 ## Partially Done
 * player
