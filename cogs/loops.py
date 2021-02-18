@@ -73,7 +73,7 @@ class Loops(commands.Cog):
                     if (not data["claimed"]) and (data["highest_bid_amount"] != 0):
                         remove_auctions.append(entry)
                         user = self.bot.get_user(entry["discord_user"])
-                        await user.send(f"`{getName(entry['auctioneer'])}`'s item: {entry['item_name']} sold to `{getName(data['bids'][0]['bidder'])}` for {data['bids'][0]['amount']}")
+                        await user.send(f"`{getName(entry['auctioneer'])}`'s item: `{entry['item_name']}` sold to `{getName(data['bids'][0]['bidder'])}` for {'{:,}'.format(data['bids'][0]['amount'])}")
                         print(f"Debugging: {user} received an AH notification.")
                 except:
                     remove_auctions.append(entry)
