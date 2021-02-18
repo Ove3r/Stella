@@ -841,7 +841,7 @@ def get_forge():
     try:
         plasmaPrices = min(plasmaPrices)
         beaconIVPrices = min(beaconIVPrices)
-        beaconIV = (beaconIVPrices -(beaconIIIPrices) + (20*refinedMithrilBuy) + (plasmaPrices))
+        beaconIV = beaconIVPrices - ((beaconIIIPrices) + (20*refinedMithrilBuy) + (plasmaPrices))
         beaconIV = costConvert(beaconIV, 40)
         casting["Beacon IV"] = beaconIV
     except:
