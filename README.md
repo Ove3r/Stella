@@ -1,4 +1,4 @@
-# Stella
+# Stella <img align="right" width="250" height="250" src="https://cdn.discordapp.com/icons/792829582264762370/f835d61446cdf17c12921334b15b3034.png?size=256">
 
 Discord Bot for Hypixel Skyblock with many functions including player tracking and end-of-dungeon loot prices.
 
@@ -16,5 +16,3 @@ I am not a software designer and I do not have a wide experience nor knowledge o
 [Bot Invite](https://tinyurl.com/stellabot)  
 [Primary Stella Bot Server (SkyBorn)](https://discord.gg/GRpM4cVmaR)
 
-
-![Stella](https://cdn.discordapp.com/icons/792829582264762370/f835d61446cdf17c12921334b15b3034.png?size=256)
