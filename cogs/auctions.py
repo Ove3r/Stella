@@ -167,6 +167,38 @@ class Auctions(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203 \n◆ Indicates A Special Case - See Equations")
         await loading.edit(embed=embed)
 
+    @commands.command(name="floor",aliases=["dungeons","dungeon"],
+        brief="Returns dungeon values",
+        help=(
+        "**stella floor [floor number]**\n"
+        "Returns gold values for end of loot dungeon items for a given floor.\n"
+        "Notes: \n "
+        "• Values updated every 5 minutes with the ah database refresh.\n"
+        )
+    )
+    async def dungeon_coins(self,ctx, floor):
+        if int(floor) in range(1,8):
+            books, armor = get_dungeon(floor)
+        else:
+            await ctx.reply("Improper usage. See `stella help floor`.")
+            return
+        embed=discord.Embed(title=f"Dungeon Floor {floor}", description="End of Dungeon Prices", color=0xdc6565)
+        embed.add_field(name="Books", value=books,inline=True)
+        embed.add_field(name="Armor", value=armor,inline=True)
+        thumbnails = [
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/6/63/The_Catacombs_-_Floor_VII.png/revision/latest?cb=20201205062458",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/1/1f/Bonzo.png/revision/latest?cb=20200923184232",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/5/56/Scarf.png/revision/latest?cb=20201014204105",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/9/96/The_Professor.png/revision/latest?cb=20201101180239",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/8/89/Ghast.png/revision/latest?cb=20191207182644",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/1/13/Livid.png/revision/latest?cb=20201101032941",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/e/eb/Sadan.png/revision/latest?cb=20201101032732",
+            "https://static.wikia.nocookie.net/hypixel-skyblock/images/7/7e/Necron.png/revision/latest?cb=20201118185458",
+        ]
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        embed.set_thumbnail(url=thumbnails[int(floor)])
+        embed.set_footer(text="Stella Bot by Over#6203")
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(Auctions(bot))

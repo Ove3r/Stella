@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from helpers import key
 def get_prefix(bot,message):
-    prefixes = ['rw ','test ']
+    prefixes = ['stella ','/sb ','/Sb ', 'Stella ','rw ']
     return commands.when_mentioned_or(*prefixes)(bot, message)
 
 intents = discord.Intents.all()
@@ -12,7 +12,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    print(f'Bot connected as {bot.user}.')
+    print(f"Bot connected as {bot.user} in {len(bot.guilds)} servers.")
     await bot.change_presence(activity=discord.Game(name=" Stella Bot Rewrite"))
 
 @bot.command(name="help",
@@ -36,6 +36,7 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Command Prefixes",value="`stella` `sb` `/sb`",inline=False)
         help_embed.add_field(name="Commands List:",value="```"+"\n".join(['{:>2}. {:<16}{}'.format(str(i+1),x.name,x.brief) for i,x in enumerate(command_list)])+"```",inline=False)
         help_embed.add_field(name="Details",value="Type `stella help <command name>` for more details about each command.",inline=False)
+        help_embed.add_field(name="Latest Update",value="Latest Update: [1.0](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.0.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)",inline=False)
         await ctx.reply("A list of all commands has been sent to you!")
     elif args in command_names_list:
         help_embed.add_field(name="\u200b",value=bot.get_command(args).help)
@@ -43,7 +44,16 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Unknown Command",value="For a list of commands type `stella help`")
     await ctx.author.send(embed=help_embed)
 
-##Error handeling: Command CD, Invalid Argument, MissingRole
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.ext.commands.errors.CommandOnCooldown):
+        await ctx.send(f"This command is on cooldown for {ctx.author.display_name}. Try again later.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('MissingRequiredArgument Error. `stella help` for more info.')
+    elif isinstance(error, commands.errors.CommandNotFound):
+        await ctx.send("Unknown Command. `stella help` for a list of commands.")
+    else:
+        await ctx.send("An error is being ignored. If you believe this is a bug contact Over#6203.")
 
 modules = [
     "loops",

@@ -942,3 +942,1102 @@ def get_forge():
         castRank += 1
 
     return forgeMessage, castingMessage
+
+def get_dungeon(floor):
+    if int(floor) == 1:
+        rejuvenateI = []
+        rejuvenateII = []
+        featherVI = []
+        quiverVI = []
+        comboI = []
+        jerryI = []
+        mask = []
+        staff = []
+        nose = []
+        brooch = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif "Bonzo's Mask" in entry["item_name"]:
+                        mask.append(entry["starting_bid"])
+                    elif "Bonzo's Staff" in entry["item_name"]:
+                        staff.append(entry["starting_bid"])
+                    elif "Red Nose" in entry["item_name"]:
+                        nose.append(entry["starting_bid"])
+                    elif "Necromancer's Brooch" in entry["item_name"]:
+                        brooch.append(entry["starting_bid"])
+
+        armor = ""
+        try:
+            armor += f"`Bonzo's Mask` : `{'{:,}'.format(min(mask))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Bonzo's Staff` : `{'{:,}'.format(min(staff))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Red Nose` : `{'{:,}'.format(min(nose))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer's Brooch` : `{'{:,}'.format(min(brooch))}`\n"
+        except ValueError:
+            pass
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 2:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        quiverVI = []
+        ultiWiseI = []
+        wisdomI = []
+        comboI = []
+        jerryI = []
+        adaptiveBlade = []
+        studies = []
+        brooch = []
+        redScarf = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif "Adaptive Blade" in entry["item_name"]:
+                        adaptiveBlade.append(entry["starting_bid"])
+                    elif "Scarf's Studies" in entry["item_name"]:
+                        studies.append(entry["starting_bid"])
+                    elif "Necromancer's Brooch" in entry["item_name"]:
+                        brooch.append(entry["starting_bid"])
+                    elif "Red Scarf" in entry["item_name"]:
+                        redScarf.append(entry["item_name"])
+        armor = ""
+        try:
+            armor += f"`Adaptive Blade` : `{'{:,}'.format(min(adaptiveBlade))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Scarf's Studies` : `{'{:,}'.format(min(studies))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Red Scarf` : `{'{:,}'.format(min(redScarf))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer's Brooch` : `{'{:,}'.format(min(brooch))}`\n"
+        except ValueError:
+            pass
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 3:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        quiverVI = []
+        ultiWiseI = []
+        wisdomI = []
+        lastStandI = []
+        comboI = []
+        jerryI = []
+        adaptiveHelm = []
+        adaptiveChest = []
+        adaptiveLegs = []
+        adaptiveBoots = []
+        brooch = []
+        vial = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLast Stand I\n§7Increases your defense by §a5%\n§a§7when you are below §a40%\n§a§7Health\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 30 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        lastStandI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif "Adaptive Helm" in entry["item_name"]:
+                        adaptiveHelm.append(entry["starting_bid"])
+                    elif "Adaptive Chestplate" in entry["item_name"]:
+                        adaptiveChest.append(entry["starting_bid"])
+                    elif "Adaptive Leggings" in entry["item_name"]:
+                        adaptiveLegs.append(entry["starting_bid"])
+                    elif "Adaptive Boots" in entry["item_name"]:
+                        adaptiveBoots.append(entry["starting_bid"])
+                    elif "Necromancer's Brooch" in entry["item_name"]:
+                        brooch.append(entry["starting_bid"])
+                    elif "Suspicious Vial" in entry["item_name"]:
+                        vial.append(entry["starting_bid"])
+        armor = ""
+        try:
+            armor += f"`Adaptive Helm` : `{'{:,}'.format(min(adaptiveHelm))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Adaptive Chestplate` : `{'{:,}'.format(min(adaptiveChest))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Adaptive Leggings` : `{'{:,}'.format(min(adaptiveLegs))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Adaptive Boots` : `{'{:,}'.format(min(adaptiveBoots))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer's Brooch` : `{'{:,}'.format(min(brooch))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Suspicious Vial` : `{'{:,}'.format(min(vial))}`\n"
+        except ValueError:
+            pass
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Last Stand I` : `{'{:,}'.format(min(lastStandI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 4:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        quiverVI = []
+        ultiWiseI = []
+        wisdomI = []
+        lastStandI = []
+        comboI = []
+        rendI = []
+        jerryI = []
+        spiritSword = []
+        spiritBow = []
+        spiritStone = []
+        spiritBoots = []
+        spiritBone = []
+        spiritWing = []
+        epicSpirit = []
+        legendarySpirit = []
+        brooch = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLast Stand I\n§7Increases your defense by §a5%\n§a§7when you are below §a40%\n§a§7Health\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 30 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        lastStandI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lRend I\n§7Grants your bow a Left Click\n§7ability that rips out the arrows\n§7from nearby enemies and deals\n§7§c5% §7of your last critical hit\n§7for every arrow in the target.\n§7§a2s §7Cooldown.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 32 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rendI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif "Spirit Sword" in entry["item_name"]:
+                        spiritSword.append(entry["starting_bid"])
+                    elif "Spirit Bow" in entry["item_name"]:
+                        spiritBow.append(entry["starting_bid"])
+                    elif "Spirit Stone" in entry["item_name"]:
+                        spiritStone.append(entry["starting_bid"])
+                    elif "Spirit Boots" in entry["item_name"]:
+                        spiritBoots.append(entry["starting_bid"])
+                    elif "Spirit Bone" in entry["item_name"]:
+                        spiritBone.append(entry["starting_bid"])
+                    elif "Spirit Wing" in entry["item_name"]:
+                        spiritWing.append(entry["starting_bid"])
+                    elif "Spirit Skull Item" in entry["extra"] and entry["tier"] == "EPIC":
+                        epicSpirit.append(entry["starting_bid"])
+                    elif "Spirit Skull Item" in entry["extra"] and entry["tier"] == "LEGENDARY":
+                        legendarySpirit.append(entry["starting_bid"])
+                    elif "Necromancer's Brooch" in entry["item_name"]:
+                        brooch.append(entry["starting_bid"])
+
+        armor = ""
+        try:
+            armor += f"`Spirit Sword` : `{'{:,}'.format(min(spiritSword))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Bow` : `{'{:,}'.format(min(spiritBow))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Boots` : `{'{:,}'.format(min(spiritBoots))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Stone` : `{'{:,}'.format(min(spiritStone))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Bone` : `{'{:,}'.format(min(spiritBone))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Wing` : `{'{:,}'.format(min(spiritWing))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Pet (Epic)` : `{'{:,}'.format(min(epicSpirit))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Spirit Pet (Legendary)` : `{'{:,}'.format(min(legendarySpirit))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer's Brooch` : `{'{:,}'.format(min(brooch))}`\n"
+        except ValueError:
+            pass
+
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Last Stand I` : `{'{:,}'.format(min(lastStandI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rend I` : `{'{:,}'.format(min(rendI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 5:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        quiverVI = []
+        ultiWiseI = []
+        wisdomI = []
+        lastStandI = []
+        comboI = []
+        legionI = []
+        overloadI = []
+        lethalityVI = []
+        jerryI = []
+        jerryII = []
+        jerryIII = []
+        shadowHelm = []
+        shadowChest = []
+        shadowLegs = []
+        shadowBoots = []
+        lividDag = []
+        shadowFury = []
+        warpedStone = []
+        darkOrb = []
+        lastBreath = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLast Stand I\n§7Increases your defense by §a5%\n§a§7when you are below §a40%\n§a§7Health\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 30 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        lastStandI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLegion I\n§7Increases most of your player\n§7stats by §e0.07% §7per player\n§7within §b30 §7blocks of you, up\n§7to §c20 §7players.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        legionI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Overload I\n§7Increases §9☠ Crit Damage §7by\n§7§a1%§7 and §9☣ Crit Chance §7by\n§7§a1%§7. Having a Critical chance\n§7above §9100% §7grants a chance\n§7to perform a Mega Critical Hit\n§7dealing §910% §7extra damage.\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 33 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        overloadI.append(entry["starting_bid"])
+                    elif entry["item_lore"] ==  "§9Lethality VI\n§7Reduces the armor of your target\n§7by §a18% §7for §68 §7seconds\n§7each time you hit them with\n§7melee. Stacks up to §a5 §7times.\n\n§7§7Apply Cost: §3179 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        lethalityVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry II\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a2000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §391 Exp Levels\n\n§7§cRequires Enchanting 18 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry III\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a3000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §3136 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryIII.append(entry["starting_bid"])
+                    elif "Shadow Assassin Helmet" in entry["item_name"]:
+                        shadowHelm.append(entry["starting_bid"])
+                    elif "Shadow Assassin Chestplate" in entry["item_name"]:
+                        shadowChest.append(entry["starting_bid"])
+                    elif "Shadow Assassin Leggings" in entry["item_name"]:
+                        shadowLegs.append(entry["starting_bid"])
+                    elif "Shadow Assassin Boots" in entry["item_name"]:
+                        shadowBoots.append(entry["starting_bid"])
+                    elif "Livid Dagger" in entry["item_name"]:
+                        lividDag.append(entry["starting_bid"])
+                    elif "Shadow Fury" in entry["item_name"]:
+                        shadowFury.append(entry["starting_bid"])
+                    elif "Livid Dagger" in entry["item_name"]:
+                        lividDag.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Warped §7reforge\n§7to a melee weapon.\n\n§7§8§oIf you look deep inside, you\n§8§orisk finding yourself somewhere\n§8§oelse.\n\n§7Requires §aMining Skill Level\n§aXXVI§7!\n\n§9§lRARE REFORGE STONE":
+                        warpedStone.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Shaded §7reforge\n§7to accessories.\n\n§7§8§oAssassins use it,\n§8§oapparently.\n\n§9§lRARE REFORGE STONE":
+                        darkOrb.append(entry["starting_bid"])
+                    elif "Last Breath" in entry["item_name"]:
+                        lastBreath.append(entry["starting_bid"])
+        armor = ""
+        try:
+            armor += f"`Shadow Assassin Helmet` : `{'{:,}'.format(min(shadowHelm))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Shadow Assassin Chestplate` : `{'{:,}'.format(min(shadowChest))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Shadow Assassin Leggings` : `{'{:,}'.format(min(shadowLegs))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Shadow Assassin Boots` : `{'{:,}'.format(min(shadowBoots))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Shadow Fury` : `{'{:,}'.format(min(shadowFury))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Livid Dagger` : `{'{:,}'.format(min(lividDag))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Last Breath` : `{'{:,}'.format(min(lastBreath))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Warped Stone` : `{'{:,}'.format(min(warpedStone))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Dark Orb` : `{'{:,}'.format(min(darkOrb))}`\n"
+        except ValueError:
+            pass
+
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Lethality VI` : `{'{:,}'.format(min(lethalityVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Last Stand I` : `{'{:,}'.format(min(lastStandI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Legion I` : `{'{:,}'.format(min(legionI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Overload I` : `{'{:,}'.format(min(overloadI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry II` : `{'{:,}'.format(min(jerryII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry III` : `{'{:,}'.format(min(jerryIII))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 6:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        quiverVI = []
+        ultiWiseI = []
+        wisdomI = []
+        lastStandI = []
+        comboI = []
+        swarmI = []
+        jerryI = []
+        jerryII = []
+        jerryIII = []
+        necroHelmet = []
+        necroChest = []
+        necroLegs = []
+        necroBoots = []
+        necroSword = []
+        giantTooth = []
+        summoningRing = []
+        sadans = []
+        giantSword = []
+        precursor = []
+        rose = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLast Stand I\n§7Increases your defense by §a5%\n§a§7when you are below §a40%\n§a§7Health\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 30 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        lastStandI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lCombo I\n§7Every mob kill within §e3§7\n§7seconds grants §c+2❁ Strength\n§c§7and §9+1☠ Crit Damage§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        comboI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lSwarm I\n§7Increases your damage by §c1.25%\n§c§7for each enemy within §e10\n§e§7blocks. Maximum of §c16\n§c§7enemies.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        swarmI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry II\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a2000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §391 Exp Levels\n\n§7§cRequires Enchanting 18 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry III\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a3000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §3136 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryIII.append(entry["starting_bid"])
+                    elif "Necromancer Lord Helmet" in entry["item_name"]:
+                        necroHelmet.append(entry["starting_bid"])
+                    elif "Necromancer Lord Chestplate" in entry["item_name"]:
+                        necroChest.append(entry["starting_bid"])
+                    elif "Necromancer Lord Leggings" in entry["item_name"]:
+                        necroLegs.append(entry["starting_bid"])
+                    elif "Necromancer Lord Boots" in entry["item_name"]:
+                        necroBoots.append(entry["starting_bid"])
+                    elif "Necromancer Sword" in entry["item_name"]:
+                        necroSword.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Giant §7reforge\n§7to armor.\n\n§7§8§oSuper clean, great hygiene.\n\n§7Requires §aMining Skill Level\n§aXXV§7!\n\n§5§lEPIC REFORGE STONE":
+                        giantTooth.append(entry["starting_bid"])
+                    elif "Summoning Ring" in entry["item_name"]:
+                        summoningRing.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Empowered\n§9§7reforge to armor.\n\n§7§8§oVery original...\n\n§7Requires §aMining Skill Level\n§aXXV§7!\n\n§5§lEPIC REFORGE STONE":
+                        sadans.append(entry["starting_bid"])
+                    elif "Giant's Sword" in entry["item_name"]:
+                        giantSword.append(entry["starting_bid"])
+                    elif "Precursor Eye" in entry["item_name"]:
+                        precursor.append(entry["starting_bid"])
+                    elif "Ancient Rose" in entry["item_name"]:
+                        rose.append(entry["starting_bid"])
+
+        armor = ""
+        try:
+            armor += f"`Necromancer Lord Helmet` : `{'{:,}'.format(min(necroHelmet))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer Lord Chestplate` : `{'{:,}'.format(min(necroChest))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer Lord Leggings` : `{'{:,}'.format(min(necroLegs))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer Lord Boots` : `{'{:,}'.format(min(necroBoots))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necromancer Sword` : `{'{:,}'.format(min(necroSword))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Giant's Sword` : `{'{:,}'.format(min(giantSword))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Giant Tooth` : `{'{:,}'.format(min(giantTooth))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Sadan's Brooch` : `{'{:,}'.format(min(sadans))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Summoning Ring` : `{'{:,}'.format(min(summoningRing))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Precursor Eye` : `{'{:,}'.format(min(precursor))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Ancient Rose` : `{'{:,}'.format(min(rose))}`\n"
+        except ValueError:
+            pass
+
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Last Stand I` : `{'{:,}'.format(min(lastStandI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Combo I` : `{'{:,}'.format(min(comboI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Swarm I` : `{'{:,}'.format(min(swarmI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry II` : `{'{:,}'.format(min(jerryII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry III` : `{'{:,}'.format(min(jerryIII))}`\n"
+        except ValueError:
+            pass
+    elif int(floor) == 7:
+        rejuvenateI = []
+        rejuvenateII = []
+        rejuvenateIII = []
+        featherVI = []
+        featherVII = []
+        quiverVI = []
+        quiverVII = []
+        ultiWiseI = []
+        wisdomI = []
+        lastStandI = []
+        soulI = []
+        ofaI = []
+        jerryI = []
+        jerryII = []
+        jerryIII = []
+        noPainI = []
+        bankI = []
+        bankII = []
+        bankIII = []
+        witherBoots = []
+        witherLegs = []
+        witherChest = []
+        witherHelm = []
+        witherCata = []
+        witherBlood = []
+        witherCloak = []
+        precursor = []
+        handle = []
+        implosion = []
+        shadowWarp = []
+        witherShield = []
+        autoRecomb = []
+        diamante = []
+        pinkRock = []
+        bigfoot = []
+        eye = []
+        with open("data/ah.json") as json_file:
+            data = json.load(json_file)
+            for entry in data["auctions"]:
+                if "bin" in entry:
+                    if entry["item_lore"] == "§9Rejuvenate I\n§7Increases your natural\n§7regeneration by §a+2%§7.\n\n§7§7Apply Cost: §39 Exp Levels\n\n§7§cRequires Enchanting 10 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate II\n§7Increases your natural\n§7regeneration by §a+4%§7.\n\n§7§7Apply Cost: §318 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Rejuvenate III\n§7Increases your natural\n§7regeneration by §a+6%§7.\n\n§7§7Apply Cost: §327 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        rejuvenateIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VI\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a6§7 and reduces fall damage by\n§7§a30%§7.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        featherVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Feather Falling VII\n§7Increases how high you can fall\n§7before taking fall damage by\n§7§a7§7 and reduces fall damage by\n§7§a35%§7.\n\n§7§7Apply Cost: §373 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
+                        featherVII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VI\n§7Saves arrows §a60%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §355 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§9§lRARE":
+                        quiverVI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9Infinite Quiver VII\n§7Saves arrows §a70%§7 of the time\n§7when you fire your bow.\n\n§7§7Apply Cost: §373 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
+                        quiverVII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Wise I\n§7Reduces the ability mana cost of\n§7this item by §a10%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ultiWiseI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lWisdom I\n§7Gain §b1 §7Intelligence for\n§7every §b5 §7levels of exp you\n§7have on you. Capped at §b20\n§b§7Intelligence.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        wisdomI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lLast Stand I\n§7Increases your defense by §a5%\n§a§7when you are below §a40%\n§a§7Health\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 30 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        lastStandI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lSoul Eater I\n§7Your weapon gains §c2§7x the\n§7Strength of the latest monster\n§7killed and applies it on your\n§7next hit.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        soulI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lOne For All I\n§7Removes all other enchants but\n§7increases your weapon damage by\n§7§a210%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§e▲ §7§d§lOne For All cannot be combined!\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        ofaI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry I\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a1000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry II\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a2000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §391 Exp Levels\n\n§7§cRequires Enchanting 18 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lUltimate Jerry III\n§7Increases the base damage of\n§7§fAspect of the Jerry§7 by\n§7§a3000%§7.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §3136 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        jerryIII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lNo Pain No Gain I\n§7You have §e20% §7chance to gain\n§7§b10 §7experience orbs every\n§7time you take hits from mobs.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 29 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        noPainI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lBank I\n§7Saves §610.0§7% of your coins on\n§7death.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7§cRequires Enchanting 16 to\n§capply\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        bankI.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lBank II\n§7Saves §620.0§7% of your coins on\n§7death.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §391 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        bankII.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§9§d§lBank III\n§7Saves §630.0§7% of your coins on\n§7death.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §3136 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                        bankIII.append(entry["starting_bid"])
+                    elif "Wither Boots" in entry["item_name"]:
+                        witherBoots.append(entry["starting_bid"])
+                    elif "Wither Leggings" in entry["item_name"]:
+                        witherLegs.append(entry["starting_bid"])
+                    elif "Wither Chestplate" in entry["item_name"]:
+                        witherChest.append(entry["starting_bid"])
+                    elif "Wither Helmet" in entry["item_name"]:
+                        witherHelm.append(entry["starting_bid"])
+                    elif "Wither Catalyst" in entry["item_name"]:
+                        witherCata.append(entry["starting_bid"])
+                    elif "Wither Cloak Sword" in entry["item_name"]:
+                        witherCloak.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Withered\n§9§7reforge to a melee weapon.\n\n§7Requires §aMining Skill Level\n§aXXX§7!\n\n§5§lEPIC REFORGE STONE":
+                        witherBlood.append(entry["starting_bid"])
+                    elif entry["item_lore"] == "§8Reforge Stone\n\n§7Can be used in a Reforge Anvil\n§7or with the Dungeon Blacksmith\n§7to apply the §9Ancient §7reforge\n§7to armor.\n\n§7Requires §aMining Skill Level\n§aXXX§7!\n\n§5§lEPIC REFORGE STONE":
+                        precursor.append(entry["starting_bid"])
+                    elif "Necron's Handle" in entry["item_name"]:
+                        handle.append(entry["starting_bid"])
+                    elif "Implosion" in entry["item_name"]:
+                        implosion.append(entry["starting_bid"])
+                    elif "Shadow Warp" in entry["item_name"]:
+                        shadowWarp.append(entry["starting_bid"])
+                    elif "Wither Shield" in entry["item_name"]:
+                        witherShield.append(entry["starting_bid"])
+                    elif "Auto Recombobulator" in entry["item_name"]:
+                        autoRecomb.append(entry["starting_bid"])
+                    elif "Diamante's Handle" in entry["item_name"]:
+                        diamante.append(entry["starting_bid"])
+                    elif "Jolly Pink Rock" in entry["item_name"]:
+                        pinkRock.append(entry["starting_bid"])
+                    elif "Bigfoot's Lasso" in entry["item_name"]:
+                        bigfoot.append(entry["starting_bid"])
+                    elif "L.A.S.R.'s Eye" in entry["item_name"]:
+                        eye.append(entry["starting_bid"])
+
+
+
+        armor = ""
+        try:
+            armor += f"`Wither Boots` : `{'{:,}'.format(min(witherBoots))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Leggings` : `{'{:,}'.format(min(witherLegs))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Chestplate` : `{'{:,}'.format(min(witherChest))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Helmet` : `{'{:,}'.format(min(witherHelm))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Catalyst` : `{'{:,}'.format(min(witherCata))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Blood` : `{'{:,}'.format(min(witherBlood))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Cloak Sword` : `{'{:,}'.format(min(witherCloak))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Precursor Gear` : `{'{:,}'.format(min(precursor))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Necron's Handle` : `{'{:,}'.format(min(handle))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Implosion` : `{'{:,}'.format(min(implosion))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Shadow Warp` : `{'{:,}'.format(min(shadowWarp))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Wither Shield` : `{'{:,}'.format(min(witherShield))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Diamante's Handle` : `{'{:,}'.format(min(diamante))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Jolly Pink Rock` : `{'{:,}'.format(min(pinkRock))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`Bigfoot's Lasso` : `{'{:,}'.format(min(bigfoot))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"`L.A.S.R.'s Eye` : `{'{:,}'.format(min(eye))}`\n"
+        except ValueError:
+            pass
+        try:
+            armor += f"\n`Auto Recombobulator` : `{'{:,}'.format(min(autoRecomb))}`\n"
+        except ValueError:
+            pass
+
+        bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        armor += f"\n`Recombobulator` : `{'{:,}'.format(round(bazaar['RECOMBOBULATOR_3000']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Hot Potato Book` : `{'{:,}'.format(round(bazaar['HOT_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+        armor += f"`Fuming Potato Book` : `{'{:,}'.format(round(bazaar['FUMING_POTATO_BOOK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+        books = ""
+        try:
+            books += f"`Rejuvenate I` : `{'{:,}'.format(min(rejuvenateI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate II` : `{'{:,}'.format(min(rejuvenateII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Rejuvenate III` : `{'{:,}'.format(min(rejuvenateIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VI` : `{'{:,}'.format(min(featherVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Feather Falling VII` : `{'{:,}'.format(min(featherVII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VI` : `{'{:,}'.format(min(quiverVI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Infinite Quiver VII` : `{'{:,}'.format(min(quiverVII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Wise I` : `{'{:,}'.format(min(ultiWiseI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Wisdom I` : `{'{:,}'.format(min(wisdomI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Last Stand I` : `{'{:,}'.format(min(lastStandI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Soul Eater I` : `{'{:,}'.format(min(soulI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`One for All I` : `{'{:,}'.format(min(ofaI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry I` : `{'{:,}'.format(min(jerryI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry II` : `{'{:,}'.format(min(jerryII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Ultimate Jerry III` : `{'{:,}'.format(min(jerryIII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`No Pain No Gain I` : `{'{:,}'.format(min(noPainI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Bank I` : `{'{:,}'.format(min(bankI))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Bank II` : `{'{:,}'.format(min(bankII))}`\n"
+        except ValueError:
+            pass
+        try:
+            books += f"`Bank III` : `{'{:,}'.format(min(bankIII))}`\n"
+        except ValueError:
+            pass
+
+    return books, armor

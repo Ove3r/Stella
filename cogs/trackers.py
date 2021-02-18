@@ -87,7 +87,7 @@ class Trackers(commands.Cog):
     @commands.command(name="ahtrack",
         brief="Tracks your BINs",
         help=(
-        "**stella ahtrack [ign]\n"
+        "**stella ahtrack [ign]**\n"
         "Starts tracking all BIN auctions for a given player.\n"
         "If an item that is tracked is sold, you will be notified of such.\n"
         "Notes: \n "
@@ -134,7 +134,15 @@ class Trackers(commands.Cog):
         embed.add_field(name="Items",value=message)
         await ctx.reply(embed=embed)
 
-    @commands.command(name="track")
+    @commands.command(name="track",
+        brief="Player Tracking",
+        help=(
+        "To start and restart tracking type **stella track [ign] [profile]**\n."
+        "To see changes type **stella track**\n"
+        "Notes: \n "
+        "• You can only track one player at a time per discord account.\n"
+        )
+    )
     async def player_track(self, ctx, *args):
         if (not args):
             try:
