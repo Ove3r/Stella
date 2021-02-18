@@ -5,7 +5,7 @@ Discord Bot for Hypixel Skyblock with many functions including player tracking a
 Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 
 
-# Last Update ~~ Version 1.0 Major Release (February 18, 2021)
+# Lastest Update ~~ Version 1.0 Major Release (February 18, 2021)
 
 [Update Notes and Changes](documentation/updates/1.0.md)
 
