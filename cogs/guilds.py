@@ -25,7 +25,7 @@ class Guild_Commands(commands.Cog):
             await ctx.reply("GuildNotFound Error")
             return
 
-        loading_embed=discord.Embed(title=f"Loading {guild.guild_name} Guild Averages", description="This may take some time. Other commands maybe delayed while this command is running.", color=0xdc6565)
+        loading_embed=discord.Embed(title=f"Loading {guild.guild_name} Guild Averages", description="This may take some time. Other commands may be delayed while this command is running.", color=0xdc6565)
         if len(guild.guild_members) > 70:
             loading_embed.add_field(name="Large Guild Warning", value="This guild has more than 70 members, this command may take a longer time to load.")
         loading_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
