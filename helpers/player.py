@@ -83,11 +83,13 @@ class Player:
                 self.lvl_fishing = skill_xp_to_level(self.xp_fishing)
             except KeyError:
                 self.xp_fishing = 0
+                self.lvl_fishing = 0
             try:
                 self.xp_enchanting = round(self.player_data["experience_skill_enchanting"])
                 self.lvl_enchanting = skill_xp_to_level(self.xp_enchanting, 60)
             except KeyError:
                 self.xp_enchanting = 0
+                self.lvl_enchanting = 0
             try:
                 self.xp_alchemy = round(self.player_data["experience_skill_alchemy"])
                 self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)
@@ -279,7 +281,7 @@ class Player:
         self.jacob_summary = recent_contests
         if self.jacob_summary == "":
             self.jacob_summary = "No Contests"
-    
+
         perks = "**Medal Inventory**\n"
         medals = ["Bronze","Silver","Gold"]
         for tier in medals:

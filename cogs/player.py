@@ -69,9 +69,9 @@ class Player_Commands(commands.Cog):
         player_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         player_tab.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
         if user.api_enabled:
-            player_tab.set_footer(text="Stella Bot by Over#6203")
+            player_tab.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
         else:
-            player_tab.set_footer(text="Stella Bot by Over#6203 ◆ Features May Not Be Available (Certain APIs are Disabled)")
+            player_tab.set_footer(text="Stella Bot by Over#6203 ◆ Features May Not Be Available (Certain APIs are Disabled)\nClick on the reactions for other tabs.")
         if user.guild:
             player_tab.add_field(name=f"Guild: {user.guild}",value="\u200b",inline=False)
         player_tab.add_field(name=f"Skill Average: {user.skill_average}",value="\u200b",inline=False)

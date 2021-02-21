@@ -13,6 +13,8 @@ bot.remove_command('help')
 @bot.event
 async def on_ready():
     print(f"Bot connected as {bot.user} in {len(bot.guilds)} servers.")
+    for server in bot.guilds:
+        print(server)
     await bot.change_presence(activity=discord.Game(name=" Stella Bot Rewrite"))
 
 @bot.command(name="help",
