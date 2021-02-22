@@ -28,6 +28,7 @@ class Player_Commands(commands.Cog):
             uuid = getUUID(name)
             embed=discord.Embed(title=f"{name}", description=uuid, color=0xdc6565)
             embed.set_footer(text="Stella Bot by Over#6203")
+            embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
 
         except PlayerNotFound:

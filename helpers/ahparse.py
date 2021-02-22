@@ -88,7 +88,7 @@ def get_dark_auction():
                 sharpness7.append(entry["starting_bid"])
             elif entry["item_lore"] == "§9Protection VII\n§7Grants §a+21 §a❈ Defense§7.\n\n§7§7Apply Cost: §3179 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
                 protection7.append(entry["starting_bid"])
-            elif entry["item_lore"] == "§9Growth VII\n§7Grants §a+105 §c❤ Health§7.\n§9Protection VII\n§7Grants §a+21 §a❈ Defense§7.\n\n§7§7Apply Cost: §3236 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
+            elif entry["item_lore"] == "§9Growth VII\n§7Grants §a+105 §c❤ Health§7.\n\n§7§7Apply Cost: §3179 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
                 growth7.append(entry["starting_bid"])
             elif entry["item_lore"] == "§9Power VII\n§7Increases bow damage by §a56%§7.\n\n§7§7Apply Cost: §3179 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§5§lEPIC":
                 power7.append(entry["starting_bid"])
