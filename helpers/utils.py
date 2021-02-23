@@ -1,6 +1,7 @@
 import requests, operator, math
 from helpers import key
 from helpers.errors import *
+from constants import constants_ranks
 
 def getName(uuid):
     data = requests.get(f"https://api.mojang.com/user/profiles/{uuid}/names").json()
@@ -110,3 +111,17 @@ def get_guild_members(guild):
             guild_master = members["uuid"]
     guild_name = data["guild"]["name"]
     return member_list, guild_name, guild_master
+
+def get_player_network_rank(uuid):
+    data = requests.get(f"https://api.hypixel.net/player?key={key.API_KEY}&uuid={uuid}").json()["player"]
+    ranks = constants_ranks.RANKS
+    if "prefix" in data:
+        return ranks[data["prefix"]]
+    elif "rank" in data:
+        return ranks[data["rank"]]
+    elif "monthlyPackageRank" in data and data["monthlyPackageRank"] != "NONE":
+        return ranks[data["monthlyPackageRank"]]
+    elif "newPackageRank" in data:
+        return ranks[data["newPackageRank"]]
+    else:
+        return "None"

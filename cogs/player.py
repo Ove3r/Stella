@@ -66,7 +66,7 @@ class Player_Commands(commands.Cog):
         user.get_player_summary()
         user.get_skills_message()
         #Main Tab
-        player_tab=discord.Embed(title=user.name, description=f"Profile: {user.fruit}\nAll Profiles: {' '.join(map(str, user.profile_list))}", color=0xdc6565)
+        player_tab=discord.Embed(title=f"{user.name} ({user.rank})", description=f"Profile: {user.fruit}\nAll Profiles: {' '.join(map(str, user.profile_list))}", color=0xdc6565)
         player_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         player_tab.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
         if user.api_enabled:
