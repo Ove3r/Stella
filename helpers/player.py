@@ -1,10 +1,10 @@
-import requests
+import requests, time
 from helpers import key
 from helpers.errors import *
 from helpers.utils import *
 import matplotlib.pyplot as plt
 import numpy as np
-import time
+from constants import constants_fishing
 
 #Player Attributes: name, uuid, fruit, profile_id, player_data
 class Player:
@@ -301,6 +301,31 @@ class Player:
         self.jacob_perks = perks
         return
 
+    def get_fishing_stats(self):
+        self.fishing_stats = constants_fishing.FISHING_STATS()
+        for entry in self.fishing_stats:
+            for names in entry["api_name"]:
+                try:
+                    entry["count"] += self.player_data["stats"][names]
+                except:
+                    pass
+        self.fishing_messages = {
+            "Standard Sea Creatures" : "",
+            "Spooky Sea Creatures" : "",
+            "Winter Sea Creatures" : "",
+            "Marina Sharks" : ""
+        }
+
+        for entry in self.fishing_stats:
+            if entry["count"] != 0:
+                if entry["category"] == "Standard":
+                    self.fishing_messages["Standard Sea Creatures"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
+                elif entry["category"] == "Spooky":
+                    self.fishing_messages["Spooky Sea Creatures"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
+                elif entry["category"] == "Winter":
+                    self.fishing_messages["Winter Sea Creatures"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
+                elif entry["category"] == "Marina":
+                    self.fishing_messages["Marina Sharks"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
 class Guild:
     def __init__(self,guild):
         self.API_KEY = key.API_KEY

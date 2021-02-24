@@ -86,6 +86,7 @@ class Player_Commands(commands.Cog):
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
         await output.add_reaction("<:golden_hoe:801205315806167050>")
+        await output.add_reaction("<:fishing:801090235542929448>")
         if location in constants_map.LOCATIONS:
             await output.add_reaction("🌎")
         if user.api_enabled: #Tabs only available to users with APIs enabled
@@ -112,6 +113,20 @@ class Player_Commands(commands.Cog):
                         pass
 
                 await output.edit(embed=jacob_tab)
+            elif str(reaction) == "<:fishing:801090235542929448>": #Fishing Stats
+                try:
+                    fishing_tab
+                except:
+                    user.get_fishing_stats()
+                    fishing_tab=discord.Embed(title=user.name, description="Fishing Tab", color=0xdc6565)
+                    fishing_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+                    fishing_tab.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
+                    fishing_tab.set_footer(text="Stella Bot by Over#6203")
+                    for entry in user.fishing_messages:
+                        if user.fishing_messages[entry] != "":
+                            fishing_tab.add_field(name=entry,value=user.fishing_messages[entry],inline=False)
+
+                await output.edit(embed=fishing_tab)
             elif str(reaction) == "<:pie_chart:809912045410451456>" and user.api_enabled: #Pie Chart Tab
                 try:
                     pie_chart_embed
@@ -134,7 +149,7 @@ class Player_Commands(commands.Cog):
                     map_image = await channel.send(file=discord.File(path,filename="map.png"))
                     map_image_url = map_image.attachments[0].url
 
-                    player_location_tab=discord.Embed(title="Player Location", description=f"Only available when {user.name} is online.", color=0xdc6565)
+                    player_location_tab=discord.Embed(title=user.name, description=f"[Current Location]({map_image_url})", color=0xdc6565)
                     player_location_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
                     player_location_tab.set_footer(text="Stella Bot by Over#6203 ◆ Refreshes on command load.")
                     player_location_tab.set_image(url=map_image_url)
@@ -143,8 +158,7 @@ class Player_Commands(commands.Cog):
             try: #Timeout
                 reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
                 await output.remove_reaction(reaction, member)
-            except Exception as exception: #For Debugging ~~ Remove Later
-                print(exception)
+            except: #For Debugging ~~ Remove Later
                 break
         await output.clear_reactions()
         await output.add_reaction("🛑")
