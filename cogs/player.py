@@ -5,6 +5,8 @@ from helpers import key
 from helpers.errors import *
 from helpers.utils import *
 from helpers.player import *
+from constants import constants_map
+from helpers.map import get_player_status_image
 
 class Player_Commands(commands.Cog):
     def __init__(self, bot):
@@ -65,6 +67,7 @@ class Player_Commands(commands.Cog):
 
         user.get_player_summary()
         user.get_skills_message()
+        location = get_player_status(user.uuid)
         #Main Tab
         player_tab=discord.Embed(title=f"{user.name} ({user.rank})", description=f"Profile: {user.fruit}\nAll Profiles: {' '.join(map(str, user.profile_list))}", color=0xdc6565)
         player_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
@@ -83,8 +86,11 @@ class Player_Commands(commands.Cog):
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
         await output.add_reaction("<:golden_hoe:801205315806167050>")
+        if location in constants_map.LOCATIONS:
+            await output.add_reaction("🌎")
         if user.api_enabled: #Tabs only available to users with APIs enabled
             await output.add_reaction("<:pie_chart:809912045410451456>")
+
 
         reaction = None
         while True:
@@ -119,8 +125,22 @@ class Player_Commands(commands.Cog):
                     pie_chart_tab.set_image(url=pie_chart_url)
 
                 await output.edit(embed=pie_chart_tab)
+            elif str(reaction) == "🌎" and location in constants_map.LOCATIONS:
+                try:
+                    player_location_tab
+                except:
+                    path = get_player_status_image(user, location)
+                    channel = self.bot.get_channel(798985613793689621)
+                    map_image = await channel.send(file=discord.File(path,filename="map.png"))
+                    map_image_url = map_image.attachments[0].url
 
-            try:
+                    player_location_tab=discord.Embed(title="Player Location", description=f"Only available when {user.name} is online.", color=0xdc6565)
+                    player_location_tab.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+                    player_location_tab.set_footer(text="Stella Bot by Over#6203 ◆ Refreshes on command load.")
+                    player_location_tab.set_image(url=map_image_url)
+
+                await output.edit(embed=player_location_tab)
+            try: #Timeout
                 reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
                 await output.remove_reaction(reaction, member)
             except Exception as exception: #For Debugging ~~ Remove Later

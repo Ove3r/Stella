@@ -15,3 +15,6 @@ class DisabledAPI(Error):
 
 class GuildNotFound(Error):
     pass
+
+class LocationError(Error):
+    pass
