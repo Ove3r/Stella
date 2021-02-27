@@ -2041,3 +2041,74 @@ def get_dungeon(floor):
             pass
 
     return books, armor
+
+def get_mithos():
+    tiger = []
+    turtle = []
+    remedies = []
+    minosRelic = []
+    souvenir = []
+    cog = []
+    chimera = []
+    with open("data/ah.json") as database:
+        data = json.load(database)
+    for entry in data["auctions"]:
+        try:
+            test = entry["bin"]
+        except:
+            test = False
+        if test:
+            if entry["item_name"] == "Crochet Tiger Plushie":
+                tiger.append(entry["starting_bid"])
+            elif entry["item_name"] == "Dwarf Turtle Shelmet":
+                turtle.append(entry["starting_bid"])
+            elif entry["item_name"] == "Antique Remedies":
+                remedies.append(entry["starting_bid"])
+            elif entry["item_name"] == "Minos Relic":
+                minosRelic.append(entry["starting_bid"])
+            elif entry["item_name"] == "Washed-up Souvenir":
+                souvenir.append(entry["starting_bid"])
+            elif "Crown of Greed" in entry["extra"]:
+                cog.append(entry["starting_bid"])
+            elif entry["item_lore"] == "§9§d§lChimera I\n§7Copies §a20% §7of your active\n§7pet's stats.\n\n§7§cYou can only have 1 Ultimate\n§cEnchantment on an item!\n\n§7§7Apply Cost: §345 Exp Levels\n\n§7Use this on an item in an Anvil\n§7to apply it!\n\n§f§lCOMMON":
+                chimera.append(entry["starting_bid"])
+    auctionables = ""
+    bazaarables = ""
+
+    try:
+        auctionables += f"`Crochet Tiger Plushie` : `{'{:,}'.format(min(tiger))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Dwarf Turtle Shelmet` : `{'{:,}'.format(min(turtle))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Antique Remedies` : `{'{:,}'.format(min(remedies))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Minos Relic` : `{'{:,}'.format(min(minosRelic))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Washed-up Souvenir` : `{'{:,}'.format(min(souvenir))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Crown of Greed` : `{'{:,}'.format(min(cog))}`\n"
+    except ValueError:
+        pass
+    try:
+        auctionables += f"`Chimera I` : `{'{:,}'.format(min(chimera))}`\n"
+    except ValueError:
+        pass
+
+    bazaar = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+
+    bazaarables += f"`Ancient Claw` : `{'{:,}'.format(round(bazaar['ANCIENT_CLAW']['sell_summary'][0]['pricePerUnit']))}`\n"
+    bazaarables += f"`Enchanted Ancient Claw` : `{'{:,}'.format(round(bazaar['ENCHANTED_ANCIENT_CLAW']['sell_summary'][0]['pricePerUnit']))}`\n"
+    bazaarables += f"`Griffin Feather` : `{'{:,}'.format(round(bazaar['GRIFFIN_FEATHER']['sell_summary'][0]['pricePerUnit']))}`\n"
+    bazaarables += f"`Daedalus Stick` : `{'{:,}'.format(round(bazaar['DAEDALUS_STICK']['sell_summary'][0]['pricePerUnit']))}`\n"
+
+    return auctionables, bazaarables

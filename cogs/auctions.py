@@ -200,5 +200,23 @@ class Auctions(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203")
         await ctx.reply(embed=embed)
 
+    @commands.command(name="mythos", aliases=["diana", "mithos"],
+        brief="Returns Mythos Prices",
+        help=(
+        "**stella mythos**\n"
+        "Returns the BIN Minimum Prices for all items available from Diana's Mythological Event."
+        )
+    )
+    async def check_mythos_prices(self, ctx):
+        auctionables, bazaarables = get_mithos()
+        embed=discord.Embed(title=f"Mythological Event", description="Mythos Price Tracker", color=0xdc6565)
+        embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+        embed.set_thumbnail(url="https://static.wikia.nocookie.net/hypixel-skyblock/images/5/5f/Diana.png/revision/latest?cb=20200912120658")
+        embed.set_footer(text="Stella Bot by Over#6203 ◆ Prices are BIN Minimum")
+        embed.add_field(name="Auctionables", value=auctionables,inline=True)
+        embed.add_field(name="Bazaarables", value=bazaarables,inline=True)
+        await ctx.reply(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(Auctions(bot))
