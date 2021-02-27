@@ -200,7 +200,7 @@ class Auctions(commands.Cog):
         embed.set_footer(text="Stella Bot by Over#6203")
         await ctx.reply(embed=embed)
 
-    @commands.command(name="mythos", aliases=["diana", "mithos"],
+    @commands.command(name="mythos", aliases=["diana", "mithos", "Diana"],
         brief="Returns Mythos Prices",
         help=(
         "**stella mythos**\n"
