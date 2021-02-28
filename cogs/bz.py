@@ -15,6 +15,7 @@ class Bazaar(commands.Cog):
         )
     )
     async def get_bz_item(self, ctx, *, item):
+        print(f"{ctx.author.name} sent bazaar command in {ctx.guild}")
         try:
             name = productName(item)
         except ItemNotFound:

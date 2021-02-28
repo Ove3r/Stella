@@ -41,7 +41,7 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Command Prefixes",value="`stella` `sb` `/sb`",inline=False)
         help_embed.add_field(name="Commands List:",value="```"+"\n".join(['{:>2}. {:<16}{}'.format(str(i+1),x.name,x.brief) for i,x in enumerate(command_list)])+"```",inline=False)
         help_embed.add_field(name="Details",value="Type `stella help <command name>` for more details about each command.",inline=False)
-        help_embed.add_field(name="Latest Update",value="Latest Update: [1.0](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.0.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)",inline=False)
+        help_embed.add_field(name="Latest Update",value="Latest Update: [1.0](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.0.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
         await ctx.reply("A list of all commands has been sent to you!")
     elif args in command_names_list:
         help_embed.add_field(name="\u200b",value=bot.get_command(args).help)

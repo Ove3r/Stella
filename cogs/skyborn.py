@@ -21,6 +21,7 @@ class Skyborn_Commands(commands.Cog):
     )
     @commands.has_role(604433471284445184)
     async def poll(self, ctx, name, args=None):
+        print(f"{ctx.author.name} sent poll command in {ctx.guild}")
         force = False
         if args: #Add aditional options for arguments that are given
             if args.lower() == "force":
@@ -114,6 +115,7 @@ class Skyborn_Commands(commands.Cog):
         )
     )
     async def requirements(self, ctx):
+        print(f"{ctx.author.name} sent reqs command in {ctx.guild}")
         embed=discord.Embed(title="Skyborn Requirements", description="These are minimum to be polled. You may/may not be accepted.", color=0xdc6565)
         embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
         embed.set_thumbnail(url="https://cdn.discordapp.com/icons/604420816817356822/a_1f3464f9dc5ace6959a5818238f920ff.png?size=256")

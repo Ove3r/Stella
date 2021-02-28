@@ -19,6 +19,7 @@ class Trackers(commands.Cog):
         )
     )
     async def check_player_location(self, ctx, *name):
+        print(f"{ctx.author.name} sent status command in {ctx.guild}")
         if (not name):
             name = ctx.author.display_name
         else:
@@ -55,6 +56,7 @@ class Trackers(commands.Cog):
         )
     )
     async def add_afk(self, ctx, *name):
+        print(f"{ctx.author.name} sent afk command in {ctx.guild}")
         if (not name):
             name = ctx.author.display_name
         else:
@@ -96,6 +98,7 @@ class Trackers(commands.Cog):
         )
     )
     async def ah_tracking(self,ctx, *name):
+        print(f"{ctx.author.name} sent ahTrack command in {ctx.guild}")
         if (not name):
             name = ctx.author.display_name
         else:
@@ -144,6 +147,7 @@ class Trackers(commands.Cog):
         )
     )
     async def player_track(self, ctx, *args):
+        print(f"{ctx.author.name} sent track command in {ctx.guild}")
         if (not args):
             try:
                 with open(f"data/player_track/{ctx.author.id}.json","r") as player_file:
@@ -267,12 +271,6 @@ class Trackers(commands.Cog):
             embed.set_footer(text="Stella Bot by Over#6203 ")
             embed.add_field(name="\u200b",value=f"To check your changes, type \n> `stella track` \nTo change your starting point for tracking, type \n> `stella track {user.name} {user.fruit}`")
             await ctx.reply(embed=embed)
-
-
-
-
-
-
 
 def setup(bot):
     bot.add_cog(Trackers(bot))

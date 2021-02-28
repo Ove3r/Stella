@@ -22,6 +22,7 @@ class Player_Commands(commands.Cog):
         )
     )
     async def fetch_uuid(self, ctx, *name):
+        print(f"{ctx.author.name} sent uuid command in {ctx.guild}")
         if (not name):
             name = ctx.author.display_name
         else:
@@ -50,6 +51,7 @@ class Player_Commands(commands.Cog):
         )
     )
     async def get_player(self, ctx, name, *profile):
+        print(f"{ctx.author.name} sent player command in {ctx.guild}")
         try:
             if profile:
                 user = Player(name,profile=profile[0])

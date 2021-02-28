@@ -19,6 +19,7 @@ class Guild_Commands(commands.Cog):
     )
     @commands.cooldown(1, 30, commands.BucketType.user)
     async def get_guild_summary(self, ctx, *, guild):
+        print(f"{ctx.author.name} sent guild command in {ctx.guild}")
         try:
             guild = Guild(guild)
         except GuildNotFound:

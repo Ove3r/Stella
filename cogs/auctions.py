@@ -19,6 +19,7 @@ class Auctions(commands.Cog):
          )
     )
     async def check_price(self, ctx, *item):
+        print(f"{ctx.author.name} sent price command in {ctx.guild}")
         item = " ".join(item)
         sellers, prices = search_BIN(item)
 
@@ -81,6 +82,7 @@ class Auctions(commands.Cog):
         )
     )
     async def check_dark_auction(self, ctx):
+        print(f"{ctx.author.name} sent dark auction command in {ctx.guild}")
         dark_auction, darker_auction = get_dark_auction()
         embed=discord.Embed(title="Dark Auctions", description="Dark Auction/Darker Auction Price Tracker", color=0xdc6565)
         embed.set_footer(text="Stella Bot by Over#6203 ◆ Prices are BIN Minimum")
@@ -100,6 +102,7 @@ class Auctions(commands.Cog):
         )
     )
     async def auctions(self, ctx, *name):
+        print(f"{ctx.author.name} sent auction player command in {ctx.guild}")
         if (not name):
             name = ctx.author.display_name
         else:
@@ -133,6 +136,7 @@ class Auctions(commands.Cog):
         )
     )
     async def bits_to_coins(self, ctx):
+        print(f"{ctx.author.name} sent bits command in {ctx.guild}")
         loading = await ctx.reply(embed=discord.Embed(title="Bits Calculator", description="Loading...", color=0xdc6565))
         crafted_message, raw_item = coins_per_bit()
         embed=discord.Embed(title="Bits Calculator", description="Values are in gold per bit", color=0xdc6565)
@@ -156,6 +160,7 @@ class Auctions(commands.Cog):
         )
     )
     async def forge_coins_per_hour(self, ctx):
+        print(f"{ctx.author.name} sent forge command in {ctx.guild}")
         loading = await ctx.reply(embed=discord.Embed(title="Forge Calculator", description="Loading...", color=0xdc6565))
         forgeMessage, castingMessage = get_forge()
         embed=discord.Embed(title="Forge Calculator", description="Values are in gold per hour", color=0xdc6565)
@@ -177,6 +182,7 @@ class Auctions(commands.Cog):
         )
     )
     async def dungeon_coins(self,ctx, floor):
+        print(f"{ctx.author.name} sent floor command in {ctx.guild} for floor {floor}")
         if int(floor) in range(1,8):
             books, armor = get_dungeon(floor)
         else:
@@ -208,6 +214,7 @@ class Auctions(commands.Cog):
         )
     )
     async def check_mythos_prices(self, ctx):
+        print(f"{ctx.author.name} sent mythos command in {ctx.guild}")
         auctionables, bazaarables = get_mithos()
         embed=discord.Embed(title=f"Mythological Event", description="Mythos Price Tracker", color=0xdc6565)
         embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)

@@ -7,7 +7,7 @@ from helpers.utils import *
 class Loops(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.ahLoop.start()
+        #self.ahLoop.start()
         self.afkLoop.start()
         self.ah_track_loop.start()
 
@@ -35,7 +35,6 @@ class Loops(commands.Cog):
 
     @tasks.loop(seconds=60)
     async def afkLoop(self):
-        print("Started AFK Check")
         with open("data/afk.json") as afk_track:
             data = json.load(afk_track)
         with open("data/afk.json","w") as afk_track:
@@ -53,7 +52,6 @@ class Loops(commands.Cog):
                 data["tracking"].remove(entry)
 
             afk_track.write(json.dumps(data))
-            print("Finished AFK Check")
 
     @afkLoop.before_loop
     async def before_afk(self):
@@ -62,7 +60,6 @@ class Loops(commands.Cog):
 
     @tasks.loop(seconds=120)
     async def ah_track_loop(self):
-        print("Started AH Tracking Loop")
         with open("data/ah_track.json") as ah_track:
             data = json.load(ah_track)
             update = data
@@ -82,7 +79,6 @@ class Loops(commands.Cog):
                 update["tracking"].remove(removal)
         with open("data/ah_track.json","w") as ah_track:
             ah_track.write(json.dumps(update))
-        print("Finished AH Tracking Loop")
 
     @ah_track_loop.before_loop
     async def before_track(self):

@@ -15,6 +15,7 @@ class Events(commands.Cog):
         )
     )
     async def get_all_events(self, ctx):
+        print(f"{ctx.author.name} sent events command in {ctx.guild}")
         calendar_events = get_calendar_events()
         currentTime = time.time()*1000
 
@@ -36,6 +37,7 @@ class Events(commands.Cog):
         )
     )
     async def get_jacob_events(self, ctx, *arg):
+        print(f"{ctx.author.name} sent jacob command in {ctx.guild}")
         if arg:
             await ctx.reply("Player Jacob Contest stats have been moved to the `stella player [ign]` command.")
             return
