@@ -1,6 +1,7 @@
 RANKS = {
     "SUPERSTAR" : "MVP++",
     "MVP_PLUS" : "MVP+",
+    "MVP": "MVP",
     "VIP_PLUS" : "VIP+",
     "VIP" : "VIP",
     "ADMIN" : "Admin",
