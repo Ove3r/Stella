@@ -14,7 +14,10 @@ class Player:
         self.name = getName(self.uuid)
         self.profile_list = []
         self.guild = getGuild(self.uuid)
-        self.rank = get_player_network_rank(self.uuid)
+        try:
+            self.rank = get_player_network_rank(self.uuid)
+        except:
+            self.rank = "None"
         ##If a profile argument is given.
         data = requests.get(f"https://api.hypixel.net/skyblock/profiles?key={self.API_KEY}&uuid={self.uuid}").json()
         for entry in data["profiles"]:
