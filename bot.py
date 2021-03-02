@@ -68,7 +68,8 @@ modules = [
     "bz",
     "events",
     "guilds",
-    "skyborn"
+    "skyborn",
+    "pets"
 ]
 
 for module in modules:
