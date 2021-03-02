@@ -43,7 +43,7 @@ class Pets(commands.Cog):
         brief="Pets Flipper",
         help=(
             "**stella pets**\n"
-            "Returns a menu for profit/loss from leveling **LEGENDARY** pets."
+            "Returns a menu for profit/loss from leveling **LEGENDARY** pets.\n"
             "Notes: \n "
             "• Calculations take the cheapest BIN for the pet and compares it to the cheapest **[lvl 100]** for that pet.\n"
             "• To navigate the menu, click the reactions."
