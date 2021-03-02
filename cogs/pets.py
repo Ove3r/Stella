@@ -10,7 +10,6 @@ class Pets(commands.Cog):
         self.bot = bot
 
     def pets_flip(self, PETS_CONSTANTS):
-        print(f"{ctx.author.name} sent pets command in {ctx.guild}")
         with open("data/ah.json") as database:
             database = json.load(database)
 
@@ -50,6 +49,7 @@ class Pets(commands.Cog):
         )
     )
     async def pets_calculator(self,ctx):
+        print(f"{ctx.author.name} sent pets command in {ctx.guild}")
         def check(reaction, member): #For Tab Menu
             return member == ctx.author
 
