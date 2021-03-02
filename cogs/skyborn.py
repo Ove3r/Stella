@@ -138,7 +138,7 @@ class Skyborn_Commands(commands.Cog):
                 update_embed.add_field(name="New Commands",value="\u200b",inline=False)
                 update_embed.add_field(name="`stella pets`",value="Calculates Expected Profit/Loss for **Legendary** pets. This takes the lowest BIN pet and compares it to the cheapest **[lvl 100]** pet.")
                 update_embed.add_field(name="`stella mythos`",value="Price checking for Mayor Diana's Mythological Creatures event.",inline=False)
-                update_embed.add_field(name="Links",value="Latest Update: [1.1](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.0.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
+                update_embed.add_field(name="Links",value="Latest Update: [1.1](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.1.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
                 update_embed.set_footer(text="Thanks for using Stella Bot by Over#6203")
                 try:
                     await guild.owner.send(embed=update_embed)
