@@ -7,7 +7,7 @@ from helpers.utils import *
 class Loops(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        #self.ahLoop.start()
+        self.ahLoop.start()
         self.afkLoop.start()
         self.ah_track_loop.start()
 
