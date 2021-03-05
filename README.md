@@ -5,7 +5,7 @@ Discord Bot for Hypixel Skyblock with many functions including player tracking a
 Official Hypixel Forums post can be found [Here](https://bit.ly/2YVdZw2)
 
 
-# Lastest Update ~~ Version 1.1 Pets Command (March 2, 2021)
+# Latest Update ~~ Version 1.1 Pets Command (March 2, 2021)
 
 [Update Notes and Changes](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.1.md)
 
