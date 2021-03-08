@@ -123,7 +123,7 @@ class Player:
                 self.lvl_wolf = list(self.player_data["slayer_bosses"]["wolf"]["claimed_levels"])[-1].split("_")[-1]
             except KeyError:
                 self.xp_wolf = 0
-                self.lvl_spider = 0
+                self.lvl_wolf = 0
             try:
                 self.xp_cata = round(self.player_data["dungeons"]["dungeon_types"]["catacombs"]["experience"])
                 self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
