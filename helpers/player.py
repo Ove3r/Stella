@@ -72,7 +72,7 @@ class Player:
                 self.lvl_mining = 0
             try:
                 self.xp_combat = round(self.player_data["experience_skill_combat"])
-                self.lvl_combat = skill_xp_to_level(self.xp_combat)
+                self.lvl_combat = skill_xp_to_level(self.xp_combat,60)
             except KeyError:
                 self.xp_combat = 0
                 self.lvl_combat = 0
@@ -175,7 +175,7 @@ class Player:
             except KeyError:
                 self.lvl_mining = 0
             try:
-                self.lvl_combat = highest_lvl(data["skyblock_combat"],50)
+                self.lvl_combat = highest_lvl(data["skyblock_combat"],60)
             except KeyError:
                 self.lvl_combat = 0
             try:
