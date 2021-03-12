@@ -190,7 +190,7 @@ class Trackers(commands.Cog):
             if round(user.xp_spider - saved_data['slayers']['xp_spider']) > 0:
                 slayersMessage += f"**Tarantula:** + {'{:,}'.format(round(user.xp_spider - saved_data['slayers']['xp_spider']))} \n"
             if round(user.xp_wolf - saved_data['slayers']['xp_wolf']) > 0:
-                slayersMessage += f"**Revenants:** + {'{:,}'.format(round(user.xp_wolf - saved_data['slayers']['xp_wolf']))} \n"
+                slayersMessage += f"**Sven:** + {'{:,}'.format(round(user.xp_wolf - saved_data['slayers']['xp_wolf']))} \n"
             else:
                 slayersMessage += "No Slayer Changes"
 
