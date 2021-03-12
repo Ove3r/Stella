@@ -369,7 +369,7 @@ def coins_per_bit():
     bzData = requests.get("https://api.hypixel.net/skyblock/bazaar").json()
     #God potion
     try:
-        godPotion = ((min(godPotionPrices))/2000)
+        godPotion = ((min(godPotionPrices))/1500)
         raw["God Potion"] = round(godPotion,3)
     except ValueError:
         pass
