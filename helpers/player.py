@@ -109,6 +109,10 @@ class Player:
             try:
                 self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
                 self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
+                x = -1
+                while self.lvl_zombie == "special":
+                    self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[x].split("_")[-1]
+                    x -= 1
             except KeyError:
                 self.xp_zombie = 0
                 self.lvl_zombie = 0
