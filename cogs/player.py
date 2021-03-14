@@ -82,9 +82,9 @@ class Player_Commands(commands.Cog):
             player_tab.add_field(name=f"Guild: {user.guild}",value="\u200b",inline=False)
         player_tab.add_field(name=f"Skill Average: {user.skill_average}",value="\u200b",inline=False)
         player_tab.add_field(name="Skills", value=user.skills_message, inline=False)
-        if user.api_enabled:
-            user.get_slayer_dungeon_message()
-            player_tab.add_field(name="Slayers",value=user.slayer_message +"\n**Dungeons**\n"+ user.dungeon_message,inline=False)
+        
+        user.get_slayer_dungeon_message()
+        player_tab.add_field(name="Slayers",value=user.slayer_message +"\n**Dungeons**\n"+ user.dungeon_message,inline=False)
         output = await ctx.reply(embed=player_tab)
         await output.add_reaction("<:player:801091911166984232>")
         await output.add_reaction("<:golden_hoe:801205315806167050>")

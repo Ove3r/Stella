@@ -56,6 +56,65 @@ class Player:
             self.api_enabled = False
 
     def get_player_summary(self):
+        try:
+            self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
+            self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
+            x = -1
+            while self.lvl_zombie == "special":
+                self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[x].split("_")[-1]
+                x -= 1
+        except KeyError:
+            self.xp_zombie = 0
+            self.lvl_zombie = 0
+        try:
+            self.xp_spider = self.player_data["slayer_bosses"]["spider"]["xp"]
+            self.lvl_spider = list(self.player_data["slayer_bosses"]["spider"]["claimed_levels"])[-1].split("_")[-1]
+        except KeyError:
+            self.xp_spider = 0
+            self.lvl_spider = 0
+        try:
+            self.xp_wolf = self.player_data["slayer_bosses"]["wolf"]["xp"]
+            self.lvl_wolf = list(self.player_data["slayer_bosses"]["wolf"]["claimed_levels"])[-1].split("_")[-1]
+        except KeyError:
+            self.xp_wolf = 0
+            self.lvl_wolf = 0
+        try:
+            self.xp_cata = round(self.player_data["dungeons"]["dungeon_types"]["catacombs"]["experience"])
+            self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
+        except Exception as e:
+            self.xp_cata = 0
+            self.lvl_cata = 0
+        try:
+            self.xp_healer = round(self.player_data["dungeons"]["player_classes"]["healer"]["experience"])
+            self.lvl_healer = skill_xp_to_level(self.xp_healer,xp_table="cata")
+        except:
+            self.xp_healer = 0
+            self.lvl_healer = 0
+        try:
+            self.xp_mage = round(self.player_data["dungeons"]["player_classes"]["mage"]["experience"])
+            self.lvl_mage = skill_xp_to_level(self.xp_mage,xp_table="cata")
+        except:
+            self.xp_mage = 0
+            self.lvl_mage = 0
+        try:
+            self.xp_berserk = round(self.player_data["dungeons"]["player_classes"]["berserk"]["experience"])
+            self.lvl_berserk = skill_xp_to_level(self.xp_berserk,xp_table="cata")
+        except:
+            self.xp_berserk = 0
+            self.lvl_berserk = 0
+        try:
+            self.xp_archer = round(self.player_data["dungeons"]["player_classes"]["archer"]["experience"])
+            self.lvl_archer = skill_xp_to_level(self.xp_archer,xp_table="cata")
+        except:
+            self.xp_archer = 0
+            self.lvl_archer = 0
+        try:
+            self.xp_tank = round(self.player_data["dungeons"]["player_classes"]["tank"]["experience"])
+            self.lvl_tank = skill_xp_to_level(self.xp_tank,xp_table="cata")
+        except:
+            self.xp_tank = 0
+            self.lvl_tank = 0
+
         if self.api_enabled:
             self.xp_farming = round(self.player_data.get("experience_skill_farming",0))
             self.lvl_farming = skill_xp_to_level(self.xp_farming, 60)
@@ -63,85 +122,16 @@ class Player:
             self.lvl_mining = skill_xp_to_level(self.xp_mining, 60)
             self.xp_combat = round(self.player_data.get("experience_skill_combat",0))
             self.lvl_combat = skill_xp_to_level(self.xp_combat,60)
-            
-            
             self.xp_foraging = round(self.player_data.get("experience_skill_foraging",0))
             self.lvl_foraging = skill_xp_to_level(self.xp_foraging)
-            
-            
             self.xp_fishing = round(self.player_data.get("experience_skill_fishing",0))
-            self.lvl_fishing = skill_xp_to_level(self.xp_fishing)
-            
-           
+            self.lvl_fishing = skill_xp_to_level(self.xp_fishing)   
             self.xp_enchanting = round(self.player_data.get("experience_skill_enchanting",0))
-            self.lvl_enchanting = skill_xp_to_level(self.xp_enchanting, 60)
-            
-            
+            self.lvl_enchanting = skill_xp_to_level(self.xp_enchanting, 60) 
             self.xp_alchemy = round(self.player_data.get("experience_skill_alchemy",0))
-            self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)
-            
-            
+            self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)         
             self.xp_taming = round(self.player_data.get("experience_skill_taming",0))
             self.lvl_taming = skill_xp_to_level(self.xp_taming)
-            
-            try:
-                self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
-                self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
-                x = -1
-                while self.lvl_zombie == "special":
-                    self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[x].split("_")[-1]
-                    x -= 1
-            except KeyError:
-                self.xp_zombie = 0
-                self.lvl_zombie = 0
-            try:
-                self.xp_spider = self.player_data["slayer_bosses"]["spider"]["xp"]
-                self.lvl_spider = list(self.player_data["slayer_bosses"]["spider"]["claimed_levels"])[-1].split("_")[-1]
-            except KeyError:
-                self.xp_spider = 0
-                self.lvl_spider = 0
-            try:
-                self.xp_wolf = self.player_data["slayer_bosses"]["wolf"]["xp"]
-                self.lvl_wolf = list(self.player_data["slayer_bosses"]["wolf"]["claimed_levels"])[-1].split("_")[-1]
-            except KeyError:
-                self.xp_wolf = 0
-                self.lvl_wolf = 0
-            try:
-                self.xp_cata = round(self.player_data["dungeons"]["dungeon_types"]["catacombs"]["experience"])
-                self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
-            except Exception as e:
-                self.xp_cata = 0
-                self.lvl_cata = 0
-            try:
-                self.xp_healer = round(self.player_data["dungeons"]["player_classes"]["healer"]["experience"])
-                self.lvl_healer = skill_xp_to_level(self.xp_healer,xp_table="cata")
-            except:
-                self.xp_healer = 0
-                self.lvl_healer = 0
-            try:
-                self.xp_mage = round(self.player_data["dungeons"]["player_classes"]["mage"]["experience"])
-                self.lvl_mage = skill_xp_to_level(self.xp_mage,xp_table="cata")
-            except:
-                self.xp_mage = 0
-                self.lvl_mage = 0
-            try:
-                self.xp_berserk = round(self.player_data["dungeons"]["player_classes"]["berserk"]["experience"])
-                self.lvl_berserk = skill_xp_to_level(self.xp_berserk,xp_table="cata")
-            except:
-                self.xp_berserk = 0
-                self.lvl_berserk = 0
-            try:
-                self.xp_archer = round(self.player_data["dungeons"]["player_classes"]["archer"]["experience"])
-                self.lvl_archer = skill_xp_to_level(self.xp_archer,xp_table="cata")
-            except:
-                self.xp_archer = 0
-                self.lvl_archer = 0
-            try:
-                self.xp_tank = round(self.player_data["dungeons"]["player_classes"]["tank"]["experience"])
-                self.lvl_tank = skill_xp_to_level(self.xp_tank,xp_table="cata")
-            except:
-                self.xp_tank = 0
-                self.lvl_tank = 0
 
             self.skill_xp_list = [self.xp_farming, self.xp_mining, self.xp_combat, self.xp_foraging, self.xp_fishing, self.xp_enchanting, self.xp_alchemy, self.xp_taming]
             self.total_xp = sum(self.skill_xp_list)
@@ -156,7 +146,7 @@ class Player:
             self.lvl_enchanting = min(data.get("skyblock_augmentation",0),60) 
             self.lvl_alchemy = min(data.get("skyblock_concoctor",0),50)
             self.lvl_taming = min(data.get("skyblock_domesticator",0),50)
-            
+
         self.skill_lvl_list = [self.lvl_farming, self.lvl_mining, self.lvl_combat, self.lvl_foraging, self.lvl_fishing, self.lvl_enchanting, self.lvl_alchemy, self.lvl_taming]
         self.skill_average = sum(self.skill_lvl_list)/len(self.skill_lvl_list)
 
