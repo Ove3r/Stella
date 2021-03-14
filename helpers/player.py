@@ -36,14 +36,13 @@ class Player:
         ##If no profile argument is given, fetches most recent profile.
         else:
             if len(data) > 1:
-                initial = data["profiles"][0]["members"][self.uuid]["last_save"]
+                initial = data["profiles"][0]["members"][self.uuid].get("last_save",0)
                 for entry in data["profiles"]:
-                    if entry["members"][self.uuid]["last_save"] >= initial:
+                    if entry["members"][self.uuid].get("last_save",0) >= initial:
                         initial = entry["members"][self.uuid]["last_save"]
                         self.fruit = entry["cute_name"]
                         self.profile_id = entry["profile_id"]
                         self.player_data = entry["members"][self.uuid]
-
             else:
                 self.fruit = data["profiles"][0]["cute_name"]
                 self.profile_id = data["profiles"][0]["members"]["profile_id"]
@@ -58,54 +57,33 @@ class Player:
 
     def get_player_summary(self):
         if self.api_enabled:
-            try:
-                self.xp_farming = round(self.player_data["experience_skill_farming"])
-                self.lvl_farming = skill_xp_to_level(self.xp_farming, 60)
-            except KeyError:
-                self.xp_farming = 0
-                self.lvl_farming = 0
-            try:
-                self.xp_mining = round(self.player_data["experience_skill_mining"])
-                self.lvl_mining = skill_xp_to_level(self.xp_mining, 60)
-            except KeyError:
-                self.xp_mining = 0
-                self.lvl_mining = 0
-            try:
-                self.xp_combat = round(self.player_data["experience_skill_combat"])
-                self.lvl_combat = skill_xp_to_level(self.xp_combat,60)
-            except KeyError:
-                self.xp_combat = 0
-                self.lvl_combat = 0
-            try:
-                self.xp_foraging = round(self.player_data["experience_skill_foraging"])
-                self.lvl_foraging = skill_xp_to_level(self.xp_foraging)
-            except KeyError:
-                self.xp_foraging = 0
-                self.lvl_foraging = 0
-            try:
-                self.xp_fishing = round(self.player_data["experience_skill_fishing"])
-                self.lvl_fishing = skill_xp_to_level(self.xp_fishing)
-            except KeyError:
-                self.xp_fishing = 0
-                self.lvl_fishing = 0
-            try:
-                self.xp_enchanting = round(self.player_data["experience_skill_enchanting"])
-                self.lvl_enchanting = skill_xp_to_level(self.xp_enchanting, 60)
-            except KeyError:
-                self.xp_enchanting = 0
-                self.lvl_enchanting = 0
-            try:
-                self.xp_alchemy = round(self.player_data["experience_skill_alchemy"])
-                self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)
-            except KeyError:
-                self.xp_alchemy = 0
-                self.lvl_alchemy = 0
-            try:
-                self.xp_taming = round(self.player_data["experience_skill_taming"])
-                self.lvl_taming = skill_xp_to_level(self.xp_taming)
-            except KeyError:
-                self.xp_taming = 0
-                self.lvl_taming = 0
+            self.xp_farming = round(self.player_data.get("experience_skill_farming",0))
+            self.lvl_farming = skill_xp_to_level(self.xp_farming, 60)
+            self.xp_mining = round(self.player_data.get("experience_skill_mining",0))
+            self.lvl_mining = skill_xp_to_level(self.xp_mining, 60)
+            self.xp_combat = round(self.player_data.get("experience_skill_combat",0))
+            self.lvl_combat = skill_xp_to_level(self.xp_combat,60)
+            
+            
+            self.xp_foraging = round(self.player_data.get("experience_skill_foraging",0))
+            self.lvl_foraging = skill_xp_to_level(self.xp_foraging)
+            
+            
+            self.xp_fishing = round(self.player_data.get("experience_skill_fishing",0))
+            self.lvl_fishing = skill_xp_to_level(self.xp_fishing)
+            
+           
+            self.xp_enchanting = round(self.player_data.get("experience_skill_enchanting",0))
+            self.lvl_enchanting = skill_xp_to_level(self.xp_enchanting, 60)
+            
+            
+            self.xp_alchemy = round(self.player_data.get("experience_skill_alchemy",0))
+            self.lvl_alchemy = skill_xp_to_level(self.xp_alchemy)
+            
+            
+            self.xp_taming = round(self.player_data.get("experience_skill_taming",0))
+            self.lvl_taming = skill_xp_to_level(self.xp_taming)
+            
             try:
                 self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
                 self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
@@ -170,39 +148,15 @@ class Player:
 
         else:
             data = requests.get(f"https://api.hypixel.net/player?key={self.API_KEY}&uuid={self.uuid}").json()["player"]["achievements"]
-            try:
-                self.lvl_farming = highest_lvl(data["skyblock_harvester"],60)
-            except KeyError:
-                self.lvl_farming = 0
-            try:
-                self.lvl_mining = highest_lvl(data["skyblock_excavator"],60)
-            except KeyError:
-                self.lvl_mining = 0
-            try:
-                self.lvl_combat = highest_lvl(data["skyblock_combat"],60)
-            except KeyError:
-                self.lvl_combat = 0
-            try:
-                self.lvl_foraging = highest_lvl(data["skyblock_gatherer"],50)
-            except KeyError:
-                self.lvl_foraging = 0
-            try:
-                self.lvl_fishing = highest_lvl(data["skyblock_angler"],50)
-            except KeyError:
-                self.lvl_fishing = 0
-            try:
-                self.lvl_enchanting = highest_lvl(data["skyblock_augmentation"],60)
-            except KeyError:
-                self.lvl_enchanting = 0
-            try:
-                self.lvl_alchemy = highest_lvl(data["skyblock_concoctor"],50)
-            except KeyError:
-                self.lvl_alchemy = 0
-            try:
-                self.lvl_taming = highest_lvl(data["skyblock_domesticator"],50)
-            except KeyError:
-                self.lvl_taming = 0
-
+            self.lvl_farming = min(data.get("skyblock_harvester",0),60)
+            self.lvl_mining = min(data.get("skyblock_excavator",0),60)
+            self.lvl_combat = min(data.get("skyblock_combat",0),60)      
+            self.lvl_foraging = min(data.get("skyblock_gatherer",0),50)       
+            self.lvl_fishing = min(data.get("skyblock_angler",0),50)  
+            self.lvl_enchanting = min(data.get("skyblock_augmentation",0),60) 
+            self.lvl_alchemy = min(data.get("skyblock_concoctor",0),50)
+            self.lvl_taming = min(data.get("skyblock_domesticator",0),50)
+            
         self.skill_lvl_list = [self.lvl_farming, self.lvl_mining, self.lvl_combat, self.lvl_foraging, self.lvl_fishing, self.lvl_enchanting, self.lvl_alchemy, self.lvl_taming]
         self.skill_average = sum(self.skill_lvl_list)/len(self.skill_lvl_list)
 
