@@ -1,7 +1,6 @@
 {
   "name": "Cobblestone",
-  "summary_description":"cobblestone summary description",
-  "tabs": 2,
+  "summary_description":"Cobblestone Collection/Item",
   "pages":[
     {
       "title": "Cobblestone",
@@ -19,19 +18,107 @@
       ]
     },
     {
-      "title": "Cobblestone ~ Bazaar",
-      "page_description":"Bazaar",
-      "thumbnail": "https://static.wikia.nocookie.net/hypixel-skyblock/images/c/c8/Bazaar.png/revision/latest?cb=20200729000145",
+      "function": "bazaar('COBBLESTONE',title='Cobblestone ~ Bazaar',name='Cobblestone')"
+    },
+    {
+      "title": "Collection Tier 1",
       "fields":[
         {
-          "field_title": "Bazaar Instant Sell Price",
-          "field_description": "[Figure out how to do an instant sell price here]"
-        },
-        {
-          "field_title": "Bazaar Instant Buy Price",
-          "field_description": "[Figure this out too]"
+          "field_title": "50 Collection",
+          "field_description": "See **Cobblestone Minion**"
         }
-      ]
+      ],
+      "image": "https://i.imgur.com/qbF1Ca8.png"
+    },
+    {
+      "title": "Collection Tier 2",
+      "fields":[
+        {
+          "field_title": "100 Collection",
+          "field_description": "See **Stone Platform**"
+        }
+      ],
+      "image": "https://i.imgur.com/ez63wWN.png"
+    },
+    {
+      "title": "Collection Tier 3",
+      "fields":[
+        {
+          "field_title": "250 Collection",
+          "field_description": "See **Auto Smelter**"
+        }
+      ],
+      "image": "https://i.imgur.com/OJ3qLQT.png"
+    },
+    {
+      "title": "Collection Tier 4",
+      "fields":[
+        {
+          "field_title": "1,000 Collection",
+          "field_description": "See **Enchanted Cobblestone**"
+        }
+      ],
+      "image": "https://i.imgur.com/kd4uk0G.png"
+    },
+    {
+      "title": "Collection Tier 5",
+      "fields":[
+        {
+          "field_title": "2,500 Collection",
+          "field_description": "See **Compactor**"
+        }
+      ],
+      "image": "https://i.imgur.com/gv8NgN4.png"
+    },
+    {
+      "title": "Collection Tier 6",
+      "fields":[
+        {
+          "field_title": "5,000 Collection",
+          "field_description": "See **Silverfish Pet**"
+        }
+      ],
+      "image": "https://i.imgur.com/T3ENlq4.png"
+    },
+    {
+      "title": "Collection Tier 7",
+      "fields":[
+        {
+          "field_title": "10,000 Collection",
+          "field_description": "See **Miner's Outfit**"
+        }
+      ],
+      "image": "https://i.imgur.com/ixAlOrg.gif"
+    },
+    {
+      "title": "Collection Tier 8",
+      "fields":[
+        {
+          "field_title": "25,000 Collection",
+          "field_description": "See **Hyper Furnace**"
+        }
+      ],
+      "image": "https://i.imgur.com/QBHXeJj.png"
+    },
+    {
+      "title": "Collection Tier 9",
+      "fields":[
+        {
+          "field_title": "40,000 Collection",
+          "field_description": "See **Haste Ring**"
+        }
+      ],
+      "image": "https://i.imgur.com/tZa0dFT.png"
+    },
+    {
+      "title": "Collection Tier 10",
+      "fields":[
+        {
+          "field_title": "70,000 Collection",
+          "field_description": "See **Super Compactor 3000**"
+        }
+      ],
+      "image": "https://i.imgur.com/1Cc962K.png"
     }
   ]
 }

@@ -20,6 +20,13 @@ async def on_ready():
     print(f"Total Member Count: {'{:,}'.format(member_count)}")
     await bot.change_presence(activity=discord.Game(name=" Stella Bot Rewrite"))
 
+@bot.event
+async def on_message(message):
+    if "stella" in message.content.lower() and "cute" in message.content.lower():
+        print(f"{message.author.display_name} sent a cute message")
+        await message.reply(f"{message.author.display_name}'s cuter.")
+    await bot.process_commands(message)
+
 @bot.command(name="help",
     brief="Returns this menu",
     help=(
@@ -58,6 +65,7 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.errors.CommandNotFound):
         await ctx.send("Unknown Command. `stella help` for a list of commands.")
     else:
+        print(error)
         await ctx.send("An error is being ignored. If you believe this is a bug contact Over#6203.")
 
 modules = [
@@ -69,7 +77,8 @@ modules = [
     "events",
     "guilds",
     "skyborn",
-    "pets"
+    "pets",
+    "atlas"
 ]
 
 for module in modules:
