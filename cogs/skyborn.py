@@ -90,10 +90,9 @@ class Skyborn_Commands(commands.Cog):
                 applicantMessage.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{applicant.uuid}")
                 applicantMessage.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
                 applicantMessage.set_footer(text="Stella Bot by Over#6203")
-
         else:
             await ctx.reply(f"`{applicant.name}` does not meet the skill average requirement. \nTo force the poll type `stella poll {applicant.name} force`")
-            applicantMessage=discord.Embed(title=f"SkyBorn Application ~~ `{applicant.name}`", description=f"Your application to Skyborn has been declined for the following reason(s): \nSkill Average does not meet requirement of {skillRequirement}.", color=0xdc6565)
+            applicantMessage=discord.Embed(title=f"SkyBorn Application ~~ `{applicant.name}`", description=f"Your application to Skyborn has been declined for the following reason(s): \nSkill Average does not meet requirement of {key.skyborn_skill_requirement}.", color=0xdc6565)
             applicantMessage.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{applicant.uuid}")
             applicantMessage.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
             applicantMessage.set_footer(text="Stella Bot by Over#6203")
@@ -105,6 +104,8 @@ class Skyborn_Commands(commands.Cog):
             await user.send(embed=applicantMessage)
             await ctx.reply(f"Applicant {application[1]} has received the following response message",embed=applicantMessage)
         except Exception as e:
+            print(e)
+            print(type(e))
             await ctx.reply(f"Error sending response message to applicant: {e}")
 
     @commands.command(name="reqs",aliases=["req"],

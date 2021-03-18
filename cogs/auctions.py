@@ -4,7 +4,12 @@ import requests, json, statistics, random
 from helpers import key
 from helpers.ahparse import *
 from helpers.utils import *
+from googleapiclient.discovery import build
 
+def google_search(search_term, api_key, cse_id, **kwargs):
+    service = build("customsearch", "v1", developerKey=api_key)
+    res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
+    return res
 
 class Auctions(commands.Cog):
     def __init__(self, bot):
@@ -183,10 +188,19 @@ class Auctions(commands.Cog):
     )
     async def dungeon_coins(self,ctx, floor):
         print(f"{ctx.author.name} sent floor command in {ctx.guild} for floor {floor}")
-        if int(floor) in range(1,8):
-            books, armor = get_dungeon(floor)
-        else:
-            await ctx.reply("Improper usage. See `stella help floor`.")
+        try:
+            if int(floor) in range(1,8):
+                books, armor = get_dungeon(floor)
+            else:
+                await ctx.reply("Improper usage. See `stella help floor`.")
+                return
+        except:
+            result = google_search(floor, key.google_api_key, key.search_engine_id)
+            embed=discord.Embed(title=f"{floor}", description=f"[{result['queries']['request'][0]['title']}]({result['items'][0]['link']})", color=0xdc6565)
+            embed.add_field(name=result['items'][0]['title'],value=f"```{result['items'][0]['snippet']}```")
+            embed.set_footer(text="Stella Bot by Over#6203 ~ Easter Eggs!")
+            embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url,url="https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+            await ctx.reply(embed=embed)
             return
         embed=discord.Embed(title=f"Dungeon Floor {floor}", description="End of Dungeon Prices", color=0xdc6565)
         embed.add_field(name="Books", value=books,inline=True)
