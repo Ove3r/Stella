@@ -1,6 +1,9 @@
 import discord
 from discord.ext import commands
 from helpers import key
+import traceback
+import sys
+
 def get_prefix(bot,message):
     prefixes = ['stella ','/sb ','/Sb ', 'Stella ','rw ']
     return commands.when_mentioned_or(*prefixes)(bot, message)
@@ -18,7 +21,7 @@ async def on_ready():
         print(f"{server} ({'{:,}'.format(len(server.members))}) owned by {server.owner}")
         member_count += len(server.members)
     print(f"Total Member Count: {'{:,}'.format(member_count)}")
-    await bot.change_presence(activity=discord.Game(name=" Stella Bot Rewrite"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name= f" {len(bot.commands)} commands from {'{:,}'.format(member_count)} users in {len(bot.guilds)} servers."))
 
 @bot.event
 async def on_message(message):
@@ -56,6 +59,7 @@ async def help(ctx,args=None):
         help_embed.add_field(name="Unknown Command",value="For a list of commands type `stella help`")
     await ctx.author.send(embed=help_embed)
 
+
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, discord.ext.commands.errors.CommandOnCooldown):
@@ -65,8 +69,17 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.errors.CommandNotFound):
         await ctx.send("Unknown Command. `stella help` for a list of commands.")
     else:
-        print(error)
-        await ctx.send("An error is being ignored. If you believe this is a bug contact Over#6203.")
+        with open("error.txt","w") as file:
+            traceback.print_exception(type(error), error, error.__traceback__, file=file)
+            file.write(f"\nContext Object: {ctx.message}")
+            file.write(f"\nCommand Message: {ctx.message.content}")
+        
+        channel = bot.get_channel(823008000796786689)
+       
+
+        await channel.send(f"Command Error Traceback Invoked By: {ctx.author} <@222116366872739843>", file=discord.File("error.txt"))
+        await ctx.reply("An error is being ignored and has been logged (also shown below). Over#6203 will get to this eventually!",file=discord.File("error.txt"))
+        
 
 modules = [
     "loops",
