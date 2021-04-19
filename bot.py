@@ -62,12 +62,24 @@ async def help(ctx,args=None):
 
 @bot.event
 async def on_command_error(ctx, error):
-    if isinstance(error, discord.ext.commands.errors.CommandOnCooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f"This command is on cooldown for {ctx.author.display_name}. Try again later.")
     elif isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('MissingRequiredArgument Error. `stella help` for more info.')
-    elif isinstance(error, commands.errors.CommandNotFound):
+    elif isinstance(error, commands.CommandNotFound):
         await ctx.send("Unknown Command. `stella help` for a list of commands.")
+    elif isinstance(error, commands.CommandInvokeError):
+        if error.original.__class__ == discord.Forbidden:
+            messages = {
+                50003: "This cannot be done in a DM Channel.",
+                50013: "Missing Permissions (Reactions or Message Related Permissions)."
+            }
+
+            error = error.original
+            if error.code in messages:
+                await ctx.send(messages[error.code])
+            else:
+                await ctx.send(f"CommandInvokeError {error.text}")
     else:
         with open("error.txt","w") as file:
             traceback.print_exception(type(error), error, error.__traceback__, file=file)
