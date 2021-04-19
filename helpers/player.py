@@ -39,10 +39,10 @@ class Player:
         # If no profile argument is given, fetches most recent profile.
         else:
             if len(data) > 1:
-                initial = data["profiles"][0]["members"][self.uuid].get("last_save",0)
+                initial = data["profiles"][0]["members"][self.uuid].get("last_save", 0)
                 for entry in data["profiles"]:
-                    if entry["members"][self.uuid].get("last_save",0) >= initial:
-                        initial = entry["members"][self.uuid]["last_save"]
+                    if entry["members"][self.uuid].get("last_save", 0) >= initial:
+                        initial = entry["members"][self.uuid].get("last_save", 0)
                         self.fruit = entry["cute_name"]
                         self.profile_id = entry["profile_id"]
                         self.player_data = entry["members"][self.uuid]
