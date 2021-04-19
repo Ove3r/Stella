@@ -297,35 +297,35 @@ class Guild:
                 continue
             break
         try:
-            self.average_farming += highest_lvl(data["skyblock_harvester"],60)
+            self.average_farming += min(data["skyblock_harvester"],60)
         except KeyError:
             self.average_farming += 0
         try:
-            self.average_mining += highest_lvl(data["skyblock_excavator"],60)
+            self.average_mining += min(data["skyblock_excavator"],60)
         except KeyError:
             self.average_mining += 0
         try:
-            self.average_combat += highest_lvl(data["skyblock_combat"],50)
+            self.average_combat += min(data["skyblock_combat"],60)
         except KeyError:
             self.average_combat += 0
         try:
-            self.average_foraging += highest_lvl(data["skyblock_gatherer"],50)
+            self.average_foraging += min(data["skyblock_gatherer"],50)
         except KeyError:
             self.average_foraging += 0
         try:
-            self.average_fishing += highest_lvl(data["skyblock_angler"],50)
+            self.average_fishing += min(data["skyblock_angler"],50)
         except KeyError:
             self.average_fishing += 0
         try:
-            self.average_enchanting += highest_lvl(data["skyblock_augmentation"],60)
+            self.average_enchanting += min(data["skyblock_augmentation"],60)
         except KeyError:
             self.average_enchanting += 0
         try:
-            self.average_alchemy += highest_lvl(data["skyblock_concoctor"],50)
+            self.average_alchemy += min(data["skyblock_concoctor"],50)
         except KeyError:
             self.average_alchemy += 0
         try:
-            self.average_taming += highest_lvl(data["skyblock_domesticator"],50)
+            self.average_taming += min(data["skyblock_domesticator"],50)
         except KeyError:
             self.average_taming += 0
 
