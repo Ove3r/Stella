@@ -14,18 +14,21 @@ class Player:
         self.name = getName(self.uuid)
         self.profile_list = []
         self.guild = getGuild(self.uuid)
+
+        # Network Rank
         try:
             self.rank = get_player_network_rank(self.uuid)
         except:
             self.rank = "None"
-        ##If a profile argument is given.
+
+        # If a profile argument is given.
         data = requests.get(f"https://api.hypixel.net/skyblock/profiles?key={self.API_KEY}&uuid={self.uuid}").json()
         for entry in data["profiles"]:
             self.profile_list.append(entry["cute_name"])
 
         if profile:
             for entry in data["profiles"]:
-                if profile.lower() == entry["cute_name"].lower():
+                if profile.lower() == entry.get("cute_name").lower():
                     self.fruit = entry["cute_name"]
                     self.profile_id = entry["profile_id"]
                     self.player_data = entry["members"][self.uuid]
@@ -33,7 +36,7 @@ class Player:
             if not hasattr(self, "fruit"):
                raise ProfileNotFound
 
-        ##If no profile argument is given, fetches most recent profile.
+        # If no profile argument is given, fetches most recent profile.
         else:
             if len(data) > 1:
                 initial = data["profiles"][0]["members"][self.uuid].get("last_save",0)
@@ -47,7 +50,8 @@ class Player:
                 self.fruit = data["profiles"][0]["cute_name"]
                 self.profile_id = data["profiles"][0]["members"]["profile_id"]
                 self.player_data = data["profiles"][0]["members"][self.uuid]
-        #API Check
+
+        # API Check
         set1 = set(self.player_data)
         set2 = set(["experience_skill_combat","experience_skill_mining","experience_skill_alchemy","experience_skill_farming","experience_skill_enchanting","experience_skill_fishing","experience_skill_foraging"])
         if set1.intersection(set2):
@@ -56,65 +60,36 @@ class Player:
             self.api_enabled = False
 
     def get_player_summary(self):
-        try:
-            self.xp_zombie = self.player_data["slayer_bosses"]["zombie"]["xp"]
-            self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[-1].split("_")[-1]
-            x = -1
-            while self.lvl_zombie == "special":
-                self.lvl_zombie = list(self.player_data["slayer_bosses"]["zombie"]["claimed_levels"])[x].split("_")[-1]
-                x -= 1
-        except KeyError:
-            self.xp_zombie = 0
-            self.lvl_zombie = 0
-        try:
-            self.xp_spider = self.player_data["slayer_bosses"]["spider"]["xp"]
-            self.lvl_spider = list(self.player_data["slayer_bosses"]["spider"]["claimed_levels"])[-1].split("_")[-1]
-        except KeyError:
-            self.xp_spider = 0
-            self.lvl_spider = 0
-        try:
-            self.xp_wolf = self.player_data["slayer_bosses"]["wolf"]["xp"]
-            self.lvl_wolf = list(self.player_data["slayer_bosses"]["wolf"]["claimed_levels"])[-1].split("_")[-1]
-        except KeyError:
-            self.xp_wolf = 0
-            self.lvl_wolf = 0
-        try:
-            self.xp_cata = round(self.player_data["dungeons"]["dungeon_types"]["catacombs"]["experience"])
-            self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
-        except Exception as e:
-            self.xp_cata = 0
-            self.lvl_cata = 0
-        try:
-            self.xp_healer = round(self.player_data["dungeons"]["player_classes"]["healer"]["experience"])
-            self.lvl_healer = skill_xp_to_level(self.xp_healer,xp_table="cata")
-        except:
-            self.xp_healer = 0
-            self.lvl_healer = 0
-        try:
-            self.xp_mage = round(self.player_data["dungeons"]["player_classes"]["mage"]["experience"])
-            self.lvl_mage = skill_xp_to_level(self.xp_mage,xp_table="cata")
-        except:
-            self.xp_mage = 0
-            self.lvl_mage = 0
-        try:
-            self.xp_berserk = round(self.player_data["dungeons"]["player_classes"]["berserk"]["experience"])
-            self.lvl_berserk = skill_xp_to_level(self.xp_berserk,xp_table="cata")
-        except:
-            self.xp_berserk = 0
-            self.lvl_berserk = 0
-        try:
-            self.xp_archer = round(self.player_data["dungeons"]["player_classes"]["archer"]["experience"])
-            self.lvl_archer = skill_xp_to_level(self.xp_archer,xp_table="cata")
-        except:
-            self.xp_archer = 0
-            self.lvl_archer = 0
-        try:
-            self.xp_tank = round(self.player_data["dungeons"]["player_classes"]["tank"]["experience"])
-            self.lvl_tank = skill_xp_to_level(self.xp_tank,xp_table="cata")
-        except:
-            self.xp_tank = 0
-            self.lvl_tank = 0
+        # Slayers
+        slayer_data = self.player_data.get("slayer_bosses")
+        self.xp_zombie = slayer_data.get("zombie").get("xp", 0)
+        self.lvl_zombie = skill_xp_to_level(self.xp_zombie, xp_table="zombie")
+        self.xp_spider = slayer_data.get("spider").get("xp", 0)
+        self.lvl_spider = skill_xp_to_level(self.xp_spider, xp_table="spider")
+        self.xp_wolf = slayer_data.get("wolf").get("xp", 0)
+        self.lvl_wolf = skill_xp_to_level(self.xp_wolf, xp_table="wolf")
 
+        # Cata
+        dungeons_data = self.player_data.get("dungeons")
+
+        self.xp_cata = round(dungeons_data.get("dungeon_types").get("catacombs").get("experience", 0))
+        self.lvl_cata = skill_xp_to_level(self.xp_cata, xp_table="cata")
+
+        # Dungeons Classes
+        dungeons_data = dungeons_data.get("player_classes")
+
+        self.xp_healer = round(dungeons_data.get("healer").get("experience", 0))
+        self.lvl_healer = skill_xp_to_level(self.xp_healer, xp_table="cata")
+        self.xp_mage = round(dungeons_data.get("mage").get("experience", 0))
+        self.lvl_mage = skill_xp_to_level(self.xp_mage, xp_table="cata")
+        self.xp_berserk = round(dungeons_data.get("berserk").get("experience", 0))
+        self.lvl_berserk = skill_xp_to_level(self.xp_berserk, xp_table="cata")
+        self.xp_archer = round(dungeons_data.get("archer").get("experience", 0))
+        self.lvl_archer = skill_xp_to_level(self.xp_archer, xp_table="cata")
+        self.xp_tank = round(dungeons_data.get("tank").get("experience", 0))
+        self.lvl_tank = skill_xp_to_level(self.xp_tank, xp_table="cata")
+        
+        # Skills
         if self.api_enabled:
             self.xp_farming = round(self.player_data.get("experience_skill_farming",0))
             self.lvl_farming = skill_xp_to_level(self.xp_farming, 60)
@@ -192,7 +167,7 @@ class Player:
             f"<:spawn_egg:810606172997812258>**Taming: ** {self.lvl_taming}\n"
             )
 
-        return
+        return self.skills_message
 
     def get_slayer_dungeon_message(self):
         self.slayer_message = (
@@ -209,7 +184,8 @@ class Player:
         f"<:bow:810607983507406939>**Archer:** {self.lvl_archer} ⮕ ({'{:,}'.format(self.xp_archer)})\n"
         f"<:leather_chestplate:810608291083190352>**Tank:** {self.lvl_tank} ⮕ ({'{:,}'.format(self.xp_tank)})\n"
         )
-        return
+
+        return self.slayer_message, self.dungeon_message
 
     def get_jacob_summary(self):
         recent_contests = ""
@@ -250,7 +226,8 @@ class Player:
         except:
             perks += "**Contests Participated: ** 0\n"
         self.jacob_perks = perks
-        return
+        
+        return self.jacob_summary
 
     def get_fishing_stats(self):
         self.fishing_stats = constants_fishing.FISHING_STATS()
@@ -277,6 +254,8 @@ class Player:
                     self.fishing_messages["Winter Sea Creatures"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
                 elif entry["category"] == "Marina":
                     self.fishing_messages["Marina Sharks"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
+
+                    
 class Guild:
     def __init__(self,guild):
         self.API_KEY = key.API_KEY
