@@ -4,6 +4,7 @@ from discord.ext import commands
 from helpers.utils import *
 from helpers.key import *
 from helpers.player import Player
+from pymongo import MongoClient
 
 class Trackers(commands.Cog):
     def __init__(self, bot):
@@ -70,18 +71,34 @@ class Trackers(commands.Cog):
             await ctx.reply(embed=embed)
             return
 
-        with open("data/afk.json") as afk_track:
-            data = json.load(afk_track)
-        with open("data/afk.json","w") as afk_track:
-            entry = {
-                "player": name,
-                "uuid": uuid,
-                "discord_id": ctx.author.id
-            }
-            data["tracking"].append(entry)
-            afk_track.write(json.dumps(data))
+        location = get_player_status(uuid)
 
-        embed=discord.Embed(title="AFK Tracker", description=f"I will DM you if `{name}` is no longer on a personal island.", color=0xdc6565)
+        if not location:
+            await ctx.reply(f"Player `{name}` is not online.")
+            return
+        if location == "Other":
+            await ctx.reply(f"Player `{name}` is not playing Skyblock.")
+            return
+        
+
+        # Mongodb
+        cluster = MongoClient(key.MONGODB_URL)
+        db = cluster["stella"]
+        collection = db["afk"]
+
+        post = {
+            "discord_id": ctx.author.id,
+            "uuid": uuid,
+            "name": name, 
+            "starting_time": time.time(),
+            "location": location
+        }
+
+        collection.insert_one(post)
+
+
+
+        embed=discord.Embed(title="AFK Tracker", description=f"I will DM you if `{name}` is no longer on `{location}` island.", color=0xdc6565)
         embed.set_footer(text="Stella Bot by Over#6203 ◆ AFK Tracker refreshes every minute")
         embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{uuid}")
         await ctx.reply(embed=embed)
