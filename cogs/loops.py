@@ -1,10 +1,10 @@
 import discord
 from discord.ext import tasks, commands
-import requests, json
+import requests, json, time, threading
 from helpers import key
 from helpers.utils import *
 from pymongo import MongoClient
-import time
+
 
 class Loops(commands.Cog):
     def __init__(self, bot):
@@ -13,21 +13,27 @@ class Loops(commands.Cog):
         self.afkLoop.start()
         self.ah_track_loop.start()
 
-    @tasks.loop(seconds=300)
-    async def ahLoop(self):
+    def auction(self):
         API_KEY = key.API_KEY
-        index = requests.get(f"https://api.hypixel.net/skyblock/auctions?key={key.API_KEY}&page=0").json()["totalPages"]
+        index = requests.get(f"https://api.hypixel.net/skyblock/auctions?key={API_KEY}&page=0").json()["totalPages"]
         database = {"auctions":[]}
-        await self.bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = " AH Database Refresh"))
+        # await self.bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = " AH Database Refresh"))
         while index >= 0:
-            data = requests.get(f"https://api.hypixel.net/skyblock/auctions?key={key.API_KEY}&page={index}").json().get("auctions",[])
-            database["auctions"][0:0] = data
-            index -= 1
+            try:
+                data = requests.get(f"https://api.hypixel.net/skyblock/auctions?key={API_KEY}&page={index}").json()["auctions"]
+                database["auctions"][0:0] = data
+                index -= 1
+            except:
+                pass
         with open("data/ah.json","w") as file:
             file.write(json.dumps(database))
-            file.close()
+
         print(f"{len(database['auctions'])} auctions loaded into database.")
-        await self.bot.change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = f" {len(database['auctions'])} AH items."))
+
+    @tasks.loop(seconds=300)
+    async def ahLoop(self):
+        x = threading.Thread(target=self.auction)
+        x.start()
 
     @ahLoop.before_loop
     async def before_ah(self):
@@ -37,25 +43,27 @@ class Loops(commands.Cog):
 
     @tasks.loop(seconds=60)
     async def afkLoop(self):
-        cluster = MongoClient(key.MONGODB_URL)
-        db = cluster["stella"]
-        collection = db["afk"]
+        try:
+            cluster = MongoClient(key.MONGODB_URL)
+            db = cluster["stella"]
+            collection = db["afk"]
 
-        entries = collection.find({})
-        print(entries.count(), "players being afk tracked.")
-        for entry in entries:
-            if get_player_status(entry["uuid"]) != entry["location"]:
-                user = self.bot.get_user(int(entry["discord_id"]))
-                embed=discord.Embed(title="AFK Tracker", description=f"`{entry['name']}` is no longer on `{entry['location']}`. \n\nTracking for `{entry['name']}` has been removed. \nUse **stella afk `{entry['name']}`** to track again.", color=0xdc6565)
-                time_difference = time.time()*1000 - entry["starting_time"]*1000
-                print(time_difference)
-                embed.add_field(name="Tracking Time", value=f"**{ms_to_standard(time_difference)}**")
-                embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{entry['uuid']}")
-                embed.set_footer(text="Stella Bot by Over#6203")
+            entries = collection.find({})
+            print(entries.count(), "players being afk tracked.")
+            for entry in entries:
+                if get_player_status(entry["uuid"]) != entry["location"]:
+                    user = self.bot.get_user(int(entry["discord_id"]))
+                    embed=discord.Embed(title="AFK Tracker", description=f"`{entry['name']}` is no longer on `{entry['location']}`. \n\nTracking for `{entry['name']}` has been removed. \nUse **stella afk `{entry['name']}`** to track again.", color=0xdc6565)
+                    time_difference = time.time()*1000 - entry["starting_time"]*1000
+                    embed.add_field(name="Tracking Time", value=f"**{ms_to_standard(time_difference)}**")
+                    embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{entry['uuid']}")
+                    embed.set_footer(text="Stella Bot by Over#6203")
 
-                collection.delete_one(entry)
-                await user.send(embed=embed)
-                print(f"Debugging: {user} received an AFK notification.")
+                    collection.delete_one(entry)
+                    await user.send(embed=embed)
+                    print(f"Debugging: {user} received an AFK notification.")
+        except:
+            pass
 
     @afkLoop.before_loop
     async def before_afk(self):
