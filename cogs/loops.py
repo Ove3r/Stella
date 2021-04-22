@@ -44,11 +44,12 @@ class Loops(commands.Cog):
         entries = collection.find({})
         print(entries.count(), "players being afk tracked.")
         for entry in entries:
-            
             if get_player_status(entry["uuid"]) != entry["location"]:
                 user = self.bot.get_user(int(entry["discord_id"]))
-                embed=discord.Embed(title="AFK Tracker", description=f"`{entry['player']}` is no longer on `{entry['location']}`. \n\nTracking for `{entry['player']}` has been removed. \nUse **stella afk `{entry['player']}`** to track again.", color=0xdc6565)
-                embed.add_field(name="Tracking Time", value=f"**{ms_to_standard(time.time() - entry['starting_time'])}**")
+                embed=discord.Embed(title="AFK Tracker", description=f"`{entry['name']}` is no longer on `{entry['location']}`. \n\nTracking for `{entry['name']}` has been removed. \nUse **stella afk `{entry['name']}`** to track again.", color=0xdc6565)
+                time_difference = time.time()*1000 - entry["starting_time"]*1000
+                print(time_difference)
+                embed.add_field(name="Tracking Time", value=f"**{ms_to_standard(time_difference)}**")
                 embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{entry['uuid']}")
                 embed.set_footer(text="Stella Bot by Over#6203")
 
