@@ -18,3 +18,14 @@ class GuildNotFound(Error):
 
 class LocationError(Error):
     pass
+
+class APIResponseError(Error):
+    def __init__(self, code=0):
+        super().__init__()
+        self.code = code
+
+class NoProfileError(Error):
+    def __init__(self, name):
+        super().__init__()
+        self.name = name
+    

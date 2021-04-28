@@ -3,6 +3,7 @@ from discord.ext import commands
 from helpers import key
 import traceback
 import sys
+from helpers.errors import *
 
 def get_prefix(bot,message):
     prefixes = ['stella ','/sb ','/Sb ', 'Stella ','rw ']
@@ -69,7 +70,7 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.CommandNotFound):
         await ctx.send("Unknown Command. `stella help` for a list of commands.")
     elif isinstance(error, commands.CommandInvokeError):
-        if error.original.__class__ == discord.Forbidden:
+        if isinstance(error.original, discord.Forbidden):
             messages = {
                 50003: "This cannot be done in a DM Channel.",
                 50013: "Missing Permissions (Reactions or Message Related Permissions)."
@@ -79,7 +80,11 @@ async def on_command_error(ctx, error):
             if error.code in messages:
                 await ctx.send(messages[error.code])
             else:
-                await ctx.send(f"CommandInvokeError {error.text}")
+                await ctx.send(f"CommandInvokeError {error.text}")  
+        elif isinstance(error.original, APIResponseError):
+            await ctx.reply(f"API Error. Web Code: `{error.original.code}`.")
+        elif isinstance(error.original, NoProfileError):
+            await ctx.reply(f"Player `{error.original.name}` has no Skyblock Profiles.")
     else:
         with open("error.txt","w") as file:
             traceback.print_exception(type(error), error, error.__traceback__, file=file)

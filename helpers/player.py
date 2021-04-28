@@ -22,7 +22,14 @@ class Player:
             self.rank = "None"
 
         # If a profile argument is given.
-        data = requests.get(f"https://api.hypixel.net/skyblock/profiles?key={self.API_KEY}&uuid={self.uuid}").json()
+        data = requests.get(f"https://api.hypixel.net/skyblock/profiles?key={self.API_KEY}&uuid={self.uuid}")
+        if data.status_code != 200:
+            raise APIResponseError(code=data.status_code)
+
+        data = data.json()
+        if not data["profiles"]:
+            raise NoProfileError(self.name)
+
         for entry in data["profiles"]:
             self.profile_list.append(entry["cute_name"])
 
