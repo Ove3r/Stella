@@ -1,0 +1,3911 @@
+{
+    "WHEAT": {
+      "yield": {
+        "WHEAT": 1,
+        "SEEDS": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 15,
+          "upgrade": {
+            "WHEAT": 160
+          }
+        },
+        "2": {
+          "speed": 15,
+          "upgrade": {
+            "WHEAT": 320
+          }
+        },
+        "3": {
+          "speed": 13,
+          "upgrade": {
+            "WHEAT": 512
+          }
+        },
+        "4": {
+          "speed": 13,
+          "upgrade": {
+            "HAY_BLOCK": 96
+          }
+        },
+        "5": {
+          "speed": 11,
+          "upgrade": {
+            "HAY_BLOCK": 192
+          }
+        },
+        "6": {
+          "speed": 11,
+          "upgrade": {
+            "HAY_BLOCK": 384
+          }
+        },
+        "7": {
+          "speed": 10,
+          "upgrade": {
+            "HAY_BLOCK": 512
+          }
+        },
+        "8": {
+          "speed": 10,
+          "upgrade": {
+            "ENCHANTED_HAY_BLOCK": 8
+          }
+        },
+        "9": {
+          "speed": 9,
+          "upgrade": {
+            "ENCHANTED_HAY_BLOCK": 16
+          }
+        },
+        "10": {
+          "speed": 9,
+          "upgrade": {
+            "ENCHANTED_HAY_BLOCK": 24
+          }
+        },
+        "11": {
+          "speed": 8,
+          "upgrade": {
+            "ENCHANTED_HAY_BLOCK": 64
+          }
+        },
+        "12": {
+          "speed": 7,
+          "upgrade": {}
+        }
+      }
+    },
+    "CARROT": {
+      "yield": {
+        "CARROT_ITEM": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 20,
+          "upgrade": {
+            "CARROT_ITEM": 256
+          }
+        },
+        "2": {
+          "speed": 20,
+          "upgrade": {
+            "CARROT_ITEM": 512
+          }
+        },
+        "3": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_CARROT": 8
+          }
+        },
+        "4": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_CARROT": 24
+          }
+        },
+        "5": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_CARROT": 64
+          }
+        },
+        "6": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_CARROT": 128
+          }
+        },
+        "7": {
+          "speed": 14,
+          "upgrade": {
+            "ENCHANTED_CARROT": 256
+          }
+        },
+        "8": {
+          "speed": 14,
+          "upgrade": {
+            "ENCHANTED_CARROT": 512
+          }
+        },
+        "9": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_GOLDEN_CARROT": 8
+          }
+        },
+        "10": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_GOLDEN_CARROT": 16
+          }
+        },
+        "11": {
+          "speed": 10,
+          "upgrade": {
+            "ENCHANTED_GOLDEN_CARROT": 32
+          }
+        },
+        "12": {
+          "speed": 8,
+          "upgrade": {}
+        }
+      }
+    },
+    "POTATO": {
+      "yield": {
+        "POTATO_ITEM": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 20,
+          "upgrade": {
+            "POTATO_ITEM": 256
+          }
+        },
+        "2": {
+          "speed": 20,
+          "upgrade": {
+            "POTATO_ITEM": 512
+          }
+        },
+        "3": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_POTATO": 8
+          }
+        },
+        "4": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_POTATO": 24
+          }
+        },
+        "5": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_POTATO": 64
+          }
+        },
+        "6": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_POTATO": 128
+          }
+        },
+        "7": {
+          "speed": 14,
+          "upgrade": {
+            "ENCHANTED_POTATO": 256
+          }
+        },
+        "8": {
+          "speed": 14,
+          "upgrade": {
+            "ENCHANTED_POTATO": 512
+          }
+        },
+        "9": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_BAKED_POTATO": 8
+          }
+        },
+        "10": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_BAKED_POTATO": 16
+          }
+        },
+        "11": {
+          "speed": 10,
+          "upgrade": {
+            "ENCHANTED_BAKED_POTATO": 32
+          }
+        },
+        "12": {
+          "speed": 8,
+          "upgrade": {}
+        }
+      }
+    },
+    "PUMPKIN": {
+      "yield": {
+        "PUMPKIN": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 32,
+          "upgrade": {
+            "PUMPKIN": 160
+          }
+        },
+        "2": {
+          "speed": 32,
+          "upgrade": {
+            "PUMPKIN": 320
+          }
+        },
+        "3": {
+          "speed": 30,
+          "upgrade": {
+            "PUMPKIN": 512
+          }
+        },
+        "4": {
+          "speed": 30,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 8
+          }
+        },
+        "5": {
+          "speed": 27,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 16
+          }
+        },
+        "6": {
+          "speed": 27,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 32
+          }
+        },
+        "7": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 64
+          }
+        },
+        "8": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 128
+          }
+        },
+        "9": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 256
+          }
+        },
+        "10": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 512
+          }
+        },
+        "11": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_PUMPKIN": 1024
+          }
+        },
+        "12": {
+          "speed": 12,
+          "upgrade": {}
+        }
+      }
+    },
+    "MELON": {
+      "yield": {
+        "MELON": 5
+      },
+      "tiers": {
+        "1": {
+          "speed": 24,
+          "upgrade": {
+            "MELON": 512
+          }
+        },
+        "2": {
+          "speed": 24,
+          "upgrade": {
+            "MELON": 1152
+          }
+        },
+        "3": {
+          "speed": 22.5,
+          "upgrade": {
+            "MELON": 2304
+          }
+        },
+        "4": {
+          "speed": 22.5,
+          "upgrade": {
+            "MELON": 4608
+          }
+        },
+        "5": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_MELON": 64
+          }
+        },
+        "6": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_MELON": 128
+          }
+        },
+        "7": {
+          "speed": 18.5,
+          "upgrade": {
+            "ENCHANTED_MELON": 256
+          }
+        },
+        "8": {
+          "speed": 18.5,
+          "upgrade": {
+            "ENCHANTED_MELON": 512
+          }
+        },
+        "9": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_MELON_BLOCK": 8
+          }
+        },
+        "10": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_MELON_BLOCK": 16
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_MELON_BLOCK": 32
+          }
+        },
+        "12": {
+          "speed": 10,
+          "upgrade": {}
+        }
+      }
+    },
+    "MUSHROOM": {
+      "yield": {
+        "BROWN_MUSHROOM": 0.5,
+        "RED_MUSHROOM": 0.5
+      },
+      "tiers": {
+        "1": {
+          "speed": 30,
+          "upgrade": {
+            "RED_MUSHROOM": 160
+          }
+        },
+        "2": {
+          "speed": 30,
+          "upgrade": {
+            "RED_MUSHROOM": 320
+          }
+        },
+        "3": {
+          "speed": 28,
+          "upgrade": {
+            "RED_MUSHROOM": 512
+          }
+        },
+        "4": {
+          "speed": 28,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 8
+          }
+        },
+        "5": {
+          "speed": 26,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 16
+          }
+        },
+        "6": {
+          "speed": 26,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 32
+          }
+        },
+        "7": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 64
+          }
+        },
+        "8": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 128
+          }
+        },
+        "9": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 256
+          }
+        },
+        "10": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 512
+          }
+        },
+        "11": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_RED_MUSHROOM": 512,
+            "ENCHANTED_BROWN_MUSHROOM": 512
+          }
+        },
+        "12": {
+          "speed": 12,
+          "upgrade": {}
+        }
+      }
+    },
+    "COCOA": {
+      "yield": {
+        "INK_SACK:3": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 27,
+          "upgrade": {
+            "INK_SACK:3": 160
+          }
+        },
+        "2": {
+          "speed": 27,
+          "upgrade": {
+            "INK_SACK:3": 320
+          }
+        },
+        "3": {
+          "speed": 25,
+          "upgrade": {
+            "INK_SACK:3": 512
+          }
+        },
+        "4": {
+          "speed": 25,
+          "upgrade": {
+            "ENCHANTED_COCOA": 8
+          }
+        },
+        "5": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_COCOA": 24
+          }
+        },
+        "6": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_COCOA": 64
+          }
+        },
+        "7": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_COCOA": 128
+          }
+        },
+        "8": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_COCOA": 256
+          }
+        },
+        "9": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_COCOA": 512
+          }
+        },
+        "10": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_COOKIE": 8
+          }
+        },
+        "11": {
+          "speed": 15,
+          "upgrade": {
+            "ENCHANTED_COOKIE": 16
+          }
+        },
+        "12": {
+          "speed": 12,
+          "upgrade": {}
+        }
+      }
+    },
+    "CACTUS": {
+      "yield": {
+        "CACTUS": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 27,
+          "upgrade": {
+            "CACTUS": 256
+          }
+        },
+        "2": {
+          "speed": 27,
+          "upgrade": {
+            "CACTUS": 512
+          }
+        },
+        "3": {
+          "speed": 25,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 8
+          }
+        },
+        "4": {
+          "speed": 25,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 24
+          }
+        },
+        "5": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 64
+          }
+        },
+        "6": {
+          "speed": 23,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 128
+          }
+        },
+        "7": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 256
+          }
+        },
+        "8": {
+          "speed": 21,
+          "upgrade": {
+            "ENCHANTED_CACTUS_GREEN": 512
+          }
+        },
+        "9": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_CACTUS": 8
+          }
+        },
+        "10": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_CACTUS": 16
+          }
+        },
+        "11": {
+          "speed": 15,
+          "upgrade": {
+            "ENCHANTED_CACTUS": 32
+          }
+        },
+        "12": {
+          "speed": 12,
+          "upgrade": {}
+        }
+      }
+    },
+    "SUGAR_CANE": {
+      "yield": {
+        "SUGAR_CANE": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 22,
+          "upgrade": {
+            "SUGAR_CANE": 256
+          }
+        },
+        "2": {
+          "speed": 22,
+          "upgrade": {
+            "SUGAR_CANE": 512
+          }
+        },
+        "3": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 8
+          }
+        },
+        "4": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 24
+          }
+        },
+        "5": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 64
+          }
+        },
+        "6": {
+          "speed": 18,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 128
+          }
+        },
+        "7": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 256
+          }
+        },
+        "8": {
+          "speed": 16,
+          "upgrade": {
+            "ENCHANTED_SUGAR": 512
+          }
+        },
+        "9": {
+          "speed": 14.5,
+          "upgrade": {
+            "ENCHANTED_SUGAR_CANE": 8
+          }
+        },
+        "10": {
+          "speed": 14.5,
+          "upgrade": {
+            "ENCHANTED_SUGAR_CANE": 16
+          }
+        },
+        "11": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_SUGAR_CANE": 32
+          }
+        },
+        "12": {
+          "speed": 9,
+          "upgrade": {}
+        }
+      }
+    },
+    "COW": {
+      "yield": {
+        "RAW_BEEF": 1,
+        "LEATHER": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 26,
+          "upgrade": {
+            "RAW_BEEF": 128
+          }
+        },
+        "2": {
+          "speed": 26,
+          "upgrade": {
+            "RAW_BEEF": 256
+          }
+        },
+        "3": {
+          "speed": 24,
+          "upgrade": {
+            "RAW_BEEF": 512
+          }
+        },
+        "4": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 8
+          }
+        },
+        "5": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 24
+          }
+        },
+        "6": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 64
+          }
+        },
+        "7": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 128
+          }
+        },
+        "8": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 256
+          }
+        },
+        "9": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_RAW_BEEF": 512
+          }
+        },
+        "10": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_LEATHER": 256
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_LEATHER": 512
+          }
+        },
+        "12": {
+          "speed": 10,
+          "upgrade": {}
+        }
+      }
+    },
+    "PIG": {
+      "yield": {
+        "PORK": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 26,
+          "upgrade": {
+            "PORK": 128
+          }
+        },
+        "2": {
+          "speed": 26,
+          "upgrade": {
+            "PORK": 256
+          }
+        },
+        "3": {
+          "speed": 24,
+          "upgrade": {
+            "PORK": 512
+          }
+        },
+        "4": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_PORK": 8
+          }
+        },
+        "5": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_PORK": 24
+          }
+        },
+        "6": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_PORK": 64
+          }
+        },
+        "7": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_PORK": 128
+          }
+        },
+        "8": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_PORK": 256
+          }
+        },
+        "9": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_PORK": 512
+          }
+        },
+        "10": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_GRILLED_PORK": 8
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_GRILLED_PORK": 16
+          }
+        },
+        "12": {
+          "speed": 10,
+          "upgrade": {}
+        }
+      }
+    },
+    "CHICKEN": {
+      "yield": {
+        "RAW_CHICKEN": 1,
+        "FEATHER": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 26,
+          "upgrade": {
+            "RAW_CHICKEN": 128
+          }
+        },
+        "2": {
+          "speed": 26,
+          "upgrade": {
+            "RAW_CHICKEN": 256
+          }
+        },
+        "3": {
+          "speed": 24,
+          "upgrade": {
+            "RAW_CHICKEN": 512
+          }
+        },
+        "4": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 8
+          }
+        },
+        "5": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 16
+          }
+        },
+        "6": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 32
+          }
+        },
+        "7": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 64
+          }
+        },
+        "8": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 128
+          }
+        },
+        "9": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 256
+          }
+        },
+        "10": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 512
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_RAW_CHICKEN": 1024
+          }
+        },
+        "12": {
+          "speed": 12,
+          "upgrade": {}
+        }
+      }
+    },
+    "SHEEP": {
+      "yield": {
+        "MUTTON": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 26,
+          "upgrade": {
+            "MUTTON": 128
+          }
+        },
+        "2": {
+          "speed": 26,
+          "upgrade": {
+            "MUTTON": 256
+          }
+        },
+        "3": {
+          "speed": 24,
+          "upgrade": {
+            "MUTTON": 512
+          }
+        },
+        "4": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 8
+          }
+        },
+        "5": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 24
+          }
+        },
+        "6": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 64
+          }
+        },
+        "7": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 128
+          }
+        },
+        "8": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 256
+          }
+        },
+        "9": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_MUTTON": 512
+          }
+        },
+        "10": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_COOKED_MUTTON": 8
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_COOKED_MUTTON": 16
+          }
+        },
+        "12": {
+          "speed": 9,
+          "upgrade": {}
+        }
+      }
+    },
+    "RABBIT": {
+      "yield": {
+        "RABBIT": 1,
+        "RABBIT_FOOT": 0.35,
+        "RABBIT_HIDE": 0.35
+      },
+      "tiers": {
+        "1": {
+          "speed": 26,
+          "upgrade": {
+            "RABBIT": 128
+          }
+        },
+        "2": {
+          "speed": 26,
+          "upgrade": {
+            "RABBIT": 256
+          }
+        },
+        "3": {
+          "speed": 24,
+          "upgrade": {
+            "RABBIT": 512
+          }
+        },
+        "4": {
+          "speed": 24,
+          "upgrade": {
+            "ENCHANTED_RABBIT_FOOT": 32
+          }
+        },
+        "5": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RABBIT_FOOT": 64
+          }
+        },
+        "6": {
+          "speed": 22,
+          "upgrade": {
+            "ENCHANTED_RABBIT_FOOT": 128
+          }
+        },
+        "7": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RABBIT_FOOT": 256
+          }
+        },
+        "8": {
+          "speed": 20,
+          "upgrade": {
+            "ENCHANTED_RABBIT_FOOT": 512
+          }
+        },
+        "9": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_RABBIT_HIDE": 256
+          }
+        },
+        "10": {
+          "speed": 17,
+          "upgrade": {
+            "ENCHANTED_RABBIT_HIDE": 512
+          }
+        },
+        "11": {
+          "speed": 13,
+          "upgrade": {
+            "ENCHANTED_RABBIT_HIDE": 1024
+          }
+        },
+        "12": {
+          "speed": 10,
+          "upgrade": {}
+        }
+      }
+    },
+    "NETHER_WARTS": {
+      "yield": {
+        "NETHER_STALK": 3
+      },
+      "tiers": {
+        "1": {
+          "speed": 50,
+          "upgrade": {
+            "NETHER_STALK": 160
+          }
+        },
+        "2": {
+          "speed": 50,
+          "upgrade": {
+            "NETHER_STALK": 320
+          }
+        },
+        "3": {
+          "speed": 47,
+          "upgrade": {
+            "NETHER_STALK": 512
+          }
+        },
+        "4": {
+          "speed": 47,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 8
+          }
+        },
+        "5": {
+          "speed": 44,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 16
+          }
+        },
+        "6": {
+          "speed": 44,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 32
+          }
+        },
+        "7": {
+          "speed": 41,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 64
+          }
+        },
+        "8": {
+          "speed": 41,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 128
+          }
+        },
+        "9": {
+          "speed": 38,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 256
+          }
+        },
+        "10": {
+          "speed": 38,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 512
+          }
+        },
+        "11": {
+          "speed": 32,
+          "upgrade": {
+            "ENCHANTED_NETHER_STALK": 1024
+          }
+        },
+        "12": {
+          "speed": 27,
+          "upgrade": {}
+        }
+      }
+    },
+    "COBBLESTONE": {
+      "yield": {
+        "COBBLESTONE": 1
+      },
+      "tiers": {
+        "1": {
+          "speed": 15,
+          "upgrade": {
+            "COBBLESTONE": 160
+          }
+        },
+        "2": {
+          "speed": 15,
+          "upgrade": {
+            "COBBLESTONE": 320
+          }
+        },
+        "3": {
+          "speed": 12,
+          "upgrade": {
+            "COBBLESTONE": 512
+          }
+        },
+        "4": {
+          "speed": 12,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 8 
+          }
+        },
+        "5": {
+          "speed": 10,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 16
+          }
+        },
+        "6": {
+          "speed": 10,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 32
+          }
+        },
+        "7": {
+          "speed": 9,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 64
+          }
+        },
+        "8": {
+          "speed": 9,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 128
+          }
+        },
+        "9": {
+          "speed": 8,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 256
+          }
+        },
+        "10": {
+          "speed": 8,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 512
+          }
+        },
+        "11": {
+          "speed": 7,
+          "upgrade": {
+            "ENCHANTED_COBBLESTONE": 1024,
+            "COINS": 2000000
+          }
+        },
+        "12": {
+          "speed": 6,
+          "upgrade": {}
+        }
+      }
+    },
+    "COAL": {
+        "yield": {
+          "COAL": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 15,
+            "upgrade": {
+              "COAL": 160
+            }
+          },
+          "2": {
+            "speed": 15,
+            "upgrade": {
+              "COAL": 320
+            }
+          },
+          "3": {
+            "speed": 13,
+            "upgrade": {
+              "COAL": 512
+            }
+          },
+          "4": {
+            "speed": 13,
+            "upgrade": {
+              "ENCHANTED_COAL": 8 
+            }
+          },
+          "5": {
+            "speed": 12,
+            "upgrade": {
+              "ENCHANTED_COAL": 24
+            }
+          },
+          "6": {
+            "speed": 12,
+            "upgrade": {
+              "ENCHANTED_COAL": 64
+            }
+          },
+          "7": {
+            "speed": 10,
+            "upgrade": {
+              "ENCHANTED_COAL": 128
+            }
+          },
+          "8": {
+            "speed": 10,
+            "upgrade": {
+              "ENCHANTED_COAL": 256
+            }
+          },
+          "9": {
+            "speed": 9,
+            "upgrade": {
+              "ENCHANTED_COAL": 512
+            }
+          },
+          "10": {
+            "speed": 9,
+            "upgrade": {
+              "ENCHANTED_COAL_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 7,
+            "upgrade": {
+              "ENCHANTED_COAL_BLOCK": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 6,
+            "upgrade": {}
+          }
+        }
+      },
+      "IRON": {
+        "yield": {
+          "IRON_INGOT": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 17,
+            "upgrade": {
+              "IRON_INGOT": 160
+            }
+          },
+          "2": {
+            "speed": 17,
+            "upgrade": {
+              "IRON_INGOT": 320
+            }
+          },
+          "3": {
+            "speed": 15,
+            "upgrade": {
+              "IRON_INGOT": 512
+            }
+          },
+          "4": {
+            "speed": 15,
+            "upgrade": {
+              "ENCHANTED_IRON": 8 
+            }
+          },
+          "5": {
+            "speed": 14,
+            "upgrade": {
+              "ENCHANTED_IRON": 24
+            }
+          },
+          "6": {
+            "speed": 14,
+            "upgrade": {
+              "ENCHANTED_IRON": 64
+            }
+          },
+          "7": {
+            "speed": 12,
+            "upgrade": {
+              "ENCHANTED_IRON": 128
+            }
+          },
+          "8": {
+            "speed": 12,
+            "upgrade": {
+              "ENCHANTED_IRON": 256
+            }
+          },
+          "9": {
+            "speed": 10,
+            "upgrade": {
+              "ENCHANTED_IRON": 512
+            }
+          },
+          "10": {
+            "speed": 10,
+            "upgrade": {
+              "ENCHANTED_IRON_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 8,
+            "upgrade": {
+              "ENCHANTED_IRON_BLOCK": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 7,
+            "upgrade": {}
+          }
+        }
+      },
+      "GOLD": {
+        "yield": {
+          "GOLD_INGOT": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 22,
+            "upgrade": {
+              "GOLD_INGOT": 160
+            }
+          },
+          "2": {
+            "speed": 22,
+            "upgrade": {
+              "GOLD_INGOT": 320
+            }
+          },
+          "3": {
+            "speed": 20,
+            "upgrade": {
+              "GOLD_INGOT": 512
+            }
+          },
+          "4": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_GOLD": 8 
+            }
+          },
+          "5": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_GOLD": 24
+            }
+          },
+          "6": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_GOLD": 64
+            }
+          },
+          "7": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_GOLD": 128
+            }
+          },
+          "8": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_GOLD": 256
+            }
+          },
+          "9": {
+            "speed": 14,
+            "upgrade": {
+              "ENCHANTED_GOLD": 512
+            }
+          },
+          "10": {
+            "speed": 14,
+            "upgrade": {
+              "ENCHANTED_GOLD_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 11,
+            "upgrade": {
+              "ENCHANTED_GOLD_BLOCK": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 9,
+            "upgrade": {}
+          }
+        }
+      },
+      "DIAMOND": {
+        "yield": {
+          "DIAMOND": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 29,
+            "upgrade": {
+              "DIAMOND": 160
+            }
+          },
+          "2": {
+            "speed": 29,
+            "upgrade": {
+              "DIAMOND": 320
+            }
+          },
+          "3": {
+            "speed": 27,
+            "upgrade": {
+              "DIAMOND": 512
+            }
+          },
+          "4": {
+            "speed": 27,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 8
+            }
+          },
+          "5": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 24
+            }
+          },
+          "6": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 64
+            }
+          },
+          "7": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 128
+            }
+          },
+          "8": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 256
+            }
+          },
+          "9": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_DIAMOND": 512
+            }
+          },
+          "10": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_DIAMOND_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 15,
+            "upgrade": {
+              "ENCHANTED_DIAMOND_BLOCK": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 12,
+            "upgrade": {}
+          }
+        }
+      },
+      "LAPIS": {
+        "yield": {
+          "INK_SACK:3": 6
+        },
+        "tiers": {
+          "1": {
+            "speed": 29,
+            "upgrade": {
+              "INK_SACK:3": 512
+            }
+          },
+          "2": {
+            "speed": 29,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 8
+            }
+          },
+          "3": {
+            "speed": 27,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 24
+            }
+          },
+          "4": {
+            "speed": 27,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 64
+            }
+          },
+          "5": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 128
+            }
+          },
+          "6": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 256
+            }
+          },
+          "7": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI": 512
+            }
+          },
+          "8": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI_BLOCK": 8
+            }
+          },
+          "9": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI_BLOCK": 16
+            }
+          },
+          "10": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI_BLOCK": 32
+            }
+          },
+          "11": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_LAPIS_LAZULI_BLOCK": 64,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 16,
+            "upgrade": {}
+          }
+        }
+      },
+      "EMERALD": {
+        "yield": {
+          "EMERALD": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 28,
+            "upgrade": {
+              "EMERALD": 160
+            }
+          },
+          "2": {
+            "speed": 28,
+            "upgrade": {
+              "EMERALD": 320
+            }
+          },
+          "3": {
+            "speed": 26,
+            "upgrade": {
+              "EMERALD": 512
+            }
+          },
+          "4": {
+            "speed": 26,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 8
+            }
+          },
+          "5": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 24
+            }
+          },
+          "6": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 64
+            }
+          },
+          "7": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 128
+            }
+          },
+          "8": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 256
+            }
+          },
+          "9": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_EMERALD": 512
+            }
+          },
+          "10": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_EMERALD_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 14,
+            "upgrade": {
+              "ENCHANTED_EMERALD_BLOCK": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 12,
+            "upgrade": {}
+          }
+        }
+      },
+      "REDSTONE": {
+        "yield": {
+          "REDSTONE": 4.5
+        },
+        "tiers": {
+          "1": {
+            "speed": 29,
+            "upgrade": {
+              "REDSTONE": 256
+            }
+          },
+          "2": {
+            "speed": 29,
+            "upgrade": {
+              "REDSTONE": 512
+            }
+          },
+          "3": {
+            "speed": 27,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 8
+            }
+          },
+          "4": {
+            "speed": 27,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 24
+            }
+          },
+          "5": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 64
+            }
+          },
+          "6": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 128
+            }
+          },
+          "7": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 256
+            }
+          },
+          "8": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_REDSTONE": 512
+            }
+          },
+          "9": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_REDSTONE_BLOCK": 8
+            }
+          },
+          "10": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_REDSTONE_BLOCK": 16
+            }
+          },
+          "11": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_REDSTONE_BLOCK": 32,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 16,
+            "upgrade": {}
+          }
+        }
+      },
+      "QUARTZ": {
+        "yield": {
+          "QUARTZ": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 22.5,
+            "upgrade": {
+              "QUARTZ": 160
+            }
+          },
+          "2": {
+            "speed": 22.5,
+            "upgrade": {
+              "QUARTZ": 320
+            }
+          },
+          "3": {
+            "speed": 21,
+            "upgrade": {
+              "QUARTZ": 512
+            }
+          },
+          "4": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 8
+            }
+          },
+          "5": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 24
+            }
+          },
+          "6": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 64
+            }
+          },
+          "7": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 128
+            }
+          },
+          "8": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 256
+            }
+          },
+          "9": {
+            "speed": 14.5,
+            "upgrade": {
+              "ENCHANTED_QUARTZ": 512
+            }
+          },
+          "10": {
+            "speed": 14.5,
+            "upgrade": {
+              "ENCHANTED_QUARTZ_BLOCK":8 
+            }
+          },
+          "11": {
+            "speed": 11.5,
+            "upgrade": {}
+          }
+        }
+      },
+      "OBSIDIAN": {
+        "yield": {
+          "OBSIDIAN": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 45,
+            "upgrade": {
+              "OBSIDIAN": 160
+            }
+          },
+          "2": {
+            "speed": 45,
+            "upgrade": {
+              "OBSIDIAN": 320
+            }
+          },
+          "3": {
+            "speed": 42,
+            "upgrade": {
+              "OBSIDIAN": 512
+            }
+          },
+          "4": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 8
+            }
+          },
+          "5": {
+            "speed": 39,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 16
+            }
+          },
+          "6": {
+            "speed": 39,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 32
+            }
+          },
+          "7": {
+            "speed": 35,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 64
+            }
+          },
+          "8": {
+            "speed": 35,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 128
+            }
+          },
+          "9": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 256
+            }
+          },
+          "10": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 512
+            }
+          },
+          "11": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_OBSIDIAN": 1024,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 21,
+            "upgrade": {}
+          }
+        }
+      },
+      "GLOWSTONE": {
+        "yield": {
+          "GLOWSTONE_DUST": 3
+        },
+        "tiers": {
+          "1": {
+            "speed": 25,
+            "upgrade": {
+              "GLOWSTONE_DUST": 256
+            }
+          },
+          "2": {
+            "speed": 25,
+            "upgrade": {
+              "GLOWSTONE_DUST": 512
+            }
+          },
+          "3": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 8
+            }
+          },
+          "4": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 24
+            }
+          },
+          "5": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 64
+            }
+          },
+          "6": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 128
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 256
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE_DUST": 512
+            }
+          },
+          "9": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE": 8
+            }
+          },
+          "10": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_GLOWSTONE": 16
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "GRAVEL": {
+        "yield": {
+          "GRAVEL": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "GRAVEL": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "GRAVEL": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "GRAVEL": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_FLINT": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_FLINT": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_FLINT": 32
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_FLINT": 64
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_FLINT": 128
+            }
+          },
+          "9": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_FLINT": 256
+            }
+          },
+          "10": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_FLINT": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "ICE": {
+        "yield": {
+          "ICE": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 14,
+            "upgrade": {
+              "ICE": 160
+            }
+          },
+          "2": {
+            "speed": 14,
+            "upgrade": {
+              "ICE": 320
+            }
+          },
+          "3": {
+            "speed": 12,
+            "upgrade": {
+              "ICE": 512
+            }
+          },
+          "4": {
+            "speed": 12,
+            "upgrade": {
+              "PACKED_ICE": 128
+            }
+          },
+          "5": {
+            "speed": 10,
+            "upgrade": {
+              "PACKED_ICE": 256
+            }
+          },
+          "6": {
+            "speed": 10,
+            "upgrade": {
+              "PACKED_ICE": 512
+            }
+          },
+          "7": {
+            "speed": 9,
+            "upgrade": {
+              "ENCHANTED_ICE": 64
+            }
+          },
+          "8": {
+            "speed": 9,
+            "upgrade": {
+              "ENCHANTED_ICE": 128
+            }
+          },
+          "9": {
+            "speed": 8,
+            "upgrade": {
+              "ENCHANTED_ICE": 256
+            }
+          },
+          "10": {
+            "speed": 8,
+            "upgrade": {
+              "ENCHANTED_ICE": 512
+            }
+          },
+          "11": {
+            "speed": 7,
+            "upgrade": {}
+          }
+        }
+      },
+      "SAND": {
+        "yield": {
+          "SAND": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "SAND": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "SAND": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "SAND": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_SAND": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SAND": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SAND": 32
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_SAND": 64
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_SAND": 128
+            }
+          },
+          "9": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_SAND": 256
+            }
+          },
+          "10": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_SAND": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "ENDER_STONE": {
+        "yield": {
+          "ENDER_STONE": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "ENDER_STONE": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "ENDER_STONE": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "ENDER_STONE": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 32
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 64
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 128
+            }
+          },
+          "9": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 256
+            }
+          },
+          "10": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_ENDSTONE": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "CLAY": {
+        "yield": {
+          "CLAY_BALL": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 32,
+            "upgrade": {
+              "CLAY_BALL": 160
+            }
+          },
+          "2": {
+            "speed": 32,
+            "upgrade": {
+              "CLAY_BALL": 320
+            }
+          },
+          "3": {
+            "speed": 30,
+            "upgrade": {
+              "CLAY_BALL": 512
+            }
+          },
+          "4": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 8
+            }
+          },
+          "5": {
+            "speed": 27.5,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 16
+            }
+          },
+          "6": {
+            "speed": 27.5,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 32
+            }
+          },
+          "7": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 64
+            }
+          },
+          "8": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 128
+            }
+          },
+          "9": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 256
+            }
+          },
+          "10": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_CLAY_BALL": 512
+            }
+          },
+          "11": {
+            "speed": 16,
+            "upgrade": {}
+          }
+        }
+      },
+      "MITHRIL": {
+        "yield": {
+          "MITHRIL_ORE": 2
+        },
+        "tiers": {
+          "1": {
+            "speed": 80,
+            "upgrade": {
+              "MITHRIL_ORE": 160
+            }
+          },
+          "2": {
+            "speed": 80,
+            "upgrade": {
+              "MITHRIL_ORE": 320
+            }
+          },
+          "3": {
+            "speed": 75,
+            "upgrade": {
+              "MITHRIL_ORE": 512
+            }
+          },
+          "4": {
+            "speed": 75,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 8
+            }
+          },
+          "5": {
+            "speed": 70,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 24
+            }
+          },
+          "6": {
+            "speed": 70,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 64
+            }
+          },
+          "7": {
+            "speed": 65,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 128
+            }
+          },
+          "8": {
+            "speed": 65,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 256
+            }
+          },
+          "9": {
+            "speed": 60,
+            "upgrade": {
+              "ENCHANTED_MITHRIL": 512
+            }
+          },
+          "10": {
+            "speed": 60,
+            "upgrade": {
+              "REFINED_MITHRIL": 8
+            }
+          },
+          "11": {
+            "speed": 55,
+            "upgrade": {
+              "REFINED_MITHRIL": 16,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 50,
+            "upgrade": {}
+          }
+        }
+      },
+      "SNOW": {
+        "yield": {
+          "SNOW_BALL": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 13,
+            "upgrade": {
+              "SNOW_BLOCK": 32
+            }
+          },
+          "2": {
+            "speed": 13,
+            "upgrade": {
+              "SNOW_BLOCK": 64
+            }
+          },
+          "3": {
+            "speed": 12,
+            "upgrade": {
+              "SNOW_BLOCK": 128
+            }
+          },
+          "4": {
+            "speed": 12,
+            "upgrade": {
+              "SNOW_BLOCK": 256
+            }
+          },
+          "5": {
+            "speed": 11,
+            "upgrade": {
+              "SNOW_BLOCK": 512
+            }
+          },
+          "6": {
+            "speed": 11,
+            "upgrade": {
+              "ENCHANTED_SNOW_BLOCK": 8
+            }
+          },
+          "7": {
+            "speed": 9.5,
+            "upgrade": {
+              "ENCHANTED_SNOW_BLOCK": 16
+            }
+          },
+          "8": {
+            "speed": 9.5,
+            "upgrade": {
+              "ENCHANTED_SNOW_BLOCK": 32
+            }
+          },
+          "9": {
+            "speed": 8,
+            "upgrade": {
+              "ENCHANTED_SNOW_BLOCK": 64
+            }
+          },
+          "10": {
+            "speed": 8,
+            "upgrade": {
+              "ENCHANTED_SNOW_BLOCK": 128
+            }
+          },
+          "11": {
+            "speed": 6.5,
+            "upgrade": {}
+          }
+        }
+      },
+      "ZOMBIE": {
+        "yield": {
+          "ROTTEN_FLESH": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "ROTTEN_FLESH": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "ROTTEN_FLESH": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "ROTTEN_FLESH": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 8 
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 32
+            }
+          },
+          "7": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 64
+            }
+          },
+          "8": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 128
+            }
+          },
+          "9": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 256
+            }
+          },
+          "10": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_ROTTEN_FLESH": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "SKELETON": {
+        "yield": {
+          "BONE": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "BONE": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "BONE": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "BONE": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_BONE": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_BONE": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_BONE": 32
+            }
+          },
+          "7": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_BONE": 64
+            }
+          },
+          "8": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_BONE": 128
+            }
+          },
+          "9": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_BONE": 256
+            }
+          },
+          "10": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_BONE": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "SPIDER": {
+        "yield": {
+          "STRING": 1,
+          "SPIDER_EYE": 0.5
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "STRING": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "STRING": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "STRING": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_STRING": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_STRING": 16
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_STRING": 32
+            }
+          },
+          "7": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_STRING": 64
+            }
+          },
+          "8": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_STRING": 128
+            }
+          },
+          "9": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_STRING": 256
+            }
+          },
+          "10": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_STRING": 512
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "CAVESPIDER": {
+        "yield": {
+          "STRING": 1,
+          "SPIDER_EYE": 0.5
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "SPIDER_EYE": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "SPIDER_EYE": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "SPIDER_EYE": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 24
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 64
+            }
+          },
+          "7": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 128
+            }
+          },
+          "8": {
+            "speed": 20,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 256   
+            }
+          },
+          "9": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_SPIDER_EYE": 512
+            }
+          },
+          "10": {
+            "speed": 17,
+            "upgrade": {
+              "ENCHANTED_FERMENTED_SPIDER_EYE": 16
+            }
+          },
+          "11": {
+            "speed": 13,
+            "upgrade": {}
+          }
+        }
+      },
+      "CREEPER": {
+        "yield": {
+          "SULPHUR": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 27,
+            "upgrade": {
+              "SULPHUR": 160
+            }
+          },
+          "2": {
+            "speed": 27,
+            "upgrade": {
+              "SULPHUR": 320
+            }
+          },
+          "3": {
+            "speed": 25,
+            "upgrade": {
+              "SULPHUR": 512
+            }
+          },
+          "4": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 8
+            }
+          },
+          "5": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 24
+            }
+          },
+          "6": {
+            "speed": 23,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 64
+            }
+          },
+          "7": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 128
+            }
+          },
+          "8": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 256
+            }
+          },
+          "9": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_GUNPOWDER": 512
+            }
+          },
+          "10": {
+            "speed": 18,
+            "upgrade": {
+              "ENCHANTED_FIREWORK_ROCKET": 16
+            }
+          },
+          "11": {
+            "speed": 14,
+            "upgrade": {}
+          }
+        }
+      },
+      "ENDERMAN": {
+        "yield": {
+          "ENDER_PEARL": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 32,
+            "upgrade": {
+              "ENDER_PEARL": 128
+            }
+          },
+          "2": {
+            "speed": 32,
+            "upgrade": {
+              "ENCHANTED_ENDER_PEARL": 8
+            }
+          },
+          "3": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_ENDER_PEARL": 24
+            }
+          },
+          "4": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_ENDER_PEARL": 48
+            }
+          },
+          "5": {
+            "speed": 28,
+            "upgrade": {
+              "ENCHANTED_ENDER_PEARL": 96
+            }
+          },
+          "6": {
+            "speed": 28,
+            "upgrade": {
+              "ENCHANTED_EYE_OF_ENDER": 8
+            }
+          },
+          "7": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_EYE_OF_ENDER": 24
+            }
+          },
+          "8": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_EYE_OF_ENDER": 48
+            }
+          },
+          "9": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_EYE_OF_ENDER": 96
+            }
+          },
+          "10": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_EYE_OF_ENDER": 192
+            }
+          },
+          "11": {
+            "speed": 18,
+            "upgrade": {}
+          }
+        }
+      },
+      "GHAST": {
+        "yield": {
+          "GHAST_TEAR": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 50,
+            "upgrade": {
+              "GHAST_TEAR": 128
+            }
+          },
+          "2": {
+            "speed": 50,
+            "upgrade": {
+              "GHAST_TEAR": 256
+            }
+          },
+          "3": {
+            "speed": 47,
+            "upgrade": {
+              "GHAST_TEAR": 512
+            }
+          },
+          "4": {
+            "speed": 47,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 256
+            }
+          },
+          "5": {
+            "speed": 44,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 512
+            }
+          },
+          "6": {
+            "speed": 44,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 800
+            }
+          },
+          "7": {
+            "speed": 41,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 1600
+            }
+          },
+          "8": {
+            "speed": 41,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 3200
+            }
+          },
+          "9": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 6400
+            }
+          },
+          "10": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_GHAST_TEAR": 12800
+            }
+          },
+          "11": {
+            "speed": 32,
+            "upgrade": {}
+          }
+        }
+      },
+      "SLIME": {
+        "yield": {
+          "SLIME_BALL": 1.8
+        },
+        "tiers": {
+          "1": {
+            "speed": 26,
+            "upgrade": {
+              "SLIME_BALL": 160
+            }
+          },
+          "2": {
+            "speed": 26,
+            "upgrade": {
+              "SLIME_BALL": 320
+            }
+          },
+          "3": {
+            "speed": 24,
+            "upgrade": {
+              "SLIME_BALL": 512
+            }
+          },
+          "4": {
+            "speed": 24,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 8
+            }
+          },
+          "5": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 24
+            }
+          },
+          "6": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 64
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 128
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 256
+            }
+          },
+          "9": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_SLIME_BALL": 512
+            }
+          },
+          "10": {
+            "speed": 16,
+            "upgrade": {
+              "ENCHANTED_SLIME_BLOCK": 8
+            }
+          },
+          "11": {
+            "speed": 12,
+            "upgrade": {}
+          }
+        }
+      },
+      "BLAZE": {
+        "yield": {
+          "BLAZE_ROD": 1
+        },
+        "tiers": {
+          "1": {
+            "speed": 33,
+            "upgrade": {
+              "BLAZE_ROD": 160
+            }
+          },
+          "2": {
+            "speed": 33,
+            "upgrade": {
+              "BLAZE_ROD": 320
+            }
+          },
+          "3": {
+            "speed": 31,
+            "upgrade": {
+              "BLAZE_ROD": 512
+            }
+          },
+          "4": {
+            "speed": 31,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 8
+            }
+          },
+          "5": {
+            "speed": 28.5,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 24
+            }
+          },
+          "6": {
+            "speed": 28.5,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 64
+            }
+          },
+          "7": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 128
+            }
+          },
+          "8": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 256
+            }
+          },
+          "9": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_BLAZE_POWDER": 512
+            }
+          },
+          "10": {
+            "speed": 21,
+            "upgrade": {
+              "ENCHANTED_BLAZE_ROD": 8
+            }
+          },
+          "11": {
+            "speed": 16.5,
+            "upgrade": {}
+          }
+        }
+      },
+      "MAGMA_CUBE": {
+        "yield": {
+          "MAGMA_CREAM": 1.8
+        },
+        "tiers": {
+          "1": {
+            "speed": 32,
+            "upgrade": {
+              "MAGMA_CREAM": 160
+            }
+          },
+          "2": {
+            "speed": 32,
+            "upgrade": {
+              "MAGMA_CREAM": 320
+            }
+          },
+          "3": {
+            "speed": 30,
+            "upgrade": {
+              "MAGMA_CREAM": 512
+            }
+          },
+          "4": {
+            "speed": 30,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 8
+            }
+          },
+          "5": {
+            "speed": 28,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 16
+            }
+          },
+          "6": {
+            "speed": 28,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 32
+            }
+          },
+          "7": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 64
+            }
+          },
+          "8": {
+            "speed": 25,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 128
+            }
+          },
+          "9": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 256
+            }
+          },
+          "10": {
+            "speed": 22,
+            "upgrade": {
+              "ENCHANTED_MAGMA_CREAM": 512
+            }
+          },
+          "11": {
+            "speed": 18,
+            "upgrade": {}
+          }
+        }
+      },
+      "REVENANT": {
+        "yield": {
+          "ROTTEN_FLESH": 3,
+          "DIAMOND": 0.2
+        },
+        "tiers": {
+          "1": {
+            "speed": 29,
+            "upgrade": {
+              "REVENANT_FLESH": 140,
+              "ROTTEN_FLESH": 80
+            }
+          },
+          "2": {
+            "speed": 29,
+            "upgrade": {
+              "REVENANT_FLESH": 280,
+              "ROTTEN_FLESH": 240
+            }
+          },
+          "3": {
+            "speed": 26,
+            "upgrade": {
+              "REVENANT_FLESH": 448,
+              "ROTTEN_FLESH": 560
+            }
+          },
+          "4": {
+            "speed": 26,
+            "upgrade": {
+              "REVENANT_VISCERA": 7,
+              "ROTTEN_FLESH": 1072
+            }
+          },
+          "5": {
+            "speed": 23,
+            "upgrade": {
+              "REVENANT_VISCERA": 14,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 8
+            }
+          },
+          "6": {
+            "speed": 23,
+            "upgrade": {
+              "REVENANT_VISCERA": 28,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 24
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "REVENANT_VISCERA": 56,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 56
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "REVENANT_VISCERA": 112,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 120
+            }
+          },
+          "9": {
+            "speed": 14.5,
+            "upgrade": {
+              "REVENANT_VISCERA": 224,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 248
+            }
+          },
+          "10": {
+            "speed": 14.5,
+            "upgrade": {
+              "REVENANT_VISCERA": 448,
+              "ROTTEN_FLESH": 1072,
+              "ENCHANTED_ROTTEN_FLESH": 504
+            }
+          },
+          "11": {
+            "speed": 10,
+            "upgrade": {
+              "REVENANT_VISCERA": 64,
+              "COINS": 2000000
+            }
+          },
+          "12": {
+            "speed": 8,
+            "upgrade": {}
+          }
+        }
+      },
+      "TARANTULA": {
+        "yield": {
+          "STRING": 3.16,
+          "SPIDER_EYE": 1,
+          "IRON_INGOT": 0.2
+        },
+        "tiers": {
+          "1": {
+            "speed": 29,
+            "upgrade": {
+              "TARANTULA_WEB": 140,
+              "STRING": 80
+            }
+          },
+          "2": {
+            "speed": 29,
+            "upgrade": {
+              "TARANTULA_WEB": 280,
+              "STRING": 240
+            }
+          },
+          "3": {
+            "speed": 26,
+            "upgrade": {
+              "TARANTULA_WEB": 448,
+              "STRING": 560
+            }
+          },
+          "4": {
+            "speed": 26,
+            "upgrade": {
+              "TARANTULA_SILK": 7,
+              "STRING": 1072
+            }
+          },
+          "5": {
+            "speed": 23,
+            "upgrade": {
+              "TARANTULA_SILK": 14,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 8
+            }
+          },
+          "6": {
+            "speed": 23,
+            "upgrade": {
+              "TARANTULA_SILK": 28,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 24
+            }
+          },
+          "7": {
+            "speed": 19,
+            "upgrade": {
+              "TARANTULA_SILK": 56,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 56
+            }
+          },
+          "8": {
+            "speed": 19,
+            "upgrade": {
+              "TARANTULA_SILK": 112,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 120
+            }
+          },
+          "9": {
+            "speed": 14.5,
+            "upgrade": {
+              "TARANTULA_SILK": 224,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 248
+            }
+          },
+          "10": {
+            "speed": 14.5,
+            "upgrade": {
+              "TARANTULA_SILK": 448,
+              "STRING": 1072,
+              "ENCHANTED_STRING": 504
+            }
+          },
+          "11": {
+            "speed": 10,
+            "upgrade": {}
+          }
+        }
+      },
+      "OAK": {
+        "yield": {
+          "LOG": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_OAK_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "SPRUCE": {
+        "yield": {
+          "LOG:1": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:1": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:1": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG:1": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_SPRUCE_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "BIRCH": {
+        "yield": {
+          "LOG:2": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:2": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:2": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG:2": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_BIRCH_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "DARK_OAK": {
+        "yield": {
+          "LOG_2:1": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG_2:1": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG_2:1": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG_2:1": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_DARK_OAK_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "ACACIA": {
+        "yield": {
+          "LOG_2": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG_2": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG_2": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG_2": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_ACACIA_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "JUNGLE": {
+        "yield": {
+          "LOG:3": 4
+        },
+        "tiers": {
+          "1": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:3": 160
+            }
+          },
+          "2": {
+            "speed": 48,
+            "upgrade": {
+              "LOG:3": 320
+            }
+          },
+          "3": {
+            "speed": 45,
+            "upgrade": {
+              "LOG:3": 512
+            }
+          },
+          "4": {
+            "speed": 45,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 8
+            }
+          },
+          "5": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 16
+            }
+          },
+          "6": {
+            "speed": 42,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 32
+            }
+          },
+          "7": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 64
+            }
+          },
+          "8": {
+            "speed": 38,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 128
+            }
+          },
+          "9": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 256
+            }
+          },
+          "10": {
+            "speed": 33,
+            "upgrade": {
+              "ENCHANTED_JUNGLE_LOG": 512
+            }
+          },
+          "11": {
+            "speed": 27,
+            "upgrade": {}
+          }
+        }
+      },
+      "FISHING": {
+        "yield": {
+          "RAW_FISH": 1,
+          "RAW_FISH:1": 0.5,
+          "RAW_FISH:3": 0.24,
+          "RAW_FISH:2": 0.08,
+          "PRISMARINE_CRYSTALS": 0.06,
+          "PRISMARINE_SHARD": 0.06,
+          "SPONGE": 0.06
+        },
+        "tiers": {
+          "1": {
+            "speed": 78,
+            "upgrade": {
+              "RAW_FISH": 128
+            }
+          },
+          "2": {
+            "speed": 78,
+            "upgrade": {
+              "RAW_FISH": 256
+            }
+          },
+          "3": {
+            "speed": 72,
+            "upgrade": {
+              "RAW_FISH": 512
+            }
+          },
+          "4": {
+            "speed": 72,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 8
+            }
+          },
+          "5": {
+            "speed": 68,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 24
+            }
+          },
+          "6": {
+            "speed": 68,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 64
+            }
+          },
+          "7": {
+            "speed": 62.5,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 128
+            }
+          },
+          "8": {
+            "speed": 62.5,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 256
+            }
+          },
+          "9": {
+            "speed": 53,
+            "upgrade": {
+              "ENCHANTED_RAW_FISH": 512
+            }
+          },
+          "10": {
+            "speed": 53,
+            "upgrade": {
+              "ENCHANTED_COOKED_FISH": 8
+            }
+          },
+          "11": {
+            "speed": 35,
+            "upgrade": {}
+          }
+        }
+      }
+  }

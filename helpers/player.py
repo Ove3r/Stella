@@ -5,7 +5,7 @@ from helpers.utils import *
 import matplotlib.pyplot as plt
 import numpy as np
 from constants import constants_fishing
-
+from constants.constants_minions import *
 #Player Attributes: name, uuid, fruit, profile_id, player_data
 class Player:
     def __init__(self,name,profile=None):
@@ -65,6 +65,9 @@ class Player:
             self.api_enabled = True
         else:
             self.api_enabled = False
+
+        # Gets the minions related data for a player
+        self.get_minions()
 
     def get_player_summary(self):
         # Slayers
@@ -262,7 +265,104 @@ class Player:
                 elif entry["category"] == "Marina":
                     self.fishing_messages["Marina Sharks"] += f"{entry['common_name']} : {'{:,}'.format(round(entry['count']))}\n"
 
-                    
+    # -----
+    # Head Function for Player Minions (Initalization for minions related actions)
+    # -----
+    def get_minions(self):
+        self.all_minions = []
+        self.members_list = []
+
+        self.profile_data = requests.get(f"https://api.hypixel.net/skyblock/profile?key={key.API_KEY}&profile={self.profile_id}").json()
+
+        community_upgrades = self.profile_data["profile"].get("community_upgrades", {})
+        minion_community_upgrades = community_upgrades.get("upgrade_states", {})
+
+        # Profile Upgrades
+        self.minion_community_upgrades = 0
+        for entry in minion_community_upgrades: 
+            if entry["upgrade"] == "minion_slots":
+                self.minion_community_upgrades += 1
+
+        # For Unique crafts on the profile
+        self.profile_data = self.profile_data["profile"]["members"]
+        for member in self.profile_data: 
+            self.members_list.append(member)
+            minions = self.profile_data[member].get("crafted_generators", [])
+            self.all_minions = self.all_minions + list(set(minions) - set(self.all_minions))
+
+        self.unique_minion_count = len(self.all_minions)
+        self.__minion_list()
+        self.constants = GET_PLAYER_MINION()  # Varies with the player
+        self.tiers = GET_MINION_CONSTANTS()  # Constants for calculations
+        for entry in self.all_minions:
+            last_char_index = entry.rfind("_")
+            listing = entry[:last_char_index] + " " + entry[last_char_index + 1:]
+            name = listing.split(" ")
+            if name[0] in self.constants:
+                self.constants[name[0]]["list"].append(int(name[1]))
+
+        self.__get_minion_upgrade_cost()
+
+    # Determines the total unlocked minion slots for a profile
+    def __minion_list(self):
+        minion_table = [0, 5, 15, 30, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 350, 400, 450, 500, 550, 600]
+        self.unlocks = 0
+        for i, requirement in enumerate(minion_table):
+            if self.unique_minion_count >= requirement:
+                self.unlocks = i + 5
+                index = i
+            else:
+                break
+
+        self.unlocks += self.minion_community_upgrades
+
+    # Determines all tier up costs for minions
+    def __get_minion_upgrade_cost(self):
+        self.upgrade_costs = {}
+        bazaar_data = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        for minion in self.tiers:
+            # Gets the tier of minion that the player has
+            tier = str(max(self.constants[minion]["list"]))     
+            cost = 0
+            for material in self.tiers[minion]["tiers"][tier]["upgrade"]:
+                if material == "COINS":
+                    cost += self.tiers[minion]["tiers"][tier]["upgrade"][material]
+                # For each item it takes to upgrade the minion to the next tier
+                elif len(bazaar_data[material]["buy_summary"]) > 0:
+                    cost += (bazaar_data[material]["buy_summary"][0]["pricePerUnit"]) * \
+                            self.tiers[minion]["tiers"][tier]["upgrade"][material]
+                
+                self.upgrade_costs[minion] = cost
+        
+        # Sorts the dictionary
+        self.upgrade_costs = sorted(self.upgrade_costs.items(), key=operator.itemgetter(1), reverse=False)
+    
+    # Function for adding an item to the yeild of minions (Diamond Spreading)
+    def modify_tiers_for_an_upgrade(self, item, rate):
+        for minion in self.tiers:
+            if item in self.tiers[minion]["yield"]:
+                self.tiers[minion]["yield"][item] += rate
+            else:
+                self.tiers[minion]["yield"][item] = rate
+
+    # Per hour profits for all minions
+    def get_yield_per_hour(self, modifier=0):
+        bazaar_data = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
+        self.minion_profits = {}
+        for minion in self.tiers:
+            profit = 0
+            tier = max(self.constants[minion]["list"])
+            speed = self.tiers[minion]["tiers"][str(tier)]["speed"]
+            for item in self.tiers[minion]["yield"]:
+                if len(bazaar_data[item]["sell_summary"]) > 0:
+                    profit += bazaar_data[item]["sell_summary"][0]["pricePerUnit"]
+
+            self.minion_profits[minion] = (3600 / (2 * (speed / 1 + modifier))) * profit
+        # Sorts the dictionary
+        self.minion_profits = sorted(self.minion_profits.items(), key=operator.itemgetter(1), reverse=True)
+    
+
+        
 class Guild:
     def __init__(self,guild):
         self.API_KEY = key.API_KEY
