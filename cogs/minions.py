@@ -94,14 +94,17 @@ class Minions(commands.Cog):
         profit_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
         profit_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
         profit_message = []
+        including_slots_message = []
         for entry in user.minion_profits:
             if len(profit_message) > 10:
                 break
             else:
-                profit_message.append(f"**{entry[0]}** : **{'{:,}'.format(round(entry[1]))}**")
-
+                profit_message.append(f"**{entry[0]} {max(user.constants[entry[0]]['list'])}** : **{'{:,}'.format(round(entry[1]))}**")
+                including_slots_message.append(f"**{entry[0]} {max(user.constants[entry[0]]['list'])}** : **{'{:,}'.format(round(entry[1] * user.unlocks))}**")
+        profit_embed.add_field(name="Modifiers", value=modifiers, inline=False)
         profit_embed.add_field(name="Highest Profits Per Hour (Single Minion)",value="\n".join(profit_message))
-        profit_embed.add_field(name="Modifiers", value=modifiers)
+        profit_embed.add_field(name=f"Highest Profits Per Hour ({user.unlocks} Minions)",value="\n".join(including_slots_message))
+        
 
         await ctx.reply(embed=profit_embed)
 
