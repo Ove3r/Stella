@@ -171,9 +171,10 @@ class Minions(commands.Cog):
             else:
                 count = max(user.constants[entry[0]]['list'])
                 upgrade_message.append(f"**{entry[0]}** ({count} --> {count+1}): **{'{:,}'.format(entry[1])}**")
-
-        main_embed.add_field(name="Cheapest Upgrades", value="\n".join(upgrade_message),inline=False)
-
+        if len(upgrade_message):
+            main_embed.add_field(name="Cheapest Upgrades", value="\n".join(upgrade_message),inline=False)
+        else:
+            main_embed.add_field(name="You have all minion upgrades.", value='\u200b',inline=False)
         # Profits Page
         user.get_yield_per_hour(modifier=speed)
 
