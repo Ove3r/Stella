@@ -338,7 +338,7 @@ class Player:
                     cost += (bazaar_data[material]["buy_summary"][0]["pricePerUnit"]) * \
                             self.tiers[minion]["tiers"][tier]["upgrade"][material]
                 
-                self.upgrade_costs[minion] = cost
+                self.upgrade_costs[minion] = round(cost,1)
         
         # Sorts the dictionary
         self.upgrade_costs = sorted(self.upgrade_costs.items(), key=operator.itemgetter(1), reverse=False)
