@@ -301,6 +301,9 @@ class Player:
             if name[0] in self.constants:
                 self.constants[name[0]]["list"].append(int(name[1]))
 
+        for entry in self.constants:
+            if len(self.constants[entry]["list"]) == 0:
+                self.constants[entry]["list"].append(1)
         self.__get_minion_upgrade_cost()
 
     # Determines the total unlocked minion slots for a profile
@@ -322,7 +325,10 @@ class Player:
         bazaar_data = requests.get("https://api.hypixel.net/skyblock/bazaar").json()["products"]
         for minion in self.tiers:
             # Gets the tier of minion that the player has
-            tier = str(max(self.constants[minion]["list"]))     
+        
+            tier = str(max(self.constants[minion]["list"]))
+              
+            
             cost = 0
             for material in self.tiers[minion]["tiers"][tier]["upgrade"]:
                 if material == "COINS":
