@@ -43,10 +43,9 @@ class Player_Commands(commands.Cog):
     @commands.command(name="player",
         brief="Returns a player summary",
         help=(
-        "**stella player [ign]**\n"
+        "**stella player [ign] [optional: profile]**\n"
         "Returns a summary of a player's SkyBlock statistics.\n"
         "Notes: \n "
-        "• If a player argument is not given, the user's discord display name will be used instead."
         "• More stats and tabs are available to players who have APIs enabled."
         )
     )

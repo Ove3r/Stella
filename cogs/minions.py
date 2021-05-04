@@ -7,7 +7,12 @@ class Minions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="minion", aliases=["minions"])
+    @commands.command(name="minion", aliases=["minions"], 
+        help=(
+        "**stella minion [ign] [optional: profile]**\n"
+        "Returns various stats related to minions for a player.\n"
+        )
+    )
     async def command_minions(self, ctx, name, *profile):
         print(f"{ctx.author.name} sent minions command in {ctx.guild}")
         try:
