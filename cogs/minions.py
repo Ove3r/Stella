@@ -8,7 +8,6 @@ class Minions(commands.Cog):
         self.bot = bot
 
     @commands.command(name="minion", aliases=["minions"])
-    
     async def command_minions(self, ctx, name, *profile):
         print(f"{ctx.author.name} sent minions command in {ctx.guild}")
         try:
@@ -23,25 +22,41 @@ class Minions(commands.Cog):
             await ctx.reply("PlayerNotFound Error")
             return
 
+        # General embed for this command
+        def get_embed(title, description=False):
+            if description:
+                embed = discord.Embed(title=title, description=f"`{user.name}` ~ `{user.fruit}`", color=0xdc6565)
+            else:
+                embed = discord.Embed(titel=title, color=0xdc6565)
+            embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+            embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
+            embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+
+            return embed
+
+        # Check for reaction menus
+        def check(reaction, user):
+            # Ensures that the reaction is from the author and on the output message
+            return user == ctx.author and reaction.message.id == output.id
+        
+
+        # ------
+        # Command Processing
+        # ------
         speed = 0
         modifiers = ""
+
         # Asks the user for a minion item
-        query_embed = discord.Embed(title="What Minion Item Will You Use?", color=0xdc6565)
-        query_embed.add_field(name="Note",value="It is assumed that one of your minion items will be a Dwarven Super Compactor 3000.")
-        query_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        query_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-        query_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+        query_embed = get_embed("What Minion Item Will You Use?")
+        query_embed.add_field(name="Note",value="It is assumed that one of your minion items will be a Dwarven Super Compactor 3000. \n<:diamond_spreading:837124543939346472> Diamond Spreading\n<:flycatcher:837124689176428605> Flycatcher\n🚫 No Minion Upgrade")
+    
         
         output = await ctx.reply(embed=query_embed)
         await output.add_reaction("<:diamond_spreading:837124543939346472>")
         await output.add_reaction("<:flycatcher:837124689176428605>")
         await output.add_reaction("🚫")
 
-        # Check for reaction menus
-        def check(reaction, user):
-            # Ensures that the reaction is from the author and on the output message
-            return user == ctx.author and reaction.message.id == output.id
-
+ 
         # Reaction menu for what item you added
         reaction = None
         while True:
@@ -54,10 +69,10 @@ class Minions(commands.Cog):
                 speed += 0.2
                 break
             elif str(reaction) == "🚫":
-                modifiers += "🚫 No Minion Upgrade"
+                modifiers += "🚫 No Minion Upgrade\n"
                 break
 
-            try: #Timeout
+            try: # Timeout
                 reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
                 await output.remove_reaction(reaction, member)
             except:
@@ -66,33 +81,95 @@ class Minions(commands.Cog):
                 return
 
         await output.clear_reactions()
+
+        # Fuel Question
+        query_embed = get_embed("What Minion Fuel Will You Use?")
         
-        query_embed = discord.Embed(title="What Minion Fuel Will You Use?", color=0xdc6565)
-        query_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        query_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-        query_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+        query_embed.add_field(name="Minion Fuels",value="""
+            <:enchanted_lava_bucket:838929144288772107> Enchanted Lava Bucket\n
+            <:magma_bucket:838929187226124308> Magma Bucket\n
+            <:plasma_bucket:838929230229536788> Plasma Bucket\n
+            <:foul_flesh:838930441728950314> Foul Flesh\n
+            <:hamster_wheel:838930233955975168> Hamster Wheel\n
+            <:catalyst:838931725680640110> Catalyst\n
+            <:hyper_catalyst:838931725752074250> Hyper Catalyst\n
+            🚫 No Minion Fuel\n
+            """)
+    
+        await output.edit(embed=query_embed)
+        await output.add_reaction("<:enchanted_lava_bucket:838929144288772107>")
+        await output.add_reaction("<:magma_bucket:838929187226124308>")
+        await output.add_reaction("<:plasma_bucket:838929230229536788>")
+        await output.add_reaction("<:foul_flesh:838930441728950314>")
+        await output.add_reaction("<:hamster_wheel:838930233955975168>")
+        await output.add_reaction("<:catalyst:838931725680640110>")
+        await output.add_reaction("<:hyper_catalyst:838931725752074250>")
+        await output.add_reaction("🚫")
+        
+        # Reaction menu for what item you added
+        reaction = None
+        while True:
+            if str(reaction) == "<:enchanted_lava_bucket:838929144288772107>":
+                speed += 0.25
+                modifiers += "<:enchanted_lava_bucket:838929144288772107> Enchanted Lava Bucket\n"
+                break
+            elif str(reaction) == "<:magma_bucket:838929187226124308>":
+                modifiers += "<:magma_bucket:838929187226124308> Magma Bucket\n"
+                speed += 0.30
+                break
+            elif str(reaction) == "<:plasma_bucket:838929230229536788>":
+                modifiers += "<:plasma_bucket:838929230229536788> Plasma Bucket\n"
+                speed+= 0.35
+                break
+            elif str(reaction) == "<:foul_flesh:838930441728950314>":
+                modifiers += "<:foul_flesh:838930441728950314> Foul Flesh\n"
+                speed += 0.9
+                break
+            elif str(reaction) == "<:hamster_wheel:838930233955975168>":
+                modifiers += "<:hamster_wheel:838930233955975168> Hamster Wheel\n"
+                speed += 0.5
+                break
+            elif str(reaction) == "<:catalyst:838931725680640110>":
+                modifiers += "<:catalyst:838931725680640110> Catalyst\n"
+                user.modify_tiers_for_yield_changes(rate=3)
+                break
+            elif str(reaction) == "<:hyper_catalyst:838931725752074250>":
+                modifiers += "<:hyper_catalyst:838931725752074250> Hyper Catalyst\n"
+                user.modify_tiers_for_yield_changes(rate=4)
+                break
+            elif str(reaction) == "🚫":
+                modifiers += "🚫 No Minion Fuel\n"
+                break
 
+            try: # Timeout
+                reaction, member = await self.bot.wait_for("reaction_add", timeout=45.0, check=check)
+                await output.remove_reaction(reaction, member)
+            except:
+                await output.clear_reactions()
+                await output.add_reaction("🛑")
+                return
 
-
-
-
+        await output.clear_reactions()
 
         embed_list = []
-
-        main_embed = discord.Embed(title="Minions", description=f"`{user.name}` ~ `{user.fruit}`", color=0xdc6565)
-        main_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        main_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-        main_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+        # Main embed with upgrade costs
+        main_embed = get_embed("Minions", description=True)
         main_embed.add_field(name="Minion Slots", value=f"**{user.unlocks}**")
         main_embed.add_field(name="Unique Unlocks", value=f"**{user.unique_minion_count}**")
+        upgrade_message = []
+        for entry in user.upgrade_costs:
+            if len(upgrade_message) > 8:
+                break
+            else:
+                count = max(user.constants[entry[0]]['list'])
+                upgrade_message.append(f"**{entry[0]}** ({count} --> {count+1}): **{'{:,}'.format(entry[1])}**")
+
+        main_embed.add_field(name="Cheapest Upgrades", value="\n".join(upgrade_message),inline=False)
 
         # Profits Page
         user.get_yield_per_hour(modifier=speed)
 
-        profit_embed = discord.Embed(title="Minions", description=f"`{user.name}` ~ `{user.fruit}`", color=0xdc6565)
-        profit_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        profit_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-        profit_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+        profit_embed = get_embed("Minions Profits", description=True)
         profit_message = []
         including_slots_message = []
         for entry in user.minion_profits:
@@ -105,29 +182,69 @@ class Minions(commands.Cog):
         profit_embed.add_field(name="Highest Profits Per Hour (Single Minion)",value="\n".join(profit_message))
         profit_embed.add_field(name=f"Highest Profits Per Hour ({user.unlocks} Minions)",value="\n".join(including_slots_message))
         
-
-        await ctx.reply(embed=profit_embed)
-
-        
-
-        # Upgrade Cost Page
-        upgrade_embed = discord.Embed(title="Minions", description=f"`{user.name}` ~ `{user.fruit}`", color=0xdc6565)
-        upgrade_message = []
-        for entry in user.upgrade_costs:
-            if len(upgrade_message) > 10:
-                break
+        # Stats for top earner minions
+        top_minions = get_embed("Minion Profits", description=True)
+        top_minions.add_field(name="Modifiers", value=modifiers, inline=False)
+        index = 0
+        for entry in user.minion_profits:
+            if index == 0:
+                minion = entry
+            elif index == 1:
+                minion_2 = entry
+            elif index == 2:
+                minion_3 = entry
             else:
-                count = max(user.constants[entry[0]]['list'])
-                upgrade_message.append(f"**{entry[0]}** ({count} --> {count+1}): **{'{:,}'.format(entry[1])}**")
-
-        upgrade_embed.add_field(name="Cheapest Upgrades", value="\n".join(upgrade_message))
-        upgrade_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-        upgrade_embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-        upgrade_embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
-
-        await ctx.reply(embed=upgrade_embed)
+                break
+            index += 1
         
+        top_minions.add_field(name=f"**{minion[0]}** {max(user.constants[minion[0]]['list'])}", value=f"Per Hour Yield In Items (1 Minion)\n {user.get_yield_per_hour_minion(minion[0])}",inline=False)
+        top_minions.add_field(name=f"**{minion_2[0]}** {max(user.constants[minion_2[0]]['list'])}", value=f"Per Hour Yield In Items (1 Minion)\n {user.get_yield_per_hour_minion(minion_2[0])}",inline=False)
+        top_minions.add_field(name=f"**{minion_3[0]}** {max(user.constants[minion_3[0]]['list'])}", value=f"Per Hour Yield In Items (1 Minion)\n {user.get_yield_per_hour_minion(minion_3[0])}",inline=False)
+    
+        # Finalizes the embed list
+        embed_list.append(main_embed)
+        embed_list.append(profit_embed)
+        embed_list.append(top_minions)
 
+        await output.delete()
+
+        # Final Menu
+        output = await ctx.reply(embed=embed_list[0])
+        # await output.add_reaction("⏮")
+        await output.add_reaction("◀️")
+        await output.add_reaction("▶️")
+        # await output.add_reaction("⏭")
+        pages = len(embed_list)
+        current_page = 1
+        reaction = None
+        # Final Reaction Menu
+        while True:
+            if str(reaction) == "⏮":
+                current_page = 1
+                await output.edit(embed=embed_list[current_page-1])
+            
+            elif str(reaction) == "▶️" and current_page != pages:
+                current_page += 1
+                await output.edit(embed=embed_list[current_page-1])
+
+            elif str(reaction) == "◀️" and current_page > 1:
+                current_page -= 1
+                await output.edit(embed=embed_list[current_page-1])
+            
+            elif str(reaction) == "⏭":
+                current_page = pages
+                await output.edit(embed=embed_list[current_page-1])
+     
+            try:
+                reaction, user = await self.bot.wait_for("reaction_add", timeout=60, check=check)
+                await output.remove_reaction(reaction, user)
+            except:
+                break
+
+        await output.clear_reactions()
+        await output.add_reaction("🛑")
+
+        
 
 def setup(bot):
     bot.add_cog(Minions(bot))

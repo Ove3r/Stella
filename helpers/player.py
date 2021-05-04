@@ -344,6 +344,12 @@ class Player:
                 self.tiers[minion]["yield"][item] += rate
             else:
                 self.tiers[minion]["yield"][item] = rate
+    
+    # Function for items that modify the quantity of a yield
+    def modify_tiers_for_yield_changes(self, rate=1):
+        for minion in self.tiers:
+            for item in self.tiers[minion]["yield"]:
+                self.tiers[minion]["yield"][item] *= rate
 
     # Per hour profits for all minions
     def get_yield_per_hour(self, modifier=0):
@@ -355,12 +361,26 @@ class Player:
             speed = self.tiers[minion]["tiers"][str(tier)]["speed"]
             for item in self.tiers[minion]["yield"]:
                 if len(bazaar_data[item]["sell_summary"]) > 0:
-                    profit += bazaar_data[item]["sell_summary"][0]["pricePerUnit"]
+                    profit += bazaar_data[item]["sell_summary"][0]["pricePerUnit"] * self.tiers[minion]["yield"][item]
 
             self.minion_profits[minion] = (3600 / (2 * (speed / 1 + modifier))) * profit
         # Sorts the dictionary
         self.minion_profits = sorted(self.minion_profits.items(), key=operator.itemgetter(1), reverse=True)
     
+    # Per hour profits for a specific minion
+    def get_yield_per_hour_minion(self, minion, modifier=0):
+        message = ""
+        tier = max(self.constants[minion]["list"])
+        speed = self.tiers[minion]["tiers"][str(tier)]["speed"]
+
+        # (3600 / (2 * (speed / 1 + modifier))) * profit
+        for item in self.tiers[minion]["yield"]:
+            message += f"**{item}** : {round((3600 / (2 * (speed / 1 + modifier))) * self.tiers[minion]['yield'][item])}\n"
+        
+        return message
+        
+
+
 
         
 class Guild:
