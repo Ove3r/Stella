@@ -64,6 +64,7 @@ class Help(commands.Cog):
             help_embed.add_field(name="prices", value=f"{len(available_commands['prices'])} commands",inline=False)
             help_embed.add_field(name="other", value=f"{len(available_commands['other'])} commands",inline=False)
             help_embed.add_field(name="For list of commands in a category:", value="stella help [category]",inline=False)
+            help_embed.add_field(name="Newest Command", value="**stella minions [ign]**",inline=False)
         if not isinstance(ctx.channel, discord.DMChannel):
         
             await ctx.reply("A Help Menu menu has been DM'd to you.")

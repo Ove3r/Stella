@@ -131,7 +131,7 @@ class Skyborn_Commands(commands.Cog):
     async def send_update_notification(self,ctx):
         if ctx.author.id == 222116366872739843:
             for guild in self.bot.guilds:
-                update_embed=discord.Embed(title="Stella Update 1.2 ~ Minions Command", description="The following are changes and new additions in update 1.1", color=0xdc6565)
+                update_embed=discord.Embed(title="Stella Update 1.2 ~ Minions Command", description="The following are changes and new additions in update 1.2", color=0xdc6565)
                 update_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
                 update_embed.add_field(name=f"To Owner of {guild}",value="Please inform your server of this **new command!**.",inline=False)
                 update_embed.add_field(name="`stella minions [ign]`",value="Returns a prompt for minions related information including cheapest minion upgrade costs and minion profits.",inline=False)
