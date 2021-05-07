@@ -388,14 +388,17 @@ def coins_per_bit():
     #Heat Core (Magma Bucket)
     try:
         buyLava = bzData["products"]["ENCHANTED_LAVA_BUCKET"]["buy_summary"][0]["pricePerUnit"]
-        magmaBucketDifference = (min(magmaBucketPrices))-(buyLava*2)
+        sellMagma = bzData["products"]["MAGMA_BUCKET"]["sell_summary"][0]["pricePerUnit"]
+        magmaBucketDifference = (sellMagma)-(buyLava*2)
         magmaBucket = magmaBucketDifference/3000
         crafted["Heat Core (Magma Bucket)"] = round(magmaBucket,3)
     except ValueError:
         pass
     #Heat Core (Plasma Bucket)
     try:
-        plasmaBucket = ((min(plasmaPrices)) - (min(magmaBucketPrices)*2))/3000
+        buyMagma = bzData["products"]["MAGMA_BUCKET"]["buy_summary"][0]["pricePerUnit"]
+        sellPlasma = bzData["products"]["PLASMA_BUCKET"]["sell_summary"][0]["pricePerUnit"]
+        plasmaBucket = ((sellPlasma) - (buyMagma*2))/3000
         crafted["Heat Core (Plasma Bucket)"] = round(plasmaBucket,3)
     except ValueError:
         pass
