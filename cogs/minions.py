@@ -56,11 +56,12 @@ class Minions(commands.Cog):
 
         # Asks the user for a minion item
         query_embed = get_embed("What Minion Item Will You Use?")
-        query_embed.add_field(name="Note",value="It is assumed that one of your minion items will be a Dwarven Super Compactor 3000. \n<:diamond_spreading:837124543939346472> Diamond Spreading\n<:flycatcher:837124689176428605> Flycatcher\n🚫 No Minion Upgrade")
+        query_embed.add_field(name="Note",value="It is assumed that one of your minion items will be a Dwarven Super Compactor 3000. (Auto Smelter & Super Compactor) \n<:diamond_spreading:837124543939346472> Diamond Spreading\n<:minion_expander:840028119796285511> Minion Expander\n<:flycatcher:837124689176428605> Flycatcher\n🚫 No Minion Upgrade")
     
         
         output = await ctx.reply(embed=query_embed)
         await output.add_reaction("<:diamond_spreading:837124543939346472>")
+        await output.add_reaction("<:minion_expander:840028119796285511>")
         await output.add_reaction("<:flycatcher:837124689176428605>")
         await output.add_reaction("🚫")
 
@@ -71,6 +72,10 @@ class Minions(commands.Cog):
             if str(reaction) == "<:diamond_spreading:837124543939346472>":
                 user.modify_tiers_for_an_upgrade("DIAMOND", 0.1)
                 modifiers += "<:diamond_spreading:837124543939346472> Diamond Spreading\n"
+                break
+            elif str(reaction) == "<:minion_expander:840028119796285511>":
+                modifiers += "<:minion_expander:840028119796285511> Minion Expander\n"
+                speed += 0.05
                 break
             elif str(reaction) == "<:flycatcher:837124689176428605>":
                 modifiers += "<:flycatcher:837124689176428605> Flycatcher\n"
@@ -160,10 +165,13 @@ class Minions(commands.Cog):
         await output.clear_reactions()
 
         embed_list = []
+
+        user.get_yield_per_hour(modifier=speed)
+
         # Main embed with upgrade costs
         main_embed = get_embed("Minions", description=True)
         main_embed.add_field(name="Minion Slots", value=f"**{user.unlocks}**")
-        main_embed.add_field(name="Unique Unlocks", value=f"**{user.unique_minion_count}**")
+        main_embed.add_field(name="Unique Unlocks", value=f"**{user.unique_minion_count}**",inline=False)
         upgrade_message = []
         for entry in user.upgrade_costs:
             if len(upgrade_message) > 8:
@@ -175,8 +183,10 @@ class Minions(commands.Cog):
             main_embed.add_field(name="Cheapest Upgrades", value="\n".join(upgrade_message),inline=False)
         else:
             main_embed.add_field(name="You have all minion upgrades.", value='\u200b',inline=False)
+        main_embed.add_field(name="Top Minion", value=f"**{next(iter(user.minion_profits))[0]}: {round(next(iter(user.minion_profits))[1])}\nFor More Info, Click ▶️**", inline=False)
+        
         # Profits Page
-        user.get_yield_per_hour(modifier=speed)
+        
 
         profit_embed = get_embed("Minions Profits", description=True)
         profit_message = []
@@ -219,10 +229,10 @@ class Minions(commands.Cog):
 
         # Final Menu
         output = await ctx.reply(embed=embed_list[0])
-        # await output.add_reaction("⏮")
+        await output.add_reaction("⏮")
         await output.add_reaction("◀️")
         await output.add_reaction("▶️")
-        # await output.add_reaction("⏭")
+        await output.add_reaction("⏭")
         pages = len(embed_list)
         current_page = 1
         reaction = None
