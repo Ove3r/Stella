@@ -14,9 +14,6 @@ class Minions(commands.Cog):
         )
     )
     async def command_minions(self, ctx, name, *profile):
-        if ctx.guild.id not in [604420816817356822, 606864572594257921]:
-            await ctx.reply("This command is currently only available on the Skyborn Discord server for beta testing.")
-            return
         print(f"{ctx.author.name} sent minions command in {ctx.guild}")
         try:
             if profile:
