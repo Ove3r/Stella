@@ -131,15 +131,12 @@ class Skyborn_Commands(commands.Cog):
     async def send_update_notification(self,ctx):
         if ctx.author.id == 222116366872739843:
             for guild in self.bot.guilds:
-                update_embed=discord.Embed(title="Stella Update 1.1", description="The following are changes and new additions in update 1.1", color=0xdc6565)
+                update_embed=discord.Embed(title="Stella Update 1.2 ~ Minions Command", description="The following are changes and new additions in update 1.1", color=0xdc6565)
                 update_embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
-                update_embed.add_field(name=f"To Owner of {guild}",value="Please inform your server of the following.",inline=False)
-                update_embed.add_field(name="Command Changes/Additions",value="\u200b",inline=False)
-                update_embed.add_field(name="`stella player`",value="Now has a custom map tab for players who are online on certain public islands.\nNow has a fishing tab with sea creature related statistics.",inline=False)
-                update_embed.add_field(name="New Commands",value="\u200b",inline=False)
-                update_embed.add_field(name="`stella pets`",value="Calculates Expected Profit/Loss for **Legendary** pets. This takes the lowest BIN pet and compares it to the cheapest **[lvl 100]** pet.")
-                update_embed.add_field(name="`stella mythos`",value="Price checking for Mayor Diana's Mythological Creatures event.",inline=False)
-                update_embed.add_field(name="Links",value="Latest Update: [1.1](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.1.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
+                update_embed.add_field(name=f"To Owner of {guild}",value="Please inform your server of this **new command!**.",inline=False)
+                update_embed.add_field(name="`stella minions [ign]`",value="Returns a prompt for minions related information including cheapest minion upgrade costs and minion profits.",inline=False)
+                update_embed.set_image(url="https://cdn.discordapp.com/attachments/823008000796786689/840037167614394378/unknown.png")
+                update_embed.add_field(name="Links",value="Latest Update: [1.2](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.1.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
                 update_embed.set_footer(text="Thanks for using Stella Bot by Over#6203")
                 try:
                     await guild.owner.send(embed=update_embed)
