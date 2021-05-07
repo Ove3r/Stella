@@ -136,7 +136,7 @@ class Skyborn_Commands(commands.Cog):
                 update_embed.add_field(name=f"To Owner of {guild}",value="Please inform your server of this **new command!**.",inline=False)
                 update_embed.add_field(name="`stella minions [ign]`",value="Returns a prompt for minions related information including cheapest minion upgrade costs and minion profits.",inline=False)
                 update_embed.set_image(url="https://cdn.discordapp.com/attachments/823008000796786689/840037167614394378/unknown.png")
-                update_embed.add_field(name="Links",value="Latest Update: [1.2](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.1.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
+                update_embed.add_field(name="Links",value="Latest Update: [1.2](https://github.com/Ove3r/Stella/blob/main/Documentation/Updates/1.2.md).\nSource Code: [GitHub](https://github.com/Ove3r/Stella)\n[Invite Link](https://tinyurl.com/stellabot)",inline=False)
                 update_embed.set_footer(text="Thanks for using Stella Bot by Over#6203")
                 try:
                     await guild.owner.send(embed=update_embed)
