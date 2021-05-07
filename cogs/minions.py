@@ -35,7 +35,7 @@ class Minions(commands.Cog):
                 embed = discord.Embed(titel=title, color=0xdc6565)
             embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
             embed.set_thumbnail(url=f"https://visage.surgeplay.com/bust/{user.uuid}")
-            embed.set_footer(text="Stella Bot by Over#6203\nClick on the reactions for other tabs.")
+            embed.set_footer(text="Stella Bot by Over#6203\nIncorrect Numbers or Issues With Minions, please contact Over.\nClick on the reactions for other tabs.")
 
             return embed
 
