@@ -22,7 +22,8 @@ async def on_ready():
         print(f"{server} ({'{:,}'.format(len(server.members))}) owned by {server.owner}")
         member_count += len(server.members)
     print(f"Total Member Count: {'{:,}'.format(member_count)}")
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name= f" {len(bot.commands)} commands from {'{:,}'.format(member_count)} users in {len(bot.guilds)} servers."))
+    # await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name= f" {len(bot.commands)} commands from {'{:,}'.format(member_count)} users in {len(bot.guilds)} servers."))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f" new command, stella minions from {'{:,}'.format(member_count)} users in {len(bot.guilds)} servers."))
 
 @bot.event
 async def on_message(message):
