@@ -25,7 +25,7 @@ class Help(commands.Cog):
                 "guild": "Returns guild averages for a guild.",
                 "player": "Returns various stats for a player.",
                 "status": "Returns the current location of a player.",
-                
+                "minion": "Returns minion statistics including uprgrade and profits.",
                 "uuid": "Returns the uuid for a player."
             },
             "tracking": {
