@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from constants import constants_fishing
 from constants.constants_minions import *
+
+
 #Player Attributes: name, uuid, fruit, profile_id, player_data
 class Player:
     def __init__(self,name,profile=None):
@@ -72,13 +74,14 @@ class Player:
     def get_player_summary(self):
         # Slayers
         slayer_data = self.player_data.get("slayer_bosses")
-        self.xp_zombie = slayer_data.get("zombie").get("xp", 0)
+        self.xp_zombie = slayer_data.get("zombie", {}).get("xp", 0)
         self.lvl_zombie = skill_xp_to_level(self.xp_zombie, xp_table="zombie")
-        self.xp_spider = slayer_data.get("spider").get("xp", 0)
+        self.xp_spider = slayer_data.get("spider", {}).get("xp", 0)
         self.lvl_spider = skill_xp_to_level(self.xp_spider, xp_table="spider")
-        self.xp_wolf = slayer_data.get("wolf").get("xp", 0)
+        self.xp_wolf = slayer_data.get("wolf", {}).get("xp", 0)
         self.lvl_wolf = skill_xp_to_level(self.xp_wolf, xp_table="wolf")
-
+        self.xp_enderman = slayer_data.get("enderman", {}).get("xp", 0)
+        self.lvl_enderman = skill_xp_to_level(self.xp_enderman, xp_table="enderman")
         # Cata
         dungeons_data = self.player_data.get("dungeons")
 
@@ -184,6 +187,7 @@ class Player:
         f"<:revenant:810606609095983114>**Revenant:** {self.lvl_zombie} ⮕ ({'{:,}'.format(self.xp_zombie)})\n"
         f"<:tarantula:810606741023621151>**Tarantula:** {self.lvl_spider} ⮕ ({'{:,}'.format(self.xp_spider)})\n"
         f"<:sven:810606857378201630>**Sven:** {self.lvl_wolf} ⮕ ({'{:,}'.format(self.xp_wolf)})\n"
+        f"<:voidgloom:850916401660821544>**Voidgloom:** {self.lvl_enderman} ⮕ ({'{:,}'.format(self.xp_enderman)})\n"
         )
 
         self.dungeon_message = (
@@ -338,7 +342,7 @@ class Player:
                     cost += (bazaar_data[material]["buy_summary"][0]["pricePerUnit"]) * \
                             self.tiers[minion]["tiers"][tier]["upgrade"][material]
                 
-                self.upgrade_costs[minion] = round(cost,1)
+                self.upgrade_costs[minion] = cost
         
         # Sorts the dictionary
         self.upgrade_costs = sorted(self.upgrade_costs.items(), key=operator.itemgetter(1), reverse=False)
